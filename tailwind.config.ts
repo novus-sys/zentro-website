@@ -57,6 +57,18 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        zentro: {
+          neural: "hsl(var(--zentro-neural))",
+          "neural-light": "hsl(var(--zentro-neural-light))",
+          ai: "hsl(var(--zentro-ai))",
+          surface: "hsl(var(--zentro-surface))",
+          glass: "hsl(var(--zentro-glass))",
+        },
+      },
+      backgroundImage: {
+        "gradient-neural": "var(--gradient-neural)",
+        "gradient-ai": "var(--gradient-ai)",
+        "gradient-surface": "var(--gradient-surface)",
       },
       borderRadius: {
         lg: "var(--radius)",
