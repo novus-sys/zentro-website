@@ -3,6 +3,7 @@
 import { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
+import Spline from '@splinetool/react-spline';
 
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -212,12 +213,12 @@ function ShaderBackground() {
   );
   
   return (
-    <div ref={canvasRef} className="bg-black absolute inset-0 -z-10 w-full h-full" aria-hidden>
+    <div ref={canvasRef} className="bg-black fixed inset-0 -z-10 w-screen h-screen" aria-hidden>
       <Canvas
         camera={camera}
         gl={{ antialias: true, alpha: false }}
         dpr={[1, 2]}
-        style={{ width: '100%', height: '100%' }}
+        style={{ width: '100vw', height: '100vh' }}
       >
         <ShaderPlane />
       </Canvas>
@@ -232,8 +233,9 @@ interface HeroProps {
   description: string;
   badgeText?: string;
   badgeLabel?: string;
-  ctaButtons?: Array<{ text: string; href: string; primary?: boolean }>;
+  ctaButtons?: Array<{ text: string; href: string; primary?: boolean; target?: string }>;
   microDetails?: Array<string>;
+  splineUrl?: string;
 }
 
 export default function Hero({
@@ -245,7 +247,8 @@ export default function Hero({
     { text: "Get started", href: "#get-started", primary: true },
     { text: "View showcase", href: "#showcase" }
   ],
-  microDetails = ["Low‑weight font", "Tight tracking", "Subtle motion"]
+  microDetails = ["Low‑weight font", "Tight tracking", "Subtle motion"],
+  splineUrl
 }: HeroProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const headerRef = useRef<HTMLHeadingElement | null>(null);
@@ -325,10 +328,11 @@ export default function Hero({
   );
 
   return (
-    <section ref={sectionRef} className="relative h-screen w-screen overflow-hidden">
+    <section ref={sectionRef} className="relative h-screen w-full overflow-hidden">
       <ShaderBackground />
 
-      <div className="relative mx-auto flex max-w-7xl flex-col items-start gap-6 px-6 pb-24 pt-36 sm:gap-8 sm:pt-44 md:px-10 lg:px-16">
+      <div className={`relative mx-auto ${splineUrl ? 'grid grid-cols-1 lg:grid-cols-2' : 'flex flex-col items-start'} max-w-7xl gap-6 px-6 pb-24 pt-36 sm:gap-8 sm:pt-44 md:px-10 lg:px-16`}>
+        <div className="flex flex-col items-start gap-6 sm:gap-8">
         <div ref={badgeRef} className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 backdrop-blur-sm">
           <span className="text-[10px] font-light uppercase tracking-[0.08em] text-white/70">{badgeLabel}</span>
           <span className="h-1 w-1 rounded-full bg-white/40" />
@@ -348,6 +352,8 @@ export default function Hero({
             <a
               key={index}
               href={button.href}
+              target={button.target || "_self"}
+              rel={button.target === "_blank" ? "noopener noreferrer" : undefined}
               className={`rounded-2xl border border-white/10 px-5 py-3 text-sm font-light tracking-tight transition-colors focus:outline-none focus:ring-2 focus:ring-white/30 duration-300 ${
                 button.primary
                   ? "bg-white/10 text-white backdrop-blur-sm hover:bg-white/20"
@@ -369,6 +375,18 @@ export default function Hero({
             );
           })}
         </ul>
+        </div>
+        
+        {splineUrl && (
+          <div className="relative h-[500px] lg:h-full mt-8 lg:mt-0 lg:ml-8">
+            <div className="w-full h-full bg-transparent scale-125">
+              <Spline 
+                scene={splineUrl}
+                style={{ background: 'transparent' }}
+              />
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/40 to-transparent" />

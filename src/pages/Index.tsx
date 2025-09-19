@@ -1,18 +1,20 @@
 import Hero from "@/components/ui/neural-network-hero";
+import HeroHeader from "@/components/ui/hero-header";
 
 const Index = () => {
   return (
-    <div className="w-screen h-screen flex flex-col relative">
+    <div className="min-h-screen w-full relative">
+      <HeroHeader />
       <Hero 
-        title="Zentro Suite: The Future of Business Intelligence"
-        description="Experience next-generation analytics powered by neural networks. Transform your data into actionable insights with our AI-driven business suite."
+        title="Zentro Suite: The Future of Business Innovation"
+        description="Experience next-generation analytics powered by Artificial Intelligence. Transform your data into actionable insights with our AI-driven business suite."
         badgeText="AI-Powered Analytics"
         badgeLabel="New"
         ctaButtons={[
-          { text: "Start Free Trial", href: "#trial", primary: true },
-          { text: "View Demo", href: "#demo" }
+          { text: "Join Waitlist", href: "https://tally.so/r/mZ0jgy", primary: true, target: "_blank"}
         ]}
-        microDetails={["Enterprise Ready", "Real-time Processing", "Neural Analytics"]}
+        microDetails={["Enterprise Ready", "Real-time Processing", "Artificial Intelligence"]}
+        splineUrl="https://prod.spline.design/y9nA3V6Cm8fEp2hR/scene.splinecode"
       />
     </div>
   );
