@@ -1,5 +1,11 @@
 import Hero from "@/components/ui/neural-network-hero";
 import HeroHeader from "@/components/ui/hero-header";
+import TechStack from "@/components/ui/tech-stack";
+import ProblemStatement from "@/components/ui/problem-statement";
+import SolutionOverview from "@/components/ui/solution-overview";
+import FeatureHighlights from "@/components/ui/feature-highlights";
+import FAQSection from "@/components/ui/faq-section";
+import Footer from "@/components/ui/footer";
 
 const Index = () => {
   return (
@@ -16,6 +22,12 @@ const Index = () => {
         microDetails={["Enterprise Ready", "Real-time Processing", "Artificial Intelligence"]}
         splineUrl="https://prod.spline.design/y9nA3V6Cm8fEp2hR/scene.splinecode"
       />
+      <TechStack />
+      <ProblemStatement />
+      <SolutionOverview />
+      <FeatureHighlights />
+      <FAQSection />
+      <Footer />
     </div>
   );
 };
