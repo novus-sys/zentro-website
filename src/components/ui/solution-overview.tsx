@@ -101,42 +101,16 @@ export default function SolutionOverview() {
           <div className="relative mx-auto max-w-5xl">
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-green-500/20 blur-3xl" />
             <div className="relative rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] p-2 backdrop-blur-sm">
-              <div className="aspect-video w-full rounded-xl bg-gradient-to-br from-purple-900/40 via-black to-green-900/40 flex items-center justify-center overflow-hidden relative">
-                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-40" />
-                
-                <div className="relative z-10 text-center p-12">
-                  <div className="inline-flex items-center gap-3 mb-6">
-                    <div className="h-3 w-3 rounded-full bg-green-400 animate-pulse" />
-                    <span className="text-xs font-light uppercase tracking-wider text-green-400/80">Live Dashboard Preview</span>
-                  </div>
-                  
-                  <div className="grid grid-cols-3 gap-4 mb-8">
-                    <div className="rounded-lg border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
-                      <div className="text-2xl font-light text-white mb-1">98.7%</div>
-                      <div className="text-xs text-white/50">Accuracy</div>
-                    </div>
-                    <div className="rounded-lg border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
-                      <div className="text-2xl font-light text-white mb-1">&lt;100ms</div>
-                      <div className="text-xs text-white/50">Response Time</div>
-                    </div>
-                    <div className="rounded-lg border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
-                      <div className="text-2xl font-light text-white mb-1">24/7</div>
-                      <div className="text-xs text-white/50">Monitoring</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-center gap-2">
-                    <svg className="h-5 w-5 text-purple-400 animate-spin" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    <span className="text-sm font-light text-white/70">AI Processing Real-time Data</span>
-                  </div>
-                </div>
+              <div className="w-full rounded-xl overflow-hidden relative">
+                <img 
+                  src="/dashboard.png" 
+                  alt="Zentro Suite Dashboard Preview" 
+                  className="w-full h-auto object-cover"
+                />
               </div>
             </div>
             <div className="mt-4 text-center">
-              <p className="text-xs font-light text-white/40">Interactive dashboard mockup - Full version coming soon</p>
+              <p className="text-xs font-light text-white/40">Zentro Suite Dashboard - AI-powered analytics interface</p>
             </div>
           </div>
         </div>

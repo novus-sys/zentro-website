@@ -22,11 +22,21 @@ const Index = () => {
         microDetails={["Enterprise Ready", "Real-time Processing", "Artificial Intelligence"]}
         splineUrl="https://prod.spline.design/y9nA3V6Cm8fEp2hR/scene.splinecode"
       />
-      <TechStack />
-      <ProblemStatement />
-      <SolutionOverview />
-      <FeatureHighlights />
-      <FAQSection />
+      <div id="tech-stack">
+        <TechStack />
+      </div>
+      <div id="problem">
+        <ProblemStatement />
+      </div>
+      <div id="solution">
+        <SolutionOverview />
+      </div>
+      <div id="features">
+        <FeatureHighlights />
+      </div>
+      <div id="faq">
+        <FAQSection />
+      </div>
       <Footer />
     </div>
   );
