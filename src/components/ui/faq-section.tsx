@@ -73,11 +73,6 @@ export default function FAQSection() {
       category: 'product',
     },
     {
-      question: 'When will Zentro Suite be available?',
-      answer: 'We are currently in private beta and working closely with early access partners to refine the platform. Public launch is planned for Q2 2025. Join our waitlist to get early access and exclusive founding member benefits, including lifetime discounts and priority support.',
-      category: 'product',
-    },
-    {
       question: 'What data sources can I connect?',
       answer: 'Zentro Suite integrates with 100+ data sources including CRM systems (Salesforce, HubSpot), databases (PostgreSQL, MySQL, MongoDB), cloud storage (AWS S3, Google Cloud), analytics platforms (Google Analytics, Mixpanel), and business tools (Stripe, Shopify, QuickBooks). We also provide REST and GraphQL APIs for custom integrations.',
       category: 'product',
