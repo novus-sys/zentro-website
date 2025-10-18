@@ -162,7 +162,7 @@ export default function Hero({
         
         {splineUrl && (
           <div className="relative h-[500px] lg:h-full mt-8 lg:mt-0 lg:ml-8">
-            <div className="w-full h-full bg-transparent scale-125">
+            <div className="w-full h-full bg-transparent scale-125 pointer-events-none">
               <Spline 
                 scene={splineUrl}
                 style={{ background: 'transparent' }}
