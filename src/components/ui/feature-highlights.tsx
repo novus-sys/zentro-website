@@ -72,7 +72,7 @@ export default function FeatureHighlights() {
             Powerful Features <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-rose-400 bg-clip-text text-transparent">Built for Scale</span>
           </h2>
           <p className="mt-6 mx-auto max-w-3xl text-lg font-light leading-relaxed text-white/60">
-            Every feature designed to transform how you interact with your business data
+            Every feature designed to transform how you interact with your organizational data
           </p>
         </div>
 
@@ -89,7 +89,7 @@ export default function FeatureHighlights() {
               
               <h3 className="mb-4 text-2xl font-light tracking-tight text-white">Interactive Dashboards</h3>
               <p className="mb-6 text-base font-light leading-relaxed text-white/70">
-                Customizable, real-time dashboards that adapt to your workflow. Configure widgets to visualize exactly what matters to your business.
+                Customizable, real-time dashboards that adapt to your workflow. Configure widgets to visualize exactly what matters to your organization.
               </p>
 
               <div className="relative rounded-xl border border-white/10 bg-gradient-to-br from-purple-900/20 via-black to-pink-900/20 p-6 overflow-hidden">

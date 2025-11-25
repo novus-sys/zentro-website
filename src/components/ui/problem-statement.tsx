@@ -70,7 +70,7 @@ export default function ProblemStatement() {
             The Data <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Paradox</span>
           </h2>
           <p className="mt-6 mx-auto max-w-3xl text-lg font-light leading-relaxed text-white/60">
-            Modern businesses are drowning in data but starving for insights. Traditional analytics tools can't keep pace with the speed and complexity of today's business landscape.
+            Modern Organizations are drowning in data but starving for insights. Traditional analytics tools can't keep pace with the speed and complexity of today's Organisational landscape.
           </p>
         </div>
 
@@ -85,7 +85,7 @@ export default function ProblemStatement() {
               </div>
               <h3 className="mb-4 text-2xl font-light tracking-tight text-white">Data Overload</h3>
               <p className="text-sm font-light leading-relaxed text-white/60">
-                Companies collect terabytes of data daily across multiple platforms, creating information silos that prevent holistic business understanding and strategic decision-making.
+                Companies collect terabytes of data daily across multiple platforms, creating information silos that prevent holistic organizational understanding and strategic decision-making.
               </p>
               <div className="mt-6 pt-6 border-t border-white/5">
                 <p className="text-xs font-light text-purple-300/70">Impact: Missed opportunities, delayed insights</p>
@@ -124,7 +124,7 @@ export default function ProblemStatement() {
                 Enterprise analytics platforms demand massive upfront investments in infrastructure, licensing, and specialized talent that only Fortune 500 companies can afford.
               </p>
               <div className="mt-6 pt-6 border-t border-white/5">
-                <p className="text-xs font-light text-purple-300/70">Impact: Limited access for growing businesses</p>
+                <p className="text-xs font-light text-purple-300/70">Impact: Limited access for growing organizations</p>
               </div>
             </div>
           </div>
@@ -175,7 +175,7 @@ export default function ProblemStatement() {
               </div>
               <h3 className="mb-4 text-2xl font-light tracking-tight text-white">Complexity Barrier</h3>
               <p className="text-sm font-light leading-relaxed text-white/60">
-                Existing solutions require technical expertise to operate effectively. Business users depend on IT teams for simple queries, creating bottlenecks and frustration.
+                Existing solutions require technical expertise to operate effectively. Organizational users depend on IT teams for simple queries, creating bottlenecks and frustration.
               </p>
               <div className="mt-6 pt-6 border-t border-white/5">
                 <p className="text-xs font-light text-purple-300/70">Impact: Limited adoption, dependency</p>
@@ -190,7 +190,7 @@ export default function ProblemStatement() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <p className="text-sm font-light text-white/80">
-              These challenges cost businesses billions in lost opportunities annually
+              These challenges cost organizations billions in lost opportunities annually
             </p>
           </div>
         </div>

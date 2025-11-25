@@ -12,14 +12,14 @@ const Index = () => {
     <div className="min-h-screen w-full relative">
       <HeroHeader />
       <Hero 
-        title="Zentro Suite: The Future of Business Innovation"
-        description="Experience next-generation analytics powered by Artificial Intelligence. Transform your data into actionable insights with our AI-driven business suite."
-        badgeText="AI-Powered Analytics"
+        title="Zentro Suite: The Future of Organisational Innovation"
+        description="Transform your organisation's innovation pipeline with AI-powered idea management."
+        badgeText="AI-Powered Innovation"
         badgeLabel="New"
         ctaButtons={[
           { text: "Join Waitlist", href: "https://tally.so/r/mZ0jgy", primary: true, target: "_blank"}
         ]}
-        microDetails={["Enterprise Ready", "Real-time Processing", "Artificial Intelligence"]}
+        microDetails={["Organisation Ready", "Real-time Evaluation", "Intelligent Processing"]}
         splineUrl="https://prod.spline.design/y9nA3V6Cm8fEp2hR/scene.splinecode"
       />
       <div id="tech-stack">

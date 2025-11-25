@@ -69,12 +69,12 @@ export default function FAQSection() {
   const faqs: FAQItem[] = [
     {
       question: 'What is Zentro Suite and how does it work?',
-      answer: 'Zentro Suite is an AI-powered business analytics platform that transforms raw data into actionable insights. Our platform uses advanced machine learning algorithms to analyze your data in real-time, identify patterns, predict trends, and provide recommendations. Simply connect your data sources, and our AI engine automatically processes and visualizes your business metrics.',
+      answer: 'Zentro Suite is an AI-powered organizational analytics platform that transforms raw data into actionable insights. Our platform uses advanced machine learning algorithms to analyze your data in real-time, identify patterns, predict trends, and provide recommendations. Simply connect your data sources, and our AI engine automatically processes and visualizes your organizational metrics.',
       category: 'product',
     },
     {
       question: 'What data sources can I connect?',
-      answer: 'Zentro Suite integrates with 100+ data sources including CRM systems (Salesforce, HubSpot), databases (PostgreSQL, MySQL, MongoDB), cloud storage (AWS S3, Google Cloud), analytics platforms (Google Analytics, Mixpanel), and business tools (Stripe, Shopify, QuickBooks). We also provide REST and GraphQL APIs for custom integrations.',
+      answer: 'Zentro Suite integrates with 100+ data sources including CRM systems (Salesforce, HubSpot), databases (PostgreSQL, MySQL, MongoDB), cloud storage (AWS S3, Google Cloud), analytics platforms (Google Analytics, Mixpanel), and organizational tools (Stripe, Shopify, QuickBooks). We also provide REST and GraphQL APIs for custom integrations.',
       category: 'product',
     },
     {
@@ -84,7 +84,7 @@ export default function FAQSection() {
     },
     {
       question: 'Do I need technical expertise to use Zentro Suite?',
-      answer: 'No technical expertise required. Zentro Suite is designed for business users with an intuitive, no-code interface. Ask questions in plain English and get instant answers. Our AI handles all the complex queries, data transformations, and analysis behind the scenes. However, we also provide advanced features and APIs for technical users who want deeper customization.',
+      answer: 'No technical expertise required. Zentro Suite is designed for organizational users with an intuitive, no-code interface. Ask questions in plain English and get instant answers. Our AI handles all the complex queries, data transformations, and analysis behind the scenes. However, we also provide advanced features and APIs for technical users who want deeper customization.',
       category: 'product',
     },
     // {

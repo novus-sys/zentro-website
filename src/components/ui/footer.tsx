@@ -17,7 +17,7 @@ export default function Footer() {
               <Logo />
             </Link>
             <p className="text-sm font-light leading-relaxed text-white/60 mb-6 max-w-sm">
-              AI-powered business analytics platform transforming data into actionable insights. Join the future of intelligent decision-making.
+              AI-powered organizational analytics platform transforming data into actionable insights. Join the future of intelligent decision-making.
             </p>
             <div className="flex items-center gap-4">
               <a
@@ -188,7 +188,7 @@ export default function Footer() {
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="text-center md:text-left">
                 <h3 className="text-xl font-light tracking-tight text-white mb-2">
-                  Ready to transform your business?
+                  Ready to transform your organization?
                 </h3>
                 <p className="text-sm font-light text-white/60">
                   Join the waitlist and be among the first to experience AI-powered analytics.

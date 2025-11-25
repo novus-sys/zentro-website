@@ -200,7 +200,7 @@ export default function SolutionOverview() {
               <div className="flex-1">
                 <h3 className="mb-4 text-3xl font-light tracking-tight text-white">Unified Data Platform</h3>
                 <p className="mb-6 text-base font-light leading-relaxed text-white/70">
-                  Connect all your data sources into a single, coherent view. Our platform integrates seamlessly with your existing tools, databases, and APIs, eliminating data silos and providing a complete picture of your business.
+                  Connect all your data sources into a single, coherent view. Our platform integrates seamlessly with your existing tools, databases, and APIs, eliminating data silos and providing a complete picture of your organization.
                 </p>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div className="text-center p-4 rounded-xl border border-white/5 bg-white/[0.02]">
@@ -232,7 +232,7 @@ export default function SolutionOverview() {
               <div className="flex-1">
                 <h3 className="mb-4 text-3xl font-light tracking-tight text-white">Natural Language Queries</h3>
                 <p className="mb-6 text-base font-light leading-relaxed text-white/70">
-                  Ask questions in plain English and get instant answers. No SQL knowledge required. Our AI understands context, intent, and business terminology, making analytics accessible to everyone in your organization.
+                  Ask questions in plain English and get instant answers. No SQL knowledge required. Our AI understands context, intent, and organizational terminology, making analytics accessible to everyone in your organization.
                 </p>
                 <div className="rounded-xl border border-white/10 bg-black/20 p-6">
                   <div className="flex items-start gap-3 mb-4">
