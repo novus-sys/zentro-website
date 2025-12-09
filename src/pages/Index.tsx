@@ -17,7 +17,7 @@ const Index = () => {
         badgeText="AI-Powered Innovation"
         badgeLabel="New"
         ctaButtons={[
-          { text: "Join Waitlist", href: "https://tally.so/r/mZ0jgy", primary: true, target: "_blank"}
+          { text: "Sign-in", href: "https://app.zentrosuite.com/auth/signin", primary: true, target: "_blank"}
         ]}
         microDetails={["Organisation Ready", "Real-time Evaluation", "Intelligent Processing"]}
         splineUrl="https://prod.spline.design/y9nA3V6Cm8fEp2hR/scene.splinecode"

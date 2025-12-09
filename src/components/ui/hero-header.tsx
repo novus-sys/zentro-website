@@ -80,14 +80,14 @@ const HeroHeader = () => {
                             </div>
                             <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
                                 <a
-                                    href="https://tally.so/r/mZ0jgy"
+                                    href="https://app.zentrosuite.com/auth/signin"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className={cn(
                                         'inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm font-light text-white backdrop-blur-sm hover:bg-white/10 transition-all duration-200',
                                         isScrolled ? 'lg:inline-flex' : 'lg:inline-flex'
                                     )}>
-                                    <span>Join Waitlist</span>
+                                    <span>Sign-in</span>
                                 </a>
                             </div>
                         </div>

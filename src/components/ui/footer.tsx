@@ -195,12 +195,12 @@ export default function Footer() {
                 </p>
               </div>
               <a
-                href="https://tally.so/r/mZ0jgy"
+                href="https://app.zentrosuite.com/auth/signin"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-shrink-0 rounded-xl border border-white/10 bg-gradient-to-r from-purple-500/20 to-pink-500/20 px-8 py-3 text-sm font-light text-white backdrop-blur-sm transition-all duration-300 hover:from-purple-500/30 hover:to-pink-500/30 hover:border-purple-500/30"
               >
-                Join Waitlist
+                Sign-in
               </a>
             </div>
           </div>
