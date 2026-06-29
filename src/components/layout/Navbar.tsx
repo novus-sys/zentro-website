@@ -42,17 +42,17 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+      className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm"
-          : "bg-white border-b border-slate-100"
+          ? "top-4 w-[calc(100%-2rem)] max-w-7xl rounded-full border border-slate-200/80 bg-white/75 backdrop-blur-md shadow-md"
+          : "top-0 w-full max-w-full rounded-none border-b border-slate-100 bg-white shadow-none"
       }`}
     >
       <div className="container flex items-center justify-between h-20">
         {/* Brand Logo */}
         <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex items-center">
           <img
-            src={`${import.meta.env.BASE_URL}zentro black logo.png`}
+            src={`${import.meta.env.BASE_URL}zentro_black_logo-removebg-preview.png`}
             alt="Zentro Suite Logo"
             className="h-9 w-auto object-contain"
           />
@@ -126,10 +126,11 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-20 left-0 w-full bg-white border-b border-slate-200 shadow-xl z-40 hidden lg:block overflow-hidden"
+            className="absolute top-full left-0 w-full pt-3 z-40 hidden lg:block overflow-hidden"
             onMouseEnter={() => setDropdownOpen(true)}
             onMouseLeave={() => setDropdownOpen(false)}
           >
+            <div className="bg-white border border-slate-200/80 rounded-3xl shadow-xl overflow-hidden">
             {/* Split layout inside the container to align with content */}
             <div className="container mx-auto grid grid-cols-12 w-full min-h-[380px]">
               
@@ -296,6 +297,7 @@ export default function Navbar() {
               </div>
 
             </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -307,8 +309,9 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-t border-slate-200 overflow-hidden shadow-lg"
+            className="lg:hidden w-full pt-3 overflow-hidden"
           >
+            <div className="bg-white border border-slate-200/80 rounded-3xl shadow-lg p-2">
             <div className="container py-6 flex flex-col gap-5 text-left">
               {/* Mobile Products List */}
               <div className="flex flex-col gap-2">
@@ -355,6 +358,7 @@ export default function Navbar() {
                   Book a Demo
                 </a>
               </div>
+            </div>
             </div>
           </motion.div>
         )}
