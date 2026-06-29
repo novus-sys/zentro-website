@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Award, ChevronDown, Shield, Users, Landmark, Code, ArrowRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -11,6 +11,7 @@ export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [activeOption, setActiveOption] = useState<OptionType>("students");
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 10);
@@ -142,7 +143,7 @@ export default function Navbar() {
                   <button
                     onMouseEnter={() => setActiveOption("students")}
                     onClick={() => {
-                      window.location.href = "/student";
+                      navigate("/student");
                     }}
                     className={`flex items-center gap-3.5 p-3 text-left text-xs font-bold font-sans transition-all rounded-md ${
                       activeOption === "students"
@@ -157,7 +158,7 @@ export default function Navbar() {
                   <button
                     onMouseEnter={() => setActiveOption("universities")}
                     onClick={() => {
-                      window.location.href = "/universities";
+                      navigate("/universities");
                     }}
                     className={`flex items-center gap-3.5 p-3 text-left text-xs font-bold font-sans transition-all rounded-md ${
                       activeOption === "universities"
@@ -171,7 +172,7 @@ export default function Navbar() {
 
                   <button
                     onMouseEnter={() => setActiveOption("corporates")}
-                    onClick={() => handleNavClick("sourcing-pipeline")}
+                    onClick={() => navigate("/corporates")}
                     className={`flex items-center gap-3.5 p-3 text-left text-xs font-bold font-sans transition-all rounded-md ${
                       activeOption === "corporates"
                         ? "bg-white text-blue-600 shadow-xs border border-slate-200"
@@ -236,14 +237,12 @@ export default function Navbar() {
                         Go to University Platform <ArrowRight size={14} />
                       </Link>
                     ) : (
-                      <a
-                        href="https://calendly.com/sambramsm28/30min"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <Link
+                        to="/corporates"
                         className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-none transition-all shadow-xs"
                       >
                         Request Recruiter Access <ArrowRight size={14} />
-                      </a>
+                      </Link>
                     )}
                   </div>
                 </div>

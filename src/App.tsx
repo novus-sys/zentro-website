@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import WorkmarkLanding from "./pages/WorkmarkLanding";
 import Universities from "./pages/Universities";
 import WorkmarkCreator from "./pages/WorkmarkCreator";
+import Corporates from "./pages/Corporates";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Refund from "./pages/Refund";
@@ -46,7 +47,10 @@ function CorporateLayout() {
 }
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => {
+    // Show loader ONLY on the home page (pathname is "/" or empty)
+    return window.location.pathname === "/";
+  });
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -63,6 +67,7 @@ const App = () => {
               <Route path="/student" element={<WorkmarkLanding />} />
               <Route path="/universities" element={<Universities />} />
               <Route path="/workmark-creator" element={<WorkmarkCreator />} />
+              <Route path="/corporates" element={<Corporates />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/refund" element={<Refund />} />

@@ -1,12 +1,5 @@
 {
   "rewrites": [
-    {
-      "source": "/workmark",
-      "destination": "https://workmark-landing.vercel.app"
-    },
-    {
-      "source": "/workmark/:path*",
-      "destination": "https://workmark-landing.vercel.app/:path*"
-    }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

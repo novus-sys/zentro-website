@@ -100,7 +100,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Fold: Copyright & Social Links */}
-        <div className="border-t border-slate-100 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 w-full">
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 w-full">
           <div className="text-xs text-slate-400 space-y-1">
             <p>&copy; {new Date().getFullYear()} Zentro Suite Corporation. All rights reserved.</p>
           </div>
