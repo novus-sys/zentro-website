@@ -130,21 +130,21 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Right Panel: TPO Candidate Match */}
+              {/* Right Panel: TPO Candidate Match -> Verification Engine */}
               <div className="bg-white border border-slate-200 rounded-2xl p-4 shadow-md space-y-4 hover:shadow-lg transition-shadow duration-300 md:mt-8">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-                  <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider font-bold">AI Sourcing Engine</span>
+                  <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider font-bold">Verification Engine</span>
                   <span className="text-[9px] px-2 py-0.5 bg-emerald-50 border border-emerald-150 text-emerald-600 rounded-full font-semibold">
-                    Placements
+                    Portal Active
                   </span>
                 </div>
 
                 <div className="space-y-3.5">
-                  {/* Search query input simulation */}
+                  {/* Sync status simulation */}
                   <div className="relative">
-                    <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400" size={10} />
-                    <div className="w-full pl-6 pr-2 py-1.5 bg-slate-50 border border-slate-200 rounded-md text-[10px] text-slate-800 truncate font-mono">
-                      Query: Express.js & PostgreSQL
+                    <div className="w-full px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-md text-[10px] text-slate-650 text-slate-600 truncate font-mono flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                      Status: Syncing Workmark Scores
                     </div>
                   </div>
 
@@ -161,14 +161,14 @@ export default function Hero() {
                         </span>
                       </div>
 
-                      {/* Matching badge animated */}
+                      {/* Matching badge animated -> Audit Verified */}
                       {tpoSearchActive && (
                         <motion.div
                           initial={{ opacity: 0, scale: 0.8, y: 5 }}
                           animate={{ opacity: 1, scale: 1, y: 0 }}
                           className="absolute bottom-2 right-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-[8px] px-1.5 py-0.5 rounded-full font-bold flex items-center gap-0.5 shadow-sm"
                         >
-                          <Sparkles size={8} /> 97% Match
+                          <Check size={8} /> Audit Verified
                         </motion.div>
                       )}
 

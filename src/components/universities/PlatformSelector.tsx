@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Lightbulb, Code, Building, BarChart2, CheckCircle2, Star, ShieldCheck, Cpu } from "lucide-react";
+import { Sparkles, Lightbulb, Code, Building, BarChart2, CheckCircle2, Star, ShieldCheck, Cpu, Link2 } from "lucide-react";
 
 export default function PlatformSelector() {
   const [selectedTpoSkill, setSelectedTpoSkill] = useState<string | null>(null);
 
   const features = [
     {
-      icon: <Sparkles className="text-indigo-600" size={18} />,
-      title: "AI-Powered Talent Search",
-      desc: "Move beyond static resumes. Recruiters and TPOs search candidate pools using filters like 'Verified Node.js,' 'Has production deployments,' and 'Top 5% Challenge Rank.'"
+      icon: <Link2 className="text-indigo-600" size={18} />,
+      title: "TPO Portal SSO & Link Integration",
+      desc: "Plug in underneath your existing TPO portal. Embed verified student capability profiles and Workmark Scores directly into your campus software without changing your workflow."
     },
     {
-      icon: <Lightbulb className="text-indigo-600" size={18} />,
-      title: "Contextual AI Match Justification",
-      desc: "Every matching candidate profile features an AI-written explanation: '98% Match: Deployed 2 verified backend projects using Node.js/Express, showing 340+ GitHub contributions.'"
+      icon: <Cpu className="text-indigo-600" size={18} />,
+      title: "Verified Proof-of-Work Portfolios",
+      desc: "Ditch unreliable self-reported resumes. Provide students with dynamic portfolios verified by direct GitHub integrations, compile/audit checks, and performance histories."
     },
     {
       icon: <Code className="text-indigo-600" size={18} />,
@@ -145,11 +145,11 @@ export default function PlatformSelector() {
                   </div>
                 </div>
 
-                {/* Match Justification */}
+                {/* Verified Portfolio Summary */}
                 <div className="p-3 bg-white border border-slate-150 rounded-lg">
-                  <div className="text-[9px] font-bold text-slate-400 font-mono uppercase mb-1">AI Match Justification</div>
+                  <div className="text-[9px] font-bold text-slate-400 font-mono uppercase mb-1">Verified Portfolio Summary</div>
                   <p className="text-[10px] text-slate-655 text-slate-600 leading-relaxed italic">
-                    "Strong match — 4 verified Node.js backend projects with production deployments. Challenge scores rank in top 5% of platform."
+                    "4 verified Node.js and Postgres backend projects. Complete compile logs, structural syntax tests, and challenge scorecards synced."
                   </p>
                 </div>
               </div>

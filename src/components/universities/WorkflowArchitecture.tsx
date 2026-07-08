@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { GitBranch, Trophy, User, ShieldAlert, Star, Search, FileCheck, CheckCircle2, ShieldCheck, Cpu } from "lucide-react";
+import { GitBranch, Trophy, User, ShieldAlert, Star, ExternalLink, FileCheck, CheckCircle2, ShieldCheck, Cpu } from "lucide-react";
 
 interface Node {
   id: string;
@@ -27,7 +27,7 @@ export default function WorkflowArchitecture() {
     // TPO Portal
     { id: "G", label: "Zentro Unified Score", subtext: "Objective skill ratings index", icon: <Star size={16} />, group: "tpo-portal" },
     { id: "I", label: "Company CRM & Job Openings", subtext: "Active job listings & drive dates", icon: <CheckCircle2 size={16} />, group: "tpo-portal" },
-    { id: "H", label: "AI Talent Search Engine", subtext: "Match recruiters to verified candidates", icon: <Search size={16} />, group: "tpo-portal" },
+    { id: "H", label: "Portal Link Integration", subtext: "Embed Workmark Scores into existing TPO portals", icon: <ExternalLink size={16} />, group: "tpo-portal" },
     
     // Career Outcomes
     { id: "J", label: "Recruiter Shortlist", subtext: "Direct pipeline ATS integration", icon: <FileCheck size={16} />, group: "career" },
@@ -253,7 +253,7 @@ export default function WorkflowArchitecture() {
                 </div>
               </div>
 
-              {/* Talent Search */}
+              {/* Portal Link Integration */}
               <div
                 onMouseEnter={() => setHoveredNode("H")}
                 onMouseLeave={() => setHoveredNode(null)}
@@ -263,11 +263,11 @@ export default function WorkflowArchitecture() {
               >
                 <div className="flex items-center gap-2.5">
                   <div className="w-8 h-8 rounded bg-teal-50 text-teal-600 flex items-center justify-center shrink-0">
-                    <Search size={16} />
+                    <ExternalLink size={16} />
                   </div>
                   <div>
-                    <h5 className="text-xs font-bold text-slate-800">AI Talent Search Engine</h5>
-                    <p className="text-[9px] text-slate-400 mt-0.5">Matches filters based on proof-of-work</p>
+                    <h5 className="text-xs font-bold text-slate-800">Portal Link Integration</h5>
+                    <p className="text-[9px] text-slate-400 mt-0.5">Embed Workmark Scores into existing TPO portals</p>
                   </div>
                 </div>
               </div>
