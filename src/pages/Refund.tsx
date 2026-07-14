@@ -1,6 +1,6 @@
 export default function Refund() {
   return (
-    <div className="bg-white text-slate-800 min-h-screen pt-28 pb-20 font-body">
+    <div className="bg-background text-foreground min-h-screen pt-28 pb-20 font-body transition-colors duration-300">
       <div className="absolute top-0 inset-x-0 h-[400px] bg-gradient-to-b from-slate-50 to-transparent -z-10 pointer-events-none" />
       <div className="container max-w-4xl px-6 mx-auto">
         <div className="border-b border-slate-200 pb-8 mb-10">

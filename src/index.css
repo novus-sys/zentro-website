@@ -570,4 +570,40 @@
   .animate-bounce-slow {
     animation: bounce-slow 3s infinite;
   }
+
+}
+
+/* Custom Scrollbar Styling to match Zentro brand purple */
+::-webkit-scrollbar {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9 !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5048E4 !important;
+  border-radius: 0px !important;
+  border: none !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f36c6 !important;
+}
+
+/* Hide scrollbar buttons (up/down arrows) */
+::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Firefox-only support */
+@supports (-moz-appearance: none) {
+  html {
+    scrollbar-color: #5048E4 #f1f5f9 !important;
+    scrollbar-width: auto !important;
+  }
 }

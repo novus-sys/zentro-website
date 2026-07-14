@@ -21,6 +21,7 @@ import NotFound from "./pages/NotFound";
 import CorporateNavbar from "@/components/layout/Navbar";
 import CorporateFooter from "@/components/layout/Footer";
 import LoadingScreen from "@/components/layout/LoadingScreen";
+import CustomCursor from "@/components/ui/CustomCursor";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +56,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <CustomCursor />
         <Toaster />
         <Sonner />
         {isLoading && <LoadingScreen onFinished={() => setIsLoading(false)} />}

@@ -50,19 +50,15 @@ export default function LoadingScreen({ onFinished }: LoadingScreenProps) {
         isFadingOut ? "-translate-y-full pointer-events-none" : "translate-y-0"
       }`}
     >
-      {/* Background ambient glowing spheres */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#5048E4] opacity-[0.04] blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-indigo-500 opacity-[0.03] blur-[130px] rounded-full pointer-events-none" />
-
       {/* Main Container */}
       <div className="relative flex flex-col items-center text-center max-w-2xl px-6">
         
         {/* Zentro Black Logo */}
-        <div className="mb-4 h-16 md:h-20 flex items-center justify-center">
+        <div className="mb-8 h-24 md:h-28 flex items-center justify-center">
           <img
             src="/zentro_black_logo-removebg-preview.png"
             alt="Zentro Logo"
-            className="h-14 md:h-16 w-auto object-contain filter drop-shadow-[0_2px_4px_rgba(80,72,228,0.08)]"
+            className="h-20 md:h-24 w-auto object-contain filter drop-shadow-[0_2px_4px_rgba(80,72,228,0.08)]"
             onError={(e) => {
               // Fallback brand text if logo image is not found/loaded
               e.currentTarget.style.display = 'none';
@@ -71,15 +67,10 @@ export default function LoadingScreen({ onFinished }: LoadingScreenProps) {
             }}
           />
           {/* Fallback elegant brand text */}
-          <div className="fallback-text hidden text-3xl font-bold tracking-tight text-slate-900 font-display">
+          <div className="fallback-text hidden text-4xl font-bold tracking-tight text-slate-900 font-display">
             ZENTRO
           </div>
         </div>
-
-        {/* Headline matching the Hero font-style */}
-        <h2 className="font-serif-display font-normal text-3xl md:text-5xl lg:text-6xl tracking-tight text-slate-900 mb-8 leading-tight max-w-xl">
-          Your <span className="text-[#5048E4] italic font-normal">Workmark</span> Speaks Louder
-        </h2>
 
         {/* Progress Track (Without text or counter label) */}
         <div className="w-72 md:w-96">
