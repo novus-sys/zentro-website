@@ -609,7 +609,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden w-full overflow-hidden bg-white border-b border-slate-200 shadow-xl"
+            className="lg:hidden w-full overflow-hidden bg-white shadow-xl"
           >
             <div className="container px-5 py-6 space-y-6">
               
@@ -629,52 +629,72 @@ export default function Navbar() {
                 </button>
 
                 {mobileAccordion === "products" && (
-                  <div className="mt-3 pl-2 space-y-3">
+                  <div className="mt-3 pl-2 space-y-2">
+                    {/* 1. Vyoma */}
                     <Link
                       to="/products/vyoma"
-                      className="block p-2 rounded-lg hover:bg-slate-50"
+                      onClick={() => setMobileOpen(false)}
+                      className="block p-2 rounded-lg hover:bg-slate-50 transition-colors"
                     >
-                      <div className="text-xs font-bold text-slate-900 flex items-center gap-2">
-                        <Terminal size={14} className="text-blue-600" /> Vyoma
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-bold text-slate-900">Vyoma</span>
+                        <span className="text-[9px] font-medium text-slate-400 uppercase tracking-wider">
+                          Assessments
+                        </span>
                       </div>
                       <div className="text-[11px] text-slate-500 mt-0.5">
-                        Agentic Assessment Environment
+                        Agentic assessment environment on real codebases.
                       </div>
                     </Link>
 
+                    {/* 2. Workmark */}
                     <Link
                       to="/student"
-                      className="block p-2 rounded-lg hover:bg-slate-50"
+                      onClick={() => setMobileOpen(false)}
+                      className="block p-2 rounded-lg hover:bg-slate-50 transition-colors"
                     >
-                      <div className="text-xs font-bold text-slate-900 flex items-center gap-2">
-                        <Award size={14} className="text-emerald-600" /> Workmark
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-bold text-slate-900">Workmark</span>
+                        <span className="text-[9px] font-medium text-slate-400 uppercase tracking-wider">
+                          Proof of Work
+                        </span>
                       </div>
                       <div className="text-[11px] text-slate-500 mt-0.5">
-                        Verified Proof of Work & Contests
+                        Verified Git-backed developer credentials & challenges.
                       </div>
                     </Link>
 
+                    {/* 3. Vega */}
                     <Link
                       to="/products/vega"
-                      className="block p-2 rounded-lg hover:bg-slate-50"
+                      onClick={() => setMobileOpen(false)}
+                      className="block p-2 rounded-lg hover:bg-slate-50 transition-colors"
                     >
-                      <div className="text-xs font-bold text-slate-900 flex items-center gap-2">
-                        <Bot size={14} className="text-indigo-600" /> Vega
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-bold text-slate-900">Vega</span>
+                        <span className="text-[9px] font-medium text-slate-400 uppercase tracking-wider">
+                          AI Interviewer
+                        </span>
                       </div>
                       <div className="text-[11px] text-slate-500 mt-0.5">
-                        Autonomous AI Technical Interviewer
+                        Autonomous AI technical interviewer adapting in real time.
                       </div>
                     </Link>
 
+                    {/* 4. Amogha AI */}
                     <Link
                       to="/platform"
-                      className="block p-2 rounded-lg hover:bg-slate-50"
+                      onClick={() => setMobileOpen(false)}
+                      className="block p-2 rounded-lg hover:bg-slate-50 transition-colors"
                     >
-                      <div className="text-xs font-bold text-slate-900 flex items-center gap-2">
-                        <Cpu size={14} className="text-purple-600" /> Amogha AI
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-bold text-slate-900">Amogha AI</span>
+                        <span className="text-[9px] font-medium text-slate-400 uppercase tracking-wider">
+                          Engine Core
+                        </span>
                       </div>
                       <div className="text-[11px] text-slate-500 mt-0.5">
-                        Platform Intelligence Core
+                        Unified platform intelligence layer powering assessments.
                       </div>
                     </Link>
                   </div>
@@ -698,29 +718,95 @@ export default function Navbar() {
 
                 {mobileAccordion === "solutions" && (
                   <div className="mt-3 pl-2 space-y-2 text-xs">
-                    <Link to="/corporates#ai-screening" className="block py-1 text-slate-700">
+                    <Link
+                      to="/corporates#ai-screening"
+                      onClick={() => setMobileOpen(false)}
+                      className="block py-1 text-slate-700 hover:text-black"
+                    >
                       AI-Fluent Developer Hiring
                     </Link>
-                    <Link to="/corporates#campus-sourcing" className="block py-1 text-slate-700">
+                    <Link
+                      to="/corporates#campus-sourcing"
+                      onClick={() => setMobileOpen(false)}
+                      className="block py-1 text-slate-700 hover:text-black"
+                    >
                       Campus Talent Sourcing
                     </Link>
-                    <Link to="/corporates#screening" className="block py-1 text-slate-700">
+                    <Link
+                      to="/corporates#screening"
+                      onClick={() => setMobileOpen(false)}
+                      className="block py-1 text-slate-700 hover:text-black"
+                    >
                       Pre-Employment Screening
                     </Link>
-                    <Link to="/universities" className="block py-1 text-indigo-600 font-bold">
+                    <Link
+                      to="/universities"
+                      onClick={() => setMobileOpen(false)}
+                      className="block py-1 text-indigo-600 font-bold hover:text-indigo-800"
+                    >
                       For Universities & TPOs
                     </Link>
                   </div>
                 )}
               </div>
 
+              {/* Resources Mobile Accordion */}
+              <div className="border-b border-slate-100 pb-4">
+                <button
+                  onClick={() =>
+                    setMobileAccordion(mobileAccordion === "resources" ? null : "resources")
+                  }
+                  className="w-full flex items-center justify-between text-sm font-bold text-slate-900 py-1"
+                >
+                  <span>Resources</span>
+                  <ChevronDown
+                    size={16}
+                    className={`transition-transform ${mobileAccordion === "resources" ? "rotate-180" : ""}`}
+                  />
+                </button>
+
+                {mobileAccordion === "resources" && (
+                  <div className="mt-3 pl-2 space-y-2 text-xs">
+                    <div className="p-1.5 rounded-lg hover:bg-slate-50">
+                      <div className="font-bold text-slate-900">AI Developer Skills Report 2026</div>
+                      <div className="text-[11px] text-slate-500 mt-0.5">
+                        Annual data on developer AI fluency & code quality.
+                      </div>
+                    </div>
+                    <div className="p-1.5 rounded-lg hover:bg-slate-50">
+                      <div className="font-bold text-slate-900">ATS & Tool Integrations</div>
+                      <div className="text-[11px] text-slate-500 mt-0.5">
+                        Greenhouse, Lever, and Workday integrations.
+                      </div>
+                    </div>
+                    <div className="p-1.5 rounded-lg hover:bg-slate-50">
+                      <div className="font-bold text-slate-900">Trust & Security Center</div>
+                      <div className="text-[11px] text-slate-500 mt-0.5">
+                        SOC 2 Type II, ISO 27001, and GDPR compliant.
+                      </div>
+                    </div>
+                    <div className="p-1.5 rounded-lg hover:bg-slate-50">
+                      <div className="font-bold text-slate-900">Customer Case Studies</div>
+                      <div className="text-[11px] text-slate-500 mt-0.5">
+                        How companies hire pre-vetted engineers with zero bias.
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
               {/* Direct Mobile Links */}
               <div className="flex flex-col gap-3 font-semibold text-sm">
-                <Link to="/pricing" className="text-slate-800 hover:text-black py-1">
+                <Link
+                  to="/pricing"
+                  onClick={() => setMobileOpen(false)}
+                  className="text-slate-800 hover:text-black py-1"
+                >
                   Pricing
                 </Link>
                 <Link
                   to="/student"
+                  onClick={() => setMobileOpen(false)}
                   className="text-blue-600 hover:text-blue-700 py-1 flex items-center justify-between font-bold"
                 >
                   <span>For Candidates</span>
