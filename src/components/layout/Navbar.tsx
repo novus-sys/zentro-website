@@ -1,17 +1,71 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, Award, ChevronDown, Shield, Users, Landmark, Code, ArrowRight } from "lucide-react";
+import {
+  Menu,
+  X,
+  ChevronDown,
+  ArrowRight,
+  Terminal,
+  Bot,
+  Award,
+  Sparkles,
+  Trophy,
+  GraduationCap,
+  ShieldCheck,
+  Building2,
+  FileText,
+  Workflow,
+  Cpu,
+  Lock,
+  ExternalLink,
+  ChevronRight
+} from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
-type OptionType = "students" | "universities" | "corporates";
+type MenuType = "products" | "solutions" | "resources" | null;
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [activeOption, setActiveOption] = useState<OptionType>("students");
+  const [activeMenu, setActiveMenu] = useState<MenuType>(null);
+  const [mobileAccordion, setMobileAccordion] = useState<string | null>(null);
+
+  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const location = useLocation();
   const navigate = useNavigate();
+
+  const handleMenuEnter = (menu: MenuType) => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setActiveMenu(menu);
+  };
+
+  const handleMenuLeave = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+    }
+    closeTimeoutRef.current = setTimeout(() => {
+      setActiveMenu(null);
+    }, 120);
+  };
+
+  const handleDropdownEnter = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+  };
+
+  const handleDropdownLeave = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setActiveMenu(null);
+  };
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 10);
@@ -19,346 +73,689 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  // Close menu on page change
+  // Close menus on route change
   useEffect(() => {
     setMobileOpen(false);
-    setDropdownOpen(false);
+    setActiveMenu(null);
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
   }, [location]);
-
-  // Handle smooth scroll to section
-  const handleNavClick = (sectionId: string) => {
-    if (location.pathname !== "/") {
-      window.location.href = `/#${sectionId}`;
-      return;
-    }
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const yOffset = -80; // Height of navbar
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }
-    setMobileOpen(false);
-  };
 
   return (
     <nav
-      className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ${
-        scrolled
-          ? "top-4 w-[calc(100%-2rem)] max-w-7xl rounded-full border border-slate-200/80 bg-white/75 backdrop-blur-md shadow-md"
-          : "top-0 w-full max-w-full rounded-none border-b border-slate-100 bg-white shadow-none"
-      }`}
+      className="fixed top-0 inset-x-0 w-full z-50 bg-white"
     >
-      <div className="container flex items-center justify-between h-20">
-        {/* Brand Logo */}
-        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex items-center">
-          <img
-            src={`${import.meta.env.BASE_URL}zentro_black_logo-removebg-preview.png`}
-            alt="Zentro Suite Logo"
-            className="h-9 w-auto object-contain"
-          />
-        </Link>
-
-        {/* Desktop Links */}
-        <div className="hidden lg:flex items-center gap-8">
-          {/* Products Dropdown Trigger */}
-          <div
-            className="relative py-6"
-            onMouseEnter={() => setDropdownOpen(true)}
-            onMouseLeave={() => setDropdownOpen(false)}
+      <div className="max-w-7xl mx-auto flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
+        {/* Left Section: Brand Logo + Nav Links clustered together */}
+        <div className="flex items-center gap-6 xl:gap-8">
+          {/* Brand Logo */}
+          <Link
+            to="/"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onMouseEnter={() => handleMenuEnter(null)}
+            className="flex items-center shrink-0"
           >
-            <button
-              className={`flex items-center gap-1 text-sm font-medium transition-colors outline-none ${
-                dropdownOpen ? "text-[#0F294A] font-semibold" : "text-slate-600 hover:text-[#0F294A]"
-              }`}
+            <img
+              src={`${import.meta.env.BASE_URL}zentro_black_logo-removebg-preview.png`}
+              alt="Zentro Suite Logo"
+              className="h-7 md:h-8 w-auto object-contain"
+            />
+          </Link>
+
+          {/* Desktop Navigation Links */}
+          <div className="hidden lg:flex items-center gap-1 xl:gap-2">
+            {/* Products Mega-Menu Trigger */}
+            <div
+              className="relative h-16 flex items-center group"
+              onMouseEnter={() => handleMenuEnter("products")}
+              onMouseLeave={handleMenuLeave}
             >
-              Products <ChevronDown size={14} className={`transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`} />
-            </button>
+              <button
+                className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors outline-none ${
+                  activeMenu === "products"
+                    ? "text-black font-semibold"
+                    : "text-slate-700 hover:text-black"
+                }`}
+              >
+                <span>Products</span>
+                <ChevronDown
+                  size={13}
+                  className={`transition-transform duration-200 ${
+                    activeMenu === "products" ? "rotate-180 text-black" : "text-slate-400 group-hover:text-slate-700"
+                  }`}
+                />
+              </button>
+            </div>
+
+            {/* Solutions Mega-Menu Trigger */}
+            <div
+              className="relative h-16 flex items-center group"
+              onMouseEnter={() => handleMenuEnter("solutions")}
+              onMouseLeave={handleMenuLeave}
+            >
+              <button
+                className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors outline-none ${
+                  activeMenu === "solutions"
+                    ? "text-black font-semibold"
+                    : "text-slate-700 hover:text-black"
+                }`}
+              >
+                <span>Solutions</span>
+                <ChevronDown
+                  size={13}
+                  className={`transition-transform duration-200 ${
+                    activeMenu === "solutions" ? "rotate-180 text-black" : "text-slate-400 group-hover:text-slate-700"
+                  }`}
+                />
+              </button>
+            </div>
+
+            {/* Resources Dropdown Trigger */}
+            <div
+              className="relative h-16 flex items-center group"
+              onMouseEnter={() => handleMenuEnter("resources")}
+              onMouseLeave={handleMenuLeave}
+            >
+              <button
+                className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors outline-none ${
+                  activeMenu === "resources"
+                    ? "text-black font-semibold"
+                    : "text-slate-700 hover:text-black"
+                }`}
+              >
+                <span>Resources</span>
+                <ChevronDown
+                  size={13}
+                  className={`transition-transform duration-200 ${
+                    activeMenu === "resources" ? "rotate-180 text-black" : "text-slate-400 group-hover:text-slate-700"
+                  }`}
+                />
+              </button>
+            </div>
+
+            {/* Pricing Direct Link */}
+            <Link
+              to="/pricing"
+              onMouseEnter={() => handleMenuEnter(null)}
+              className="px-3 py-2 text-sm font-medium text-slate-700 hover:text-black transition-colors"
+            >
+              Pricing
+            </Link>
           </div>
-
-          <button
-            onClick={() => handleNavClick("overview")}
-            className="text-sm font-medium text-slate-600 hover:text-[#0F294A] transition-colors"
-          >
-            Overview
-          </button>
-
-          <button
-            onClick={() => handleNavClick("how-it-works")}
-            className="text-sm font-medium text-slate-600 hover:text-[#0F294A] transition-colors"
-          >
-            How it Works
-          </button>
-
-          <button
-            onClick={() => handleNavClick("sourcing-pipeline")}
-            className="text-sm font-medium text-slate-600 hover:text-[#0F294A] transition-colors"
-          >
-            Sourcing Pipeline
-          </button>
         </div>
 
-        {/* Desktop CTA */}
-        <div className="hidden lg:flex items-center gap-4">
+        {/* Right Section: Log In, Request Demo, Create a free account */}
+        <div className="hidden lg:flex items-center gap-3 xl:gap-4">
+          {/* Log In Link (Direct to auth.zentrosuite.com, no dropdown) */}
+          <a
+            href="https://auth.zentrosuite.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            onMouseEnter={() => handleMenuEnter(null)}
+            className="text-sm font-medium text-slate-700 hover:text-black px-2 py-2 transition-colors"
+          >
+            Log In
+          </a>
+
+          {/* Request Demo Button (Sharp corners, no rounded) */}
           <a
             href="https://calendly.com/sambramsm28/30min"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 text-sm font-bold text-white bg-slate-900 hover:bg-slate-800 rounded-full shadow-xs transition-colors"
+            onMouseEnter={() => handleMenuEnter(null)}
+            className="px-4 py-2 text-sm font-medium text-slate-800 bg-white hover:bg-slate-50 border border-slate-300 rounded-none transition-colors whitespace-nowrap"
           >
-            Book a Demo
+            Request Demo
+          </a>
+
+          {/* Create a free account Button (Direct to auth.zentrosuite.com, sharp corners) */}
+          <a
+            href="https://auth.zentrosuite.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            onMouseEnter={() => handleMenuEnter(null)}
+            className="px-4 py-2 text-sm font-medium text-white bg-black hover:bg-neutral-800 rounded-none transition-colors whitespace-nowrap"
+          >
+            Create a free account
           </a>
         </div>
 
-        {/* Mobile toggle */}
+        {/* Mobile Toggle Button */}
         <button
-          className="lg:hidden text-slate-700 hover:text-[#0F294A] transition-colors"
+          className="lg:hidden p-2 text-slate-700 hover:text-slate-950 transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle navigation menu"
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Full-width Viewport Dropdown Panel */}
+      {/* ============================================================ */}
+      {/* DESKTOP MEGA-MENUS CONTAINER                                  */}
+      {/* ============================================================ */}
       <AnimatePresence>
-        {dropdownOpen && (
+        {activeMenu && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 w-full pt-3 z-40 hidden lg:block overflow-hidden"
-            onMouseEnter={() => setDropdownOpen(true)}
-            onMouseLeave={() => setDropdownOpen(false)}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 6 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="absolute top-full left-0 w-full pt-2 z-40 hidden lg:block pointer-events-none"
           >
-            <div className="bg-white border border-slate-200/80 rounded-3xl shadow-xl overflow-hidden">
-            {/* Split layout inside the container to align with content */}
-            <div className="container mx-auto grid grid-cols-12 w-full min-h-[380px]">
-              
-              {/* Left Column - Directory Sitemap (bg-slate-50/50) */}
-              <div className="col-span-4 bg-slate-50/60 border-r border-slate-200 p-8 flex flex-col justify-start">
-                <span className="text-[10px] font-bold text-slate-400 font-sans uppercase tracking-wider mb-6">
-                  Zentro Workmark
-                </span>
+            <div className="container max-w-7xl mx-auto px-4 sm:px-8 pointer-events-none">
+              <div
+                className="bg-white border border-slate-200/90 rounded-2xl shadow-2xl overflow-hidden p-6 md:p-8 pointer-events-auto"
+                onMouseEnter={handleDropdownEnter}
+                onMouseLeave={handleDropdownLeave}
+              >
                 
-                <div className="flex flex-col gap-3">
-                  <button
-                    onMouseEnter={() => setActiveOption("students")}
-                    onClick={() => {
-                      navigate("/student");
-                    }}
-                    className={`flex items-center gap-3.5 p-3 text-left text-xs font-bold font-sans transition-all rounded-md ${
-                      activeOption === "students"
-                        ? "bg-white text-blue-600 shadow-xs border border-slate-200"
-                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/50"
-                    }`}
-                  >
-                    <Users size={15} className={activeOption === "students" ? "text-blue-600" : "text-slate-400"} />
-                    <span>For Students</span>
-                  </button>
+                {/* 1. PRODUCTS MEGA-MENU */}
+                {activeMenu === "products" && (
+                  <div className="grid grid-cols-12 gap-8">
+                    {/* Left: 4 Core Platform Products & Architecture */}
+                    <div className="col-span-8 space-y-4">
+                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono">
+                        Core Platform Products
+                      </span>
 
-                  <button
-                    onMouseEnter={() => setActiveOption("universities")}
-                    onClick={() => {
-                      navigate("/universities");
-                    }}
-                    className={`flex items-center gap-3.5 p-3 text-left text-xs font-bold font-sans transition-all rounded-md ${
-                      activeOption === "universities"
-                        ? "bg-white text-blue-600 shadow-xs border border-slate-200"
-                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/50"
-                    }`}
-                  >
-                    <Landmark size={15} className={activeOption === "universities" ? "text-blue-600" : "text-slate-400"} />
-                    <span>For Universities</span>
-                  </button>
+                      <div className="grid grid-cols-2 gap-4">
+                        {/* Product 1: Vyoma */}
+                        <Link
+                          to="/products/vyoma"
+                          className="p-4 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50 transition-all group block"
+                        >
+                          <div className="flex items-center gap-2 mb-1.5">
+                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                              Vyoma
+                            </h4>
+                            <span className="text-[9px] font-medium text-slate-400 uppercase tracking-wider">
+                              Assessments
+                            </span>
+                          </div>
+                          <p className="text-[11px] text-slate-500 leading-relaxed">
+                            Agentic assessment environment where candidates plan, prompt, and review with an AI assistant on real codebases.
+                          </p>
+                        </Link>
 
-                  <button
-                    onMouseEnter={() => setActiveOption("corporates")}
-                    onClick={() => navigate("/corporates")}
-                    className={`flex items-center gap-3.5 p-3 text-left text-xs font-bold font-sans transition-all rounded-md ${
-                      activeOption === "corporates"
-                        ? "bg-white text-blue-600 shadow-xs border border-slate-200"
-                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/50"
-                    }`}
-                  >
-                    <Code size={15} className={activeOption === "corporates" ? "text-blue-600" : "text-slate-400"} />
-                    <span>For Corporates</span>
-                  </button>
-                </div>
-              </div>
+                        {/* Product 2: Workmark */}
+                        <Link
+                          to="/student"
+                          className="p-4 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50 transition-all group block"
+                        >
+                          <div className="flex items-center gap-2 mb-1.5">
+                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
+                              Workmark
+                            </h4>
+                            <span className="text-[9px] font-medium text-slate-400 uppercase tracking-wider">
+                              Proof of Work
+                            </span>
+                          </div>
+                          <p className="text-[11px] text-slate-500 leading-relaxed">
+                            Verified Git-backed developer credentials, branded campus hackathons, custom challenges, and talent discovery.
+                          </p>
+                        </Link>
 
-              {/* Right Column - Dynamic details preview */}
-              <div className="col-span-8 bg-white p-10 flex justify-between gap-10">
-                <div className="flex-1 flex flex-col justify-between max-w-[380px] py-2">
-                  <div className="space-y-4">
-                    {activeOption === "students" && (
-                      <>
-                        <h3 className="font-display font-bold text-xl text-[#0F294A] leading-tight">
-                          Build your verified skill profile
-                        </h3>
-                        <p className="text-sm text-slate-500 leading-relaxed">
-                          Solve real-world corporate challenges, showcase your actual coding outcomes, and connect directly with enterprise employers.
+                        {/* Product 3: Vega */}
+                        <Link
+                          to="/products/vega"
+                          className="p-4 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50 transition-all group block"
+                        >
+                          <div className="flex items-center gap-2 mb-1.5">
+                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                              Vega
+                            </h4>
+                            <span className="text-[9px] font-medium text-slate-400 uppercase tracking-wider">
+                              AI Interviewer
+                            </span>
+                          </div>
+                          <p className="text-[11px] text-slate-500 leading-relaxed">
+                            Autonomous technical interviewer that adapts in real time, probes for depth, and delivers transcript-backed reports.
+                          </p>
+                        </Link>
+
+                        {/* Product 4: Amogha AI */}
+                        <Link
+                          to="/platform"
+                          className="p-4 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50 transition-all group block"
+                        >
+                          <div className="flex items-center gap-2 mb-1.5">
+                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-purple-600 transition-colors">
+                              Amogha AI
+                            </h4>
+                            <span className="text-[9px] font-medium text-slate-400 uppercase tracking-wider">
+                              Engine Core
+                            </span>
+                          </div>
+                          <p className="text-[11px] text-slate-500 leading-relaxed">
+                            The unified intelligence layer powering Socratic assessments in Vyoma, live interviews in Vega, and verified scoring in Workmark.
+                          </p>
+                        </Link>
+                      </div>
+
+                      {/* Bottom Architecture / Platform Row */}
+                      <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <Sparkles size={18} className="text-blue-600" />
+                          <div>
+                            <span className="text-xs font-bold text-slate-900">Unified Architecture:</span>
+                            <span className="text-xs text-slate-500 ml-1.5">
+                              How Vyoma, Vega, and Workmark share real-time candidate proof-of-work.
+                            </span>
+                          </div>
+                        </div>
+                        <Link
+                          to="/platform"
+                          className="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1 shrink-0"
+                        >
+                          Platform Overview <ArrowRight size={13} />
+                        </Link>
+                      </div>
+                    </div>
+
+                    {/* Right: Clean Editorial Highlight Panel */}
+                    <div className="col-span-4 bg-slate-50/80 border border-slate-200/80 rounded-xl p-5 flex flex-col justify-between">
+                      <div className="space-y-3">
+                        <span className="text-[10px] font-bold text-blue-600 uppercase tracking-wider font-mono">
+                          Platform Architecture
+                        </span>
+                        <h4 className="text-sm font-bold text-slate-900 leading-snug">
+                          Built for the Agentic Era
+                        </h4>
+                        <p className="text-xs text-slate-600 leading-relaxed">
+                          Evaluate candidates on how they plan, write, and review code in real environments—not memorized algorithmic puzzles.
                         </p>
-                      </>
-                    )}
-                    {activeOption === "universities" && (
-                      <>
-                        <h3 className="font-display font-bold text-xl text-[#0F294A] leading-tight">
-                          Bridge the gap to corporate hiring
-                        </h3>
-                        <p className="text-sm text-slate-500 leading-relaxed">
-                          Empower your student cohorts with sponsored hackathons and verified programming portfolios tracked by academic scorecards.
-                        </p>
-                      </>
-                    )}
-                    {activeOption === "corporates" && (
-                      <>
-                        <h3 className="font-display font-bold text-xl text-[#0F294A] leading-tight">
-                          Hire based on verified proof of work
-                        </h3>
-                        <p className="text-sm text-slate-500 leading-relaxed">
-                          Access a ground-truth directory of pre-screened creators. Sync candidate records directly into your ATS pipeline.
-                        </p>
-                      </>
-                    )}
+                        <ul className="space-y-2 pt-1 text-xs text-slate-600">
+                          <li className="flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
+                            Role-specific rubrics for AI & Systems
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 shrink-0" />
+                            Transcript-backed evidence reports
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0" />
+                            Direct Greenhouse & Lever integration
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div className="pt-4 mt-4 border-t border-slate-200/60 flex items-center justify-between">
+                        <Link
+                          to="/pricing"
+                          className="text-xs font-semibold text-slate-700 hover:text-slate-950 transition-colors"
+                        >
+                          View Pricing
+                        </Link>
+                        <a
+                          href="https://calendly.com/sambramsm28/30min"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs font-bold text-blue-600 hover:text-blue-800 inline-flex items-center gap-1"
+                        >
+                          Book a Demo <ArrowRight size={12} />
+                        </a>
+                      </div>
+                    </div>
                   </div>
+                )}
 
-                  <div className="mt-8">
-                    {activeOption === "students" ? (
-                      <Link
-                        to="/student"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-none transition-all shadow-xs"
+                {/* 2. SOLUTIONS MEGA-MENU */}
+                {activeMenu === "solutions" && (
+                  <div className="grid grid-cols-12 gap-8">
+                    {/* Left: Strategic Hiring Objectives */}
+                    <div className="col-span-8 space-y-4">
+                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono">
+                        Hiring & Assessment Solutions
+                      </span>
+
+                      <div className="grid grid-cols-2 gap-4">
+                        <Link
+                          to="/corporates#ai-screening"
+                          className="p-3.5 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50 transition-all group"
+                        >
+                          <div className="flex items-center gap-2.5 mb-1.5">
+                            <div className="p-1.5 bg-blue-50 text-blue-600 rounded-md">
+                              <Cpu size={16} />
+                            </div>
+                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                              AI-Fluent Developer Hiring
+                            </h4>
+                          </div>
+                          <p className="text-[11px] text-slate-500 leading-relaxed">
+                            Evaluate how engineers prompt, critically reason, and build with AI assistants in real repos.
+                          </p>
+                        </Link>
+
+                        <Link
+                          to="/corporates#campus-sourcing"
+                          className="p-3.5 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50 transition-all group"
+                        >
+                          <div className="flex items-center gap-2.5 mb-1.5">
+                            <div className="p-1.5 bg-indigo-50 text-indigo-600 rounded-md">
+                              <GraduationCap size={16} />
+                            </div>
+                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                              Campus Talent Sourcing
+                            </h4>
+                          </div>
+                          <p className="text-[11px] text-slate-500 leading-relaxed">
+                            Discover pre-vetted college talent ranked by actual challenge performance across university cohorts.
+                          </p>
+                        </Link>
+
+                        <Link
+                          to="/corporates#screening"
+                          className="p-3.5 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50 transition-all group"
+                        >
+                          <div className="flex items-center gap-2.5 mb-1.5">
+                            <div className="p-1.5 bg-emerald-50 text-emerald-600 rounded-md">
+                              <ShieldCheck size={16} />
+                            </div>
+                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
+                              Pre-Employment Screening
+                            </h4>
+                          </div>
+                          <p className="text-[11px] text-slate-500 leading-relaxed">
+                            Replace LeetCode trivia with ground-truth proof-of-work histories and real multi-file system tasks.
+                          </p>
+                        </Link>
+
+                        <Link
+                          to="/corporates#vega-interviews"
+                          className="p-3.5 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50 transition-all group"
+                        >
+                          <div className="flex items-center gap-2.5 mb-1.5">
+                            <div className="p-1.5 bg-purple-50 text-purple-600 rounded-md">
+                              <Workflow size={16} />
+                            </div>
+                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-purple-600 transition-colors">
+                              Automated First-Round Loops
+                            </h4>
+                          </div>
+                          <p className="text-[11px] text-slate-500 leading-relaxed">
+                            Let Vega AI conduct consistent, deep first-round technical interviews without consuming engineering team hours.
+                          </p>
+                        </Link>
+                      </div>
+
+                      {/* University / Institutional Partner row */}
+                      <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <Building2 size={18} className="text-indigo-600" />
+                          <div>
+                            <span className="text-xs font-bold text-slate-900">For Universities & TPOs:</span>
+                            <span className="text-xs text-slate-500 ml-1.5">
+                              Empower your student cohorts with verified career scorecards and direct corporate visibility.
+                            </span>
+                          </div>
+                        </div>
+                        <Link
+                          to="/universities"
+                          className="text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1 shrink-0"
+                        >
+                          TPO Network <ArrowRight size={13} />
+                        </Link>
+                      </div>
+                    </div>
+
+                    {/* Right: Featured Proof / Case Study */}
+                    <div className="col-span-4 bg-slate-50/80 border border-slate-200/80 rounded-xl p-5 flex flex-col justify-between">
+                      <div className="space-y-3">
+                        <span className="text-[10px] font-bold text-blue-600 uppercase tracking-wider font-mono">
+                          Hiring Velocity Benchmark
+                        </span>
+                        <div className="text-2xl font-black text-slate-900 font-mono">
+                          40% Less Time
+                        </div>
+                        <p className="text-xs text-slate-600 leading-relaxed">
+                          Enterprise engineering teams eliminate candidate resume spam and bypass repetitive phone screens by assessing verified Workmark credentials and Vega interview transcripts.
+                        </p>
+                      </div>
+
+                      <a
+                        href="https://calendly.com/sambramsm28/30min"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-6 inline-flex items-center gap-2 text-xs font-bold text-slate-900 hover:text-blue-600"
                       >
-                        Go to Candidate Platform <ArrowRight size={14} />
-                      </Link>
-                    ) : activeOption === "universities" ? (
-                      <Link
-                        to="/universities"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-none transition-all shadow-xs"
-                      >
-                        Go to University Platform <ArrowRight size={14} />
-                      </Link>
-                    ) : (
-                      <Link
-                        to="/corporates"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-none transition-all shadow-xs"
-                      >
-                        Request Recruiter Access <ArrowRight size={14} />
-                      </Link>
-                    )}
+                        Schedule an Enterprise Consultation <ArrowRight size={13} />
+                      </a>
+                    </div>
                   </div>
-                </div>
+                )}
 
-                {/* Right side Visual Graphic representation */}
-                <div className="w-[240px] bg-slate-50 border border-slate-200 p-6 rounded flex flex-col justify-center items-center text-center shadow-3xs select-none">
-                  {activeOption === "students" && (
-                    <div className="space-y-4 w-full">
-                      <div className="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mx-auto text-sm font-bold font-mono border border-blue-200">
-                        942
+                {/* 3. RESOURCES DROPDOWN */}
+                {activeMenu === "resources" && (
+                  <div className="grid grid-cols-12 gap-6">
+                    <div className="col-span-8 grid grid-cols-2 gap-4">
+                      <div className="p-4 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors">
+                        <div className="flex items-center gap-2 text-xs font-bold text-slate-900 mb-1">
+                          <FileText size={15} className="text-blue-600" />
+                          AI Developer Skills Report 2026
+                        </div>
+                        <p className="text-[11px] text-slate-500 leading-relaxed">
+                          Annual data on developer AI fluency, prompt patterns, and code quality in the agentic era.
+                        </p>
                       </div>
-                      <div>
-                        <div className="text-xs font-bold text-slate-800 leading-none">Arjun K.</div>
-                        <div className="text-[10px] text-slate-400 mt-1.5 leading-none">Software Engineering</div>
+
+                      <div className="p-4 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors">
+                        <div className="flex items-center gap-2 text-xs font-bold text-slate-900 mb-1">
+                          <Workflow size={15} className="text-indigo-600" />
+                          ATS & Tool Integrations
+                        </div>
+                        <p className="text-[11px] text-slate-500 leading-relaxed">
+                          Export candidate scores and transcripts directly into Greenhouse, Lever, and Workday.
+                        </p>
                       </div>
-                      <div className="flex justify-center gap-1.5 flex-wrap">
-                        <span className="text-[9px] px-2 py-0.5 bg-white border border-slate-205 border-slate-200 text-slate-655 text-slate-600 rounded">React</span>
-                        <span className="text-[9px] px-2 py-0.5 bg-white border border-slate-205 border-slate-200 text-slate-655 text-slate-600 rounded">Go</span>
+
+                      <div className="p-4 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors">
+                        <div className="flex items-center gap-2 text-xs font-bold text-slate-900 mb-1">
+                          <Lock size={15} className="text-emerald-600" />
+                          Trust & Security Center
+                        </div>
+                        <p className="text-[11px] text-slate-500 leading-relaxed">
+                          SOC 2 Type II certified, ISO 27001 accredited, GDPR compliant with blind evaluation modes.
+                        </p>
+                      </div>
+
+                      <div className="p-4 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors">
+                        <div className="flex items-center gap-2 text-xs font-bold text-slate-900 mb-1">
+                          <Trophy size={15} className="text-amber-600" />
+                          Customer Case Studies
+                        </div>
+                        <p className="text-[11px] text-slate-500 leading-relaxed">
+                          See how high-growth startups and enterprises hire pre-vetted engineers with zero LeetCode bias.
+                        </p>
                       </div>
                     </div>
-                  )}
-                  {activeOption === "universities" && (
-                    <div className="space-y-4 w-full">
-                      <div className="w-10 h-10 rounded bg-indigo-50 text-indigo-600 flex items-center justify-center mx-auto border border-indigo-150">
-                        <Landmark size={18} />
-                      </div>
+
+                    <div className="col-span-4 bg-slate-50 border border-slate-200/80 rounded-xl p-5 flex flex-col justify-between">
                       <div>
-                        <div className="text-xs font-bold text-slate-800 leading-none">Sponsored Hackathon</div>
-                        <div className="text-[10px] text-slate-400 mt-1.5">Novus-Sys Challenge</div>
+                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono">
+                          Need Help?
+                        </span>
+                        <h4 className="text-sm font-bold text-slate-900 mt-2">
+                          Explore Documentation & APIs
+                        </h4>
+                        <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">
+                          Learn how to set up custom rubrics, integrate ATS webhooks, or launch branded university hackathons.
+                        </p>
                       </div>
-                      <div className="text-[9px] text-emerald-600 font-bold bg-emerald-50 border border-emerald-200 py-0.5 px-2.5 rounded-full w-fit mx-auto">
-                        Vetted Grades
-                      </div>
+                      <a
+                        href="mailto:info@zentrosuite.com"
+                        className="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1.5 mt-4"
+                      >
+                        Contact Technical Support <ArrowRight size={13} />
+                      </a>
                     </div>
-                  )}
-                  {activeOption === "corporates" && (
-                    <div className="space-y-4 w-full">
-                      <div className="w-10 h-10 rounded bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto border border-emerald-150">
-                        <Shield size={18} />
-                      </div>
-                      <div>
-                        <div className="text-xs font-bold text-slate-800 leading-none">Greenhouse ATS Sync</div>
-                        <div className="text-[10px] text-slate-400 mt-1.5">Status: Connected</div>
-                      </div>
-                      <div className="text-[9px] text-[#0F294A] font-mono leading-none">
-                        12 Unlocked Profiles
-                      </div>
-                    </div>
-                  )}
-                </div>
+                  </div>
+                )}
+
               </div>
-
-            </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Mobile menu */}
+      {/* ============================================================ */}
+      {/* MOBILE RESPONSIVE DRAWER                                     */}
+      {/* ============================================================ */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden w-full pt-3 overflow-hidden"
+            className="lg:hidden w-full overflow-hidden bg-white border-b border-slate-200 shadow-xl"
           >
-            <div className="bg-white border border-slate-200/80 rounded-3xl shadow-lg p-2">
-            <div className="container py-6 flex flex-col gap-5 text-left">
-              {/* Mobile Products List */}
-              <div className="flex flex-col gap-2">
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Zentro Workmark</span>
-                <Link to="/student" className="pl-4 text-sm font-semibold text-slate-800 hover:text-blue-600">
-                  For Students
-                </Link>
-                <Link to="/universities" className="pl-4 text-sm font-semibold text-left text-slate-800 hover:text-blue-600">
-                  For Universities
-                </Link>
-                <button onClick={() => handleNavClick("sourcing-pipeline")} className="pl-4 text-sm font-semibold text-left text-slate-800 hover:text-blue-600">
-                  For Corporates
+            <div className="container px-5 py-6 space-y-6">
+              
+              {/* Products Mobile Accordion */}
+              <div className="border-b border-slate-100 pb-4">
+                <button
+                  onClick={() =>
+                    setMobileAccordion(mobileAccordion === "products" ? null : "products")
+                  }
+                  className="w-full flex items-center justify-between text-sm font-bold text-slate-900 py-1"
+                >
+                  <span>Products</span>
+                  <ChevronDown
+                    size={16}
+                    className={`transition-transform ${mobileAccordion === "products" ? "rotate-180" : ""}`}
+                  />
                 </button>
+
+                {mobileAccordion === "products" && (
+                  <div className="mt-3 pl-2 space-y-3">
+                    <Link
+                      to="/products/vyoma"
+                      className="block p-2 rounded-lg hover:bg-slate-50"
+                    >
+                      <div className="text-xs font-bold text-slate-900 flex items-center gap-2">
+                        <Terminal size={14} className="text-blue-600" /> Vyoma
+                      </div>
+                      <div className="text-[11px] text-slate-500 mt-0.5">
+                        Agentic Assessment Environment
+                      </div>
+                    </Link>
+
+                    <Link
+                      to="/student"
+                      className="block p-2 rounded-lg hover:bg-slate-50"
+                    >
+                      <div className="text-xs font-bold text-slate-900 flex items-center gap-2">
+                        <Award size={14} className="text-emerald-600" /> Workmark
+                      </div>
+                      <div className="text-[11px] text-slate-500 mt-0.5">
+                        Verified Proof of Work & Contests
+                      </div>
+                    </Link>
+
+                    <Link
+                      to="/products/vega"
+                      className="block p-2 rounded-lg hover:bg-slate-50"
+                    >
+                      <div className="text-xs font-bold text-slate-900 flex items-center gap-2">
+                        <Bot size={14} className="text-indigo-600" /> Vega
+                      </div>
+                      <div className="text-[11px] text-slate-500 mt-0.5">
+                        Autonomous AI Technical Interviewer
+                      </div>
+                    </Link>
+
+                    <Link
+                      to="/platform"
+                      className="block p-2 rounded-lg hover:bg-slate-50"
+                    >
+                      <div className="text-xs font-bold text-slate-900 flex items-center gap-2">
+                        <Cpu size={14} className="text-purple-600" /> Amogha AI
+                      </div>
+                      <div className="text-[11px] text-slate-500 mt-0.5">
+                        Platform Intelligence Core
+                      </div>
+                    </Link>
+                  </div>
+                )}
               </div>
 
-              <button
-                onClick={() => handleNavClick("overview")}
-                className="text-left text-base font-semibold text-slate-800"
-              >
-                Overview
-              </button>
+              {/* Solutions Mobile Accordion */}
+              <div className="border-b border-slate-100 pb-4">
+                <button
+                  onClick={() =>
+                    setMobileAccordion(mobileAccordion === "solutions" ? null : "solutions")
+                  }
+                  className="w-full flex items-center justify-between text-sm font-bold text-slate-900 py-1"
+                >
+                  <span>Solutions</span>
+                  <ChevronDown
+                    size={16}
+                    className={`transition-transform ${mobileAccordion === "solutions" ? "rotate-180" : ""}`}
+                  />
+                </button>
 
-              <button
-                onClick={() => handleNavClick("how-it-works")}
-                className="text-left text-base font-semibold text-slate-800"
-              >
-                How it Works
-              </button>
+                {mobileAccordion === "solutions" && (
+                  <div className="mt-3 pl-2 space-y-2 text-xs">
+                    <Link to="/corporates#ai-screening" className="block py-1 text-slate-700">
+                      AI-Fluent Developer Hiring
+                    </Link>
+                    <Link to="/corporates#campus-sourcing" className="block py-1 text-slate-700">
+                      Campus Talent Sourcing
+                    </Link>
+                    <Link to="/corporates#screening" className="block py-1 text-slate-700">
+                      Pre-Employment Screening
+                    </Link>
+                    <Link to="/universities" className="block py-1 text-indigo-600 font-bold">
+                      For Universities & TPOs
+                    </Link>
+                  </div>
+                )}
+              </div>
 
-              <button
-                onClick={() => handleNavClick("sourcing-pipeline")}
-                className="text-left text-base font-semibold text-slate-800"
-              >
-                Sourcing Pipeline
-              </button>
+              {/* Direct Mobile Links */}
+              <div className="flex flex-col gap-3 font-semibold text-sm">
+                <Link to="/pricing" className="text-slate-800 hover:text-black py-1">
+                  Pricing
+                </Link>
+                <Link
+                  to="/student"
+                  className="text-blue-600 hover:text-blue-700 py-1 flex items-center justify-between font-bold"
+                >
+                  <span>For Candidates</span>
+                  <ChevronRight size={16} />
+                </Link>
+              </div>
 
-              <div className="flex flex-col gap-3 mt-4 border-t border-slate-100 pt-4">
+              {/* Mobile Actions */}
+              <div className="pt-4 border-t border-slate-100 space-y-2.5">
+                <a
+                  href="https://auth.zentrosuite.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full block py-2.5 text-center text-xs font-semibold text-slate-800 bg-white border border-slate-300 hover:bg-slate-50 rounded-none"
+                >
+                  Log In
+                </a>
                 <a
                   href="https://calendly.com/sambramsm28/30min"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-3 text-sm font-bold text-white bg-slate-900 hover:bg-slate-800 rounded-full text-center"
+                  className="w-full block py-2.5 text-center text-xs font-semibold text-slate-800 bg-white border border-slate-300 hover:bg-slate-50 rounded-none"
                 >
-                  Book a Demo
+                  Request Demo
+                </a>
+                <a
+                  href="https://auth.zentrosuite.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full block py-2.5 text-center text-xs font-semibold text-white bg-black hover:bg-neutral-800 rounded-none"
+                >
+                  Create a free account
                 </a>
               </div>
-            </div>
+
             </div>
           </motion.div>
         )}

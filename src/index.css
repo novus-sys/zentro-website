@@ -256,7 +256,7 @@
   }
 
   .font-mono {
-    font-family: 'Space Mono', monospace;
+    font-family: 'Inter', sans-serif;
   }
 
   .text-gradient-blue {
@@ -265,7 +265,7 @@
   }
 
   .eyebrow {
-    @apply font-mono text-[11px] uppercase tracking-[0.14em];
+    @apply text-[11px] uppercase tracking-[0.14em];
   }
 
   /* Grain overlay */

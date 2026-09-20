@@ -15,6 +15,12 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Refund from "./pages/Refund";
 import Trust from "./pages/Trust";
+import Pricing from "./pages/Pricing";
+import Platform from "./pages/Platform";
+import Vega from "./pages/Vega";
+import Vyoma from "./pages/Vyoma";
+import SolutionsAcquisition from "./pages/SolutionsAcquisition";
+import SolutionsMobility from "./pages/SolutionsMobility";
 import NotFound from "./pages/NotFound";
 
 // Layout components
@@ -66,7 +72,16 @@ const App = () => {
             {/* Corporate Platform - Unified Single-Page Landing */}
             <Route element={<CorporateLayout />}>
               <Route path="/" element={<Home />} />
+              <Route path="/products/vyoma" element={<Vyoma />} />
+              <Route path="/vyoma" element={<Vyoma />} />
+              <Route path="/products/vega" element={<Vega />} />
+              <Route path="/vega" element={<Vega />} />
               <Route path="/student" element={<WorkmarkLanding />} />
+              <Route path="/candidate" element={<WorkmarkLanding />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/platform" element={<Platform />} />
+              <Route path="/solutions/acquisition" element={<SolutionsAcquisition />} />
+              <Route path="/solutions/mobility" element={<SolutionsMobility />} />
               <Route path="/universities" element={<Universities />} />
               <Route path="/workmark-creator" element={<WorkmarkCreator />} />
               <Route path="/corporates" element={<Corporates />} />

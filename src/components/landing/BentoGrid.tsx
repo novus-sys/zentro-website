@@ -1,6 +1,7 @@
 import { useScrollReveal } from "./useScrollReveal";
 import { useCountUp } from "./useCountUp";
 import GlowCard from "./GlowCard";
+import { Star, GitFork, Lightbulb } from "lucide-react";
 
 const bentoCards = [
   {
@@ -86,17 +87,17 @@ function ScoreVisual() {
 
 function ChallengeVisual() {
   return (
-    <div className="zentro-card p-5 mt-4 border-primary/20">
+    <div className="zentro-card p-5 mt-4 border-black/10 bg-white shadow-2xs">
       <p className="text-foreground text-sm font-medium mb-2">Smart Campus Energy Challenge</p>
       <div className="flex flex-wrap gap-2 mb-3">
-        <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-warning/10 text-warning border border-warning/20">₹50,000</span>
-        <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-destructive/10 text-destructive border border-destructive/20">3 days remaining</span>
+        <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-white text-black border border-black">₹50,000</span>
+        <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-white text-black border border-black">3 days remaining</span>
       </div>
       <p className="text-xs text-text-muted mb-3">Active · 143 participants</p>
-      <button className="w-full py-2 text-xs font-display font-semibold text-primary-foreground bg-primary rounded-lg">Submit Idea</button>
+      <button className="w-full py-2 text-xs font-display font-semibold text-white bg-black hover:bg-neutral-800 rounded-lg transition-colors">Submit Idea</button>
       <div className="flex gap-2 mt-3">
-        {[["Active", "bg-success/10 text-success"], ["Upcoming", "bg-warning/10 text-warning"], ["AI-Recommended", "bg-violet/10 text-violet"]].map(([label, cls]) => (
-          <span key={label} className={`px-2 py-0.5 rounded text-[9px] font-mono ${cls}`}>{label}</span>
+        {["Active", "Upcoming", "AI-Recommended"].map((label) => (
+          <span key={label} className="px-2 py-0.5 rounded text-[9px] font-medium bg-white text-black border border-black">{label}</span>
         ))}
       </div>
     </div>
@@ -108,7 +109,7 @@ function LeaderboardMiniVisual() {
     <div className="space-y-2 mt-2">
       {[["1", "Riya M.", "1,240"], ["2", "Arjun K.", "1,180"], ["4", "You", "847"]].map(([badge, name, pts], i) => (
         <div key={i} className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs ${i === 2 ? "bg-black/[0.04] border border-black/10" : ""}`}>
-          <span>{badge}</span>
+          <span className="font-semibold">{badge}</span>
           <span className="text-foreground font-medium">{name}</span>
           <span className="ml-auto font-mono text-text-secondary">{pts}</span>
         </div>
@@ -121,14 +122,14 @@ function LeaderboardMiniVisual() {
 function ProfileMiniVisual() {
   return (
     <div className="flex items-center gap-3 mt-3">
-      <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center font-display text-primary text-xs font-bold">V</div>
+      <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-display text-slate-900 text-xs font-bold border border-black/10">V</div>
       <div>
         <p className="text-foreground text-sm font-medium">Vikram</p>
         <p className="font-mono text-foreground text-xs">Score: 847</p>
       </div>
       <div className="ml-auto flex gap-1">
         {["Verified", "3 Wins", "12 Projects"].map((b) => (
-          <span key={b} className="px-1.5 py-0.5 rounded text-[8px] font-mono text-text-muted border border-foreground/10">{b}</span>
+          <span key={b} className="px-1.5 py-0.5 rounded text-[8px] font-medium bg-white text-black border border-black">{b}</span>
         ))}
       </div>
     </div>
@@ -137,14 +138,24 @@ function ProfileMiniVisual() {
 
 function ProjectMiniVisual() {
   return (
-    <div className="zentro-card p-4 mt-3 border-success/20">
+    <div className="zentro-card p-4 mt-3 border-black/10 bg-white shadow-2xs">
       <p className="text-foreground text-sm font-medium">IntelliCampus AI</p>
       <div className="flex gap-2 my-2">
         {["AI", "Sustainability"].map((t) => (
-          <span key={t} className="px-2 py-0.5 rounded text-[10px] font-mono text-text-muted border border-foreground/10">{t}</span>
+          <span key={t} className="px-2 py-0.5 rounded text-[10px] font-medium bg-white text-black border border-black">{t}</span>
         ))}
       </div>
-      <p className="text-xs text-text-muted">⭐ 24 stars · 🔀 7 forks</p>
+      <div className="flex items-center gap-3 text-xs text-text-muted pt-1">
+        <span className="inline-flex items-center gap-1 font-medium text-slate-700">
+          <Star size={13} className="text-amber-500 fill-amber-500" />
+          <span>24 stars</span>
+        </span>
+        <span className="text-slate-300">·</span>
+        <span className="inline-flex items-center gap-1 font-medium text-slate-700">
+          <GitFork size={13} className="text-slate-700" />
+          <span>7 forks</span>
+        </span>
+      </div>
     </div>
   );
 }
@@ -158,14 +169,11 @@ export default function BentoGrid() {
       <div ref={ref} className="container relative z-10 [&:not(.revealed)]:opacity-0 [&.revealed]:animate-[fade-in_0.5s_ease-out_forwards]">
         <div className="text-center mb-16">
           <span className="eyebrow text-primary mb-4 block">EVERYTHING YOU GET</span>
-          <h2 className="font-display font-bold text-4xl md:text-[52px] text-foreground leading-[1.1] mb-4">
-            One ecosystem.
+          <h2 className="font-display font-bold text-3xl md:text-5xl text-foreground mb-4">
+            Everything your career needs.
             <br />
-            Six powerful pillars.
+            <span className="text-gradient-blue font-serif-display italic font-normal">In one living platform.</span>
           </h2>
-          <p className="font-body text-text-secondary text-lg max-w-xl mx-auto">
-            Everything you do on Zentro Workmark is tracked, verified, and building your reputation — automatically.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -189,10 +197,12 @@ export default function BentoGrid() {
               )}
               {card.visual === "feedback" && (
                 <div className="mt-3">
-                  <span className="text-warning text-xl">💡</span>
+                  <span className="text-amber-500 inline-block">
+                    <Lightbulb size={20} />
+                  </span>
                   <div className="flex flex-wrap gap-1.5 mt-3">
-                    {[["Draft", "text-text-muted border-foreground/10"], ["Under Review", "text-primary border-primary/20"], ["Approved ✓", "text-success border-success/20"]].map(([l, c]) => (
-                      <span key={l} className={`px-2 py-0.5 rounded text-[10px] font-mono border ${c}`}>{l}</span>
+                    {["Draft", "Under Review", "Approved"].map((l) => (
+                      <span key={l} className="px-2 py-0.5 rounded text-[10px] font-medium bg-white text-black border border-black">{l}</span>
                     ))}
                   </div>
                 </div>

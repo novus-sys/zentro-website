@@ -40,7 +40,7 @@ function ReadinessTab() {
       </div>
       <div className="flex flex-wrap gap-2 mt-6 justify-center">
         {["Problem Solving", "Presentation", "Project Execution", "Domain Knowledge"].map((s) => (
-          <span key={s} className="px-3 py-1 rounded-full text-xs font-mono text-success border border-success/20 bg-success/[0.04]">{s}</span>
+          <span key={s} className="px-3 py-1 rounded-full text-xs font-medium text-black border border-black bg-white">{s}</span>
         ))}
       </div>
     </div>

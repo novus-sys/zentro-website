@@ -1,5 +1,6 @@
 import { useScrollReveal } from "./useScrollReveal";
 import GlowCard from "./GlowCard";
+import { Flame, Eye } from "lucide-react";
 
 export default function ActivityFeed() {
   const ref = useScrollReveal();
@@ -36,7 +37,7 @@ export default function ActivityFeed() {
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {["React", "Node.js", "WebSocket", "Full-Stack"].map((t) => (
-                  <span key={t} className="px-2 py-0.5 rounded text-[10px] font-mono text-text-secondary border border-black/10">{t}</span>
+                  <span key={t} className="px-2 py-0.5 rounded text-[10px] font-medium bg-white text-black border border-black">{t}</span>
                 ))}
               </div>
               <div className="flex gap-4 text-xs text-text-muted">
@@ -48,25 +49,18 @@ export default function ActivityFeed() {
             </GlowCard>
 
             {/* Post 2 — challenge */}
-            <GlowCard className="p-6 border-warning/[0.15]">
-              <p className="text-warning text-sm font-display font-bold mb-2">New Challenge Posted</p>
+            <GlowCard className="p-6 border-black/10">
+              <p className="text-black text-sm font-display font-bold mb-2">New Challenge Posted</p>
               <p className="text-foreground font-medium mb-1">Smart Campus AI Solutions</p>
               <p className="text-xs text-text-muted mb-3">Deadline: 48 hours · Prize: ₹50,000 · Posted by Industry Partner</p>
-              <button className="px-4 py-2 text-xs font-display font-semibold text-warning bg-warning/10 border border-warning/20 rounded-lg hover:bg-warning/20 transition-colors">
+              <button className="px-4 py-2 text-xs font-display font-semibold text-black bg-white border border-black rounded-lg hover:bg-slate-50 transition-colors">
                 Submit Idea
               </button>
             </GlowCard>
 
             {/* Fade out post */}
-            <div className="zentro-card p-6 opacity-30">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-full bg-foreground/20" />
-                <div className="space-y-1">
-                  <div className="h-3 w-24 rounded bg-foreground/10" />
-                  <div className="h-2 w-32 rounded bg-foreground/5" />
-                </div>
-              </div>
-              <div className="h-3 w-full rounded bg-foreground/5 mb-2" />
+            <div className="p-6 rounded-2xl border border-black/5 bg-black/[0.01] opacity-40">
+              <div className="h-4 w-1/3 rounded bg-foreground/10 mb-2" />
               <div className="h-3 w-3/4 rounded bg-foreground/5" />
             </div>
           </div>
@@ -74,7 +68,10 @@ export default function ActivityFeed() {
           {/* Sidebar */}
           <div className="hidden md:block space-y-6">
             <GlowCard className="p-5">
-              <p className="text-foreground text-sm font-display font-bold mb-3">🔥 Trending Topics</p>
+              <p className="text-foreground text-sm font-display font-bold mb-3 flex items-center gap-1.5">
+                <Flame size={15} className="text-orange-500" />
+                <span>Trending Topics</span>
+              </p>
               {[["System Design", 14], ["Sustainability Tech", 9], ["AI in Healthcare", 7]].map(([topic, count], i) => (
                 <div key={topic as string} className="flex items-center gap-2 py-1.5">
                   <span className="text-text-muted text-xs font-mono">{i + 1}.</span>
@@ -85,7 +82,10 @@ export default function ActivityFeed() {
             </GlowCard>
 
             <GlowCard className="p-5">
-              <p className="text-foreground text-sm font-display font-bold mb-3">👁 Eyes on Your Work</p>
+              <p className="text-foreground text-sm font-display font-bold mb-3 flex items-center gap-1.5">
+                <Eye size={15} className="text-blue-500" />
+                <span>Eyes on Your Work</span>
+              </p>
               <p className="text-text-secondary text-sm">IntelliCampus Project</p>
               <p className="font-mono text-foreground text-lg font-bold">49 views this week</p>
             </GlowCard>

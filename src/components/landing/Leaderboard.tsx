@@ -1,5 +1,6 @@
 import { useScrollReveal } from "./useScrollReveal";
 import GlowCard from "./GlowCard";
+import { Trophy } from "lucide-react";
 
 const leaderboardRows = [
   { badge: "1", name: "Riya M.", dept: "Design", pts: "1,240", trend: "+3", trendColor: "text-success" },
@@ -28,7 +29,7 @@ export default function Leaderboard() {
           {/* Leaderboard card */}
           <GlowCard className="p-6">
             <div className="flex items-center gap-2 mb-6">
-              <span>🏆</span>
+              <Trophy size={18} className="text-amber-500" />
               <span className="text-foreground font-display font-bold text-lg">Innovation Leaderboard</span>
               <span className="ml-auto flex items-center gap-1.5 text-xs text-success font-mono">
                 <span className="w-2 h-2 rounded-full bg-success animate-pulse-dot" />
