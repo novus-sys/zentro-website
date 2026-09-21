@@ -16,7 +16,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 40% 10%;
 
-    --primary: 243 74% 59%;
+    --primary: 230 87% 34%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 96%;
@@ -42,7 +42,7 @@
 
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 243 74% 59%;
+    --ring: 230 87% 34%;
 
     --radius: 0.75rem;
 
@@ -56,7 +56,7 @@
 
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 220 40% 10%;
-    --sidebar-primary: 243 74% 59%;
+    --sidebar-primary: 230 87% 34%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 96%;
     --sidebar-accent-foreground: 220 40% 10%;
@@ -573,7 +573,7 @@
 
 }
 
-/* Custom Scrollbar Styling to match Zentro brand purple */
+/* Custom Scrollbar Styling to match Zentro brand blue (#0B25A1) */
 ::-webkit-scrollbar {
   width: 12px !important;
   height: 12px !important;
@@ -584,13 +584,13 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #5048E4 !important;
+  background: #0B25A1 !important;
   border-radius: 0px !important;
   border: none !important;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3f36c6 !important;
+  background: #081E85 !important;
 }
 
 /* Hide scrollbar buttons (up/down arrows) */
@@ -603,7 +603,7 @@
 /* Firefox-only support */
 @supports (-moz-appearance: none) {
   html {
-    scrollbar-color: #5048E4 #f1f5f9 !important;
+    scrollbar-color: #0B25A1 #f1f5f9 !important;
     scrollbar-width: auto !important;
   }
 }

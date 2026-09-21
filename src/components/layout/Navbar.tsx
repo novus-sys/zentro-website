@@ -281,7 +281,7 @@ export default function Navbar() {
 
                         {/* Product 2: Workmark */}
                         <Link
-                          to="/student"
+                          to="/products/workmark"
                           className="p-4 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50 transition-all group block"
                         >
                           <div className="flex items-center gap-2 mb-1.5">
@@ -649,7 +649,7 @@ export default function Navbar() {
 
                     {/* 2. Workmark */}
                     <Link
-                      to="/student"
+                      to="/products/workmark"
                       onClick={() => setMobileOpen(false)}
                       className="block p-2 rounded-lg hover:bg-slate-50 transition-colors"
                     >
@@ -805,7 +805,7 @@ export default function Navbar() {
                   Pricing
                 </Link>
                 <Link
-                  to="/student"
+                  to="/products/workmark"
                   onClick={() => setMobileOpen(false)}
                   className="text-blue-600 hover:text-blue-700 py-1 flex items-center justify-between font-bold"
                 >

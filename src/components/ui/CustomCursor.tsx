@@ -118,9 +118,9 @@ export default function CustomCursor() {
         }}
       />
 
-      {/* Inner Target Center Dot (Vibrant Purple) */}
+      {/* Inner Target Center Dot (Primary Blue) */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-[#5048E4] z-[10000] pointer-events-none"
+        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-[#0B25A1] z-[10000] pointer-events-none"
         style={{
           x: mouseX,
           y: mouseY,
@@ -129,7 +129,7 @@ export default function CustomCursor() {
         }}
         animate={{
           scale: isClicked ? 1.8 : isHovering ? 0.5 : 1,
-          backgroundColor: isHovering ? "#6366F1" : "#5048E4",
+          backgroundColor: isHovering ? "#2563EB" : "#0B25A1",
         }}
         transition={{ type: "spring", stiffness: 500, damping: 20 }}
       />

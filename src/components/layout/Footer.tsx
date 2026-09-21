@@ -63,12 +63,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/student" className="hover:text-slate-900 font-medium transition-colors">
+                <Link to="/products/workmark" className="hover:text-slate-900 font-medium transition-colors">
                   Workmark (Proof of Work)
                 </Link>
               </li>
               <li>
-                <Link to="/student#challenges" className="hover:text-slate-900 font-medium transition-colors">
+                <Link to="/products/workmark#challenges" className="hover:text-slate-900 font-medium transition-colors">
                   Contests & Hackathons
                 </Link>
               </li>
@@ -165,17 +165,17 @@ export default function Footer() {
             </h4>
             <ul className="flex flex-col gap-2.5 text-xs">
               <li>
-                <Link to="/student" className="hover:text-slate-900 font-medium transition-colors">
+                <Link to="/products/workmark" className="hover:text-slate-900 font-medium transition-colors">
                   Build Workmark Score
                 </Link>
               </li>
               <li>
-                <Link to="/student" className="hover:text-slate-900 font-medium transition-colors">
+                <Link to="/products/workmark#challenges" className="hover:text-slate-900 font-medium transition-colors">
                   Active Campus Contests
                 </Link>
               </li>
               <li>
-                <Link to="/student" className="hover:text-slate-900 font-medium transition-colors">
+                <Link to="/products/workmark#leaderboard" className="hover:text-slate-900 font-medium transition-colors">
                   Student Leaderboards
                 </Link>
               </li>

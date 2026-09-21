@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Outlet, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet, useLocation, Navigate } from "react-router-dom";
 
 // Pages
 import Home from "./pages/Home";
@@ -76,8 +76,10 @@ const App = () => {
               <Route path="/vyoma" element={<Vyoma />} />
               <Route path="/products/vega" element={<Vega />} />
               <Route path="/vega" element={<Vega />} />
-              <Route path="/student" element={<WorkmarkLanding />} />
-              <Route path="/candidate" element={<WorkmarkLanding />} />
+              <Route path="/products/workmark" element={<WorkmarkLanding />} />
+              <Route path="/workmark" element={<Navigate to="/products/workmark" replace />} />
+              <Route path="/student" element={<Navigate to="/products/workmark" replace />} />
+              <Route path="/candidate" element={<Navigate to="/products/workmark" replace />} />
               <Route path="/pricing" element={<Pricing />} />
               <Route path="/platform" element={<Platform />} />
               <Route path="/solutions/acquisition" element={<SolutionsAcquisition />} />
