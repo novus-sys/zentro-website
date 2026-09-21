@@ -153,7 +153,7 @@ const GlowingEffect = memo(
                       #5B8DEF 0%,
                       #0CD7FD 5%,
                       #5B8DEF 10%,
-                      #8B5CF6 15%,
+                      #0B25A1 15%,
                       #5B8DEF 20%,
                       transparent 25%
                     )`,

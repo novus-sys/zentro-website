@@ -321,7 +321,7 @@ export default function Navbar() {
                           className="p-4 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50 transition-all group block"
                         >
                           <div className="flex items-center gap-2 mb-1.5">
-                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-purple-600 transition-colors">
+                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-[#0B25A1] transition-colors">
                               Amogha AI
                             </h4>
                             <span className="text-[9px] font-medium text-slate-400 uppercase tracking-wider">
@@ -468,10 +468,10 @@ export default function Navbar() {
                           className="p-3.5 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50 transition-all group"
                         >
                           <div className="flex items-center gap-2.5 mb-1.5">
-                            <div className="p-1.5 bg-purple-50 text-purple-600 rounded-md">
+                            <div className="p-1.5 bg-blue-50 text-[#0B25A1] rounded-md">
                               <Workflow size={16} />
                             </div>
-                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-purple-600 transition-colors">
+                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-[#0B25A1] transition-colors">
                               Automated First-Round Loops
                             </h4>
                           </div>

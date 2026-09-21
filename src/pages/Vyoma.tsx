@@ -44,7 +44,7 @@ export default function Vyoma() {
           <h1 className="font-serif-display font-normal text-[44px] leading-[1.15] tracking-tight md:text-7xl lg:text-[80px] lg:leading-[88px] mb-8 text-[#111111] max-w-4xl mx-auto">
             Hire AI-Fluent Developers for
             <br />
-            <span className="text-violet-600 italic font-normal">the Agentic Era</span>
+            <span className="text-[#0B25A1] italic font-normal">the Agentic Era</span>
           </h1>
 
           {/* Subhead - Clean 1 Line */}
@@ -391,7 +391,7 @@ export default function Vyoma() {
 
           {/* Pillar 4 */}
           <div className="p-8 rounded-2xl border border-slate-200/90 bg-white hover:border-slate-300 transition-all shadow-2xs space-y-4">
-            <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold">
+            <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0B25A1] flex items-center justify-center font-bold">
               <Workflow size={20} />
             </div>
             <h3 className="text-lg font-bold text-slate-900">Evidence-Backed 6D Decision Reports</h3>
@@ -400,11 +400,11 @@ export default function Vyoma() {
             </p>
             <ul className="space-y-2 pt-2 text-xs text-slate-600 font-medium">
               <li className="flex items-center gap-2">
-                <Check size={14} className="text-purple-600" />
+                <Check size={14} className="text-[#0B25A1]" />
                 Objective rubrics calibrated for modern roles
               </li>
               <li className="flex items-center gap-2">
-                <Check size={14} className="text-purple-600" />
+                <Check size={14} className="text-[#0B25A1]" />
                 One-click ATS export with full code snapshots
               </li>
             </ul>

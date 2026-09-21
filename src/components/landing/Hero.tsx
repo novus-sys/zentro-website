@@ -26,7 +26,7 @@ export default function Hero() {
         <motion.h1
           variants={fadeUp}
           className="font-serif-display font-normal text-[44px] leading-[1.12] tracking-tight md:text-7xl lg:text-[76px] lg:leading-[84px] mb-6 text-[#111111]">
-          Your <span className="text-[#5048E4] italic font-normal">Workmark</span> Speaks
+          Your <span className="text-[#0B25A1] italic font-normal">Workmark</span> Speaks
           <br />
           Louder Than Your Resume
         </motion.h1>
@@ -46,7 +46,7 @@ export default function Hero() {
             href="https://tally.so/r/mZ0jgy"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-violet-650 hover:from-indigo-700 hover:to-violet-750 text-white font-sans font-bold text-sm rounded-full shadow-md shadow-indigo-600/10 hover:shadow-indigo-600/20 hover:scale-[1.02] transition-all flex items-center gap-2 cursor-pointer border-none"
+            className="px-8 py-3.5 bg-[#0B25A1] hover:bg-[#081E85] text-white font-sans font-bold text-sm rounded-full shadow-md shadow-[#0B25A1]/20 hover:scale-[1.02] transition-all flex items-center gap-2 cursor-pointer border-none"
           >
             Join the Waitlist <ArrowRight size={16} />
           </a>

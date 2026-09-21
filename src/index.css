@@ -37,7 +37,7 @@
     --warning: 43 96% 46%;
     --warning-foreground: 0 0% 0%;
 
-    --violet: 263 70% 60%;
+    --violet: 230 87% 34%;
     --violet-foreground: 0 0% 100%;
 
     --border: 0 0% 90%;
@@ -75,7 +75,7 @@
     --popover: 220 35% 8%;
     --popover-foreground: 220 60% 95%;
 
-    --primary: 243 74% 59%;
+    --primary: 230 87% 55%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 220 30% 11%;
@@ -96,12 +96,12 @@
     --warning: 43 96% 56%;
     --warning-foreground: 0 0% 0%;
 
-    --violet: 263 70% 76%;
+    --violet: 230 87% 55%;
     --violet-foreground: 0 0% 100%;
 
     --border: 211 100% 61% / 0.10;
     --input: 211 100% 61% / 0.10;
-    --ring: 243 74% 59%;
+    --ring: 230 87% 55%;
 
     --radius: 0.75rem;
 

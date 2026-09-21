@@ -46,7 +46,7 @@ export default function Hero() {
             <h1 className="font-serif-display font-normal text-[42px] leading-[1.12] tracking-tight md:text-6xl lg:text-[68px] lg:leading-[76px] text-[#111111]">
               Accelerate Placements.
               <br />
-              <span className="text-[#5048E4] italic font-normal">
+              <span className="text-[#0B25A1] italic font-normal">
                 Unlock Stellar Placements.
               </span>
             </h1>
@@ -60,7 +60,7 @@ export default function Hero() {
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <button
                 onClick={handleScrollToFeatures}
-                className="px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-violet-650 hover:from-indigo-700 hover:to-violet-750 text-white font-sans font-bold text-sm rounded-full shadow-md shadow-indigo-600/10 hover:shadow-indigo-600/20 hover:scale-[1.02] transition-all flex items-center gap-2 cursor-pointer border-none"
+                className="px-8 py-3.5 bg-[#0B25A1] hover:bg-[#081E85] text-white font-sans font-bold text-sm rounded-full shadow-md shadow-[#0B25A1]/20 hover:scale-[1.02] transition-all flex items-center gap-2 cursor-pointer border-none"
               >
                 Explore TPO Features <ArrowRight size={16} />
               </button>

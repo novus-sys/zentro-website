@@ -327,7 +327,7 @@ export default function WorkflowArchitecture() {
                 <path d="M 0 2 L 10 5 L 0 8 z" fill="#cbd5e1" />
               </marker>
               <marker id="arrow-active" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 2 L 10 5 L 0 8 z" fill="#6366f1" />
+                <path d="M 0 2 L 10 5 L 0 8 z" fill="#0B25A1" />
               </marker>
             </defs>
 
@@ -335,7 +335,7 @@ export default function WorkflowArchitecture() {
             <path
               d="M 230 96 C 250 96, 230 252, 252 252"
               fill="none"
-              stroke={isConnectionActive("A", "C") ? "#6366f1" : "#cbd5e1"}
+              stroke={isConnectionActive("A", "C") ? "#0B25A1" : "#cbd5e1"}
               strokeWidth={isConnectionActive("A", "C") ? "2" : "1"}
               strokeDasharray={isConnectionActive("A", "C") ? "4,4" : "none"}
               markerEnd={isConnectionActive("A", "C") ? "url(#arrow-active)" : "url(#arrow)"}
@@ -345,7 +345,7 @@ export default function WorkflowArchitecture() {
             <path
               d="M 230 178 C 250 178, 230 252, 252 252"
               fill="none"
-              stroke={isConnectionActive("B", "C") ? "#6366f1" : "#cbd5e1"}
+              stroke={isConnectionActive("B", "C") ? "#0B25A1" : "#cbd5e1"}
               strokeWidth={isConnectionActive("B", "C") ? "2" : "1"}
               strokeDasharray={isConnectionActive("B", "C") ? "4,4" : "none"}
               markerEnd={isConnectionActive("B", "C") ? "url(#arrow-active)" : "url(#arrow)"}
@@ -355,7 +355,7 @@ export default function WorkflowArchitecture() {
             <path
               d="M 252 252 L 275 252 C 300 252, 450 178, 478 178"
               fill="none"
-              stroke={isConnectionActive("C", "D") ? "#6366f1" : "#cbd5e1"}
+              stroke={isConnectionActive("C", "D") ? "#0B25A1" : "#cbd5e1"}
               strokeWidth={isConnectionActive("C", "D") ? "2" : "1"}
               strokeDasharray={isConnectionActive("C", "D") ? "4,4" : "none"}
               markerEnd={isConnectionActive("C", "D") ? "url(#arrow-active)" : "url(#arrow)"}
@@ -365,7 +365,7 @@ export default function WorkflowArchitecture() {
             <path
               d="M 456 96 C 470 96, 465 178, 478 178"
               fill="none"
-              stroke={isConnectionActive("E", "D") ? "#6366f1" : "#cbd5e1"}
+              stroke={isConnectionActive("E", "D") ? "#0B25A1" : "#cbd5e1"}
               strokeWidth={isConnectionActive("E", "D") ? "2" : "1"}
               strokeDasharray={isConnectionActive("E", "D") ? "4,4" : "none"}
               markerEnd={isConnectionActive("E", "D") ? "url(#arrow-active)" : "url(#arrow)"}
@@ -375,7 +375,7 @@ export default function WorkflowArchitecture() {
             <path
               d="M 478 178 C 490 178, 465 252, 478 252"
               fill="none"
-              stroke={isConnectionActive("D", "F") ? "#6366f1" : "#cbd5e1"}
+              stroke={isConnectionActive("D", "F") ? "#0B25A1" : "#cbd5e1"}
               strokeWidth={isConnectionActive("D", "F") ? "2" : "1"}
               strokeDasharray={isConnectionActive("D", "F") ? "4,4" : "none"}
               markerEnd={isConnectionActive("D", "F") ? "url(#arrow-active)" : "url(#arrow)"}
@@ -385,7 +385,7 @@ export default function WorkflowArchitecture() {
             <path
               d="M 478 252 C 550 252, 650 96, 700 96"
               fill="none"
-              stroke={isConnectionActive("F", "G") ? "#6366f1" : "#cbd5e1"}
+              stroke={isConnectionActive("F", "G") ? "#0B25A1" : "#cbd5e1"}
               strokeWidth={isConnectionActive("F", "G") ? "2" : "1"}
               strokeDasharray={isConnectionActive("F", "G") ? "4,4" : "none"}
               markerEnd={isConnectionActive("F", "G") ? "url(#arrow-active)" : "url(#arrow)"}
@@ -395,7 +395,7 @@ export default function WorkflowArchitecture() {
             <path
               d="M 700 96 C 720 96, 705 252, 725 252"
               fill="none"
-              stroke={isConnectionActive("G", "H") ? "#6366f1" : "#cbd5e1"}
+              stroke={isConnectionActive("G", "H") ? "#0B25A1" : "#cbd5e1"}
               strokeWidth={isConnectionActive("G", "H") ? "2" : "1"}
               strokeDasharray={isConnectionActive("G", "H") ? "4,4" : "none"}
               markerEnd={isConnectionActive("G", "H") ? "url(#arrow-active)" : "url(#arrow)"}
@@ -405,7 +405,7 @@ export default function WorkflowArchitecture() {
             <path
               d="M 700 178 C 720 178, 705 252, 725 252"
               fill="none"
-              stroke={isConnectionActive("I", "H") ? "#6366f1" : "#cbd5e1"}
+              stroke={isConnectionActive("I", "H") ? "#0B25A1" : "#cbd5e1"}
               strokeWidth={isConnectionActive("I", "H") ? "2" : "1"}
               strokeDasharray={isConnectionActive("I", "H") ? "4,4" : "none"}
               markerEnd={isConnectionActive("I", "H") ? "url(#arrow-active)" : "url(#arrow)"}
@@ -415,7 +415,7 @@ export default function WorkflowArchitecture() {
             <path
               d="M 725 252 C 780 252, 880 96, 920 96"
               fill="none"
-              stroke={isConnectionActive("H", "J") ? "#6366f1" : "#cbd5e1"}
+              stroke={isConnectionActive("H", "J") ? "#0B25A1" : "#cbd5e1"}
               strokeWidth={isConnectionActive("H", "J") ? "2" : "1"}
               strokeDasharray={isConnectionActive("H", "J") ? "4,4" : "none"}
               markerEnd={isConnectionActive("H", "J") ? "url(#arrow-active)" : "url(#arrow)"}
@@ -425,7 +425,7 @@ export default function WorkflowArchitecture() {
             <path
               d="M 920 96 C 940 96, 925 178, 940 178"
               fill="none"
-              stroke={isConnectionActive("J", "K") ? "#6366f1" : "#cbd5e1"}
+              stroke={isConnectionActive("J", "K") ? "#0B25A1" : "#cbd5e1"}
               strokeWidth={isConnectionActive("J", "K") ? "2" : "1"}
               strokeDasharray={isConnectionActive("J", "K") ? "4,4" : "none"}
               markerEnd={isConnectionActive("J", "K") ? "url(#arrow-active)" : "url(#arrow)"}

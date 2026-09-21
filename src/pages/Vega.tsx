@@ -45,7 +45,7 @@ export default function Vega() {
           <h1 className="font-serif-display font-normal text-[44px] leading-[1.15] tracking-tight md:text-7xl lg:text-[80px] lg:leading-[88px] mb-8 text-[#111111] max-w-4xl mx-auto">
             An AI Interviewer that Runs Interviews
             <br />
-            <span className="text-violet-600 italic font-normal">Like Your Best Engineer</span>
+            <span className="text-[#0B25A1] italic font-normal">Like Your Best Engineer</span>
           </h1>
 
           {/* Subhead - Clean 1 Line */}
@@ -292,7 +292,7 @@ export default function Vega() {
 
           {/* Pillar 4 */}
           <div className="p-6 rounded-2xl border border-slate-200/90 bg-white hover:border-slate-300 transition-all shadow-2xs space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold">
+            <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0B25A1] flex items-center justify-center font-bold">
               <Layers size={20} />
             </div>
             <h3 className="text-base font-bold text-slate-900">Consistent by Design</h3>

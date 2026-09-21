@@ -76,7 +76,7 @@ export default function LoadingScreen({ onFinished }: LoadingScreenProps) {
         <div className="w-72 md:w-96">
           <div className="relative w-full h-[4px] bg-slate-200/70 rounded-full overflow-hidden">
             <div
-              className="absolute left-0 top-0 h-full bg-[#5048E4] rounded-full transition-all duration-100 ease-out"
+              className="absolute left-0 top-0 h-full bg-[#0B25A1] rounded-full transition-all duration-100 ease-out"
               style={{ width: `${progress}%` }}
             />
           </div>

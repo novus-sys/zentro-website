@@ -94,7 +94,7 @@ export default function Corporates() {
       id: "screening",
       title: "AI Screening Sprints",
       subtitle: "Screen your external applicant pool instantly",
-      icon: <Cpu className="text-[#5048E4]" size={20} />,
+      icon: <Cpu className="text-[#0B25A1]" size={20} />,
       desc: "Already drowning in hundreds of applications from job boards? Upload your candidate files directly. Zentro runs them through structured coding challenges and returns a ranked, capability-proven shortlist in 24-48 hours.",
       features: [
         "Upload pipelines from LinkedIn, Naukri, or direct links",
@@ -107,7 +107,7 @@ export default function Corporates() {
       id: "sprints",
       title: "Sourced Hiring Sprints",
       subtitle: "Targeted problem statement distributions",
-      icon: <Layers className="text-[#5048E4]" size={20} />,
+      icon: <Layers className="text-[#0B25A1]" size={20} />,
       desc: "Post a real-world coding problem statement or engineering challenge. Students across Zentro's engineering campus network submit projects over 3-7 days. Review evaluated work samples and hire from the top performers.",
       features: [
         "Sourced from verified student networks across partner campuses",
@@ -120,7 +120,7 @@ export default function Corporates() {
       id: "contests",
       title: "Campus Sponsoring Contests",
       subtitle: "Timed capability challenges on campus",
-      icon: <Trophy className="text-[#5048E4]" size={20} />,
+      icon: <Trophy className="text-[#0B25A1]" size={20} />,
       desc: "Sponsor a 2-3 hour timed coding or domain-specific contest open to all campus partners. Watch a real-time leaderboard update with student code execution results. Hire the top 1-3% of students in a single afternoon.",
       features: [
         "Co-branded landing pages and campus promotions",
@@ -133,7 +133,7 @@ export default function Corporates() {
       id: "hiring-days",
       title: "Freshers Hiring Days",
       subtitle: "Ranked evaluation job fairs with teeth",
-      icon: <Users className="text-[#5048E4]" size={20} />,
+      icon: <Users className="text-[#0B25A1]" size={20} />,
       desc: "Partner with selected colleges for a structured, single-day recruiting sprint. Candidates complete technical and aptitude challenges on Zentro, and you interview verified top-performers in person or online on the same day.",
       features: [
         "Collaborative multi-college consolidated talent pools",
@@ -146,7 +146,7 @@ export default function Corporates() {
       id: "audits",
       title: "Skill Gap Benchmarking",
       subtitle: "Understand incoming or current fresher cohorts",
-      icon: <BarChart2 className="text-[#5048E4]" size={20} />,
+      icon: <BarChart2 className="text-[#0B25A1]" size={20} />,
       desc: "Benchmark your incoming campus hires or current team members using custom technical challenges. Receive comprehensive reports highlighting team strengths, technical skill gaps, and custom training recommendations.",
       features: [
         "Measure execution capability across 10+ core technologies",
@@ -180,7 +180,7 @@ export default function Corporates() {
               <h1 className="font-serif-display font-normal text-4xl leading-[1.12] tracking-tight md:text-5xl lg:text-6xl text-[#111111]">
                 Sourcing Vetted
                 <br />
-                <span className="text-[#5048E4] italic font-normal">Tech Talent.</span>
+                <span className="text-[#0B25A1] italic font-normal">Tech Talent.</span>
               </h1>
 
               {/* Sub-headline */}
@@ -238,7 +238,7 @@ export default function Corporates() {
 
             {/* Right Hero Interactive Showcase */}
             <div className="lg:col-span-6 bg-slate-50 border border-slate-200 rounded-2xl p-6 shadow-sm relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-[#5048E4]/5 rounded-full blur-3xl -z-10" />
+              <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-[#0B25A1]/5 rounded-full blur-3xl -z-10" />
               
               <div className="flex items-center justify-between border-b border-slate-200 pb-3 mb-4">
                 <div className="flex items-center gap-2">
@@ -261,7 +261,7 @@ export default function Corporates() {
                     onClick={() => setSearchQuery(query)}
                     className={`text-[10px] px-3 py-1 rounded-full border transition-all cursor-pointer font-bold ${
                       searchQuery === query
-                        ? "bg-[#5048E4] border-[#5048E4] text-white"
+                        ? "bg-[#0B25A1] border-[#0B25A1] text-white"
                         : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"
                     }`}
                   >
@@ -295,8 +295,8 @@ export default function Corporates() {
                         }}
                         className={`p-3 border rounded-xl shadow-3xs transition-all duration-200 cursor-pointer flex items-center justify-between ${
                           selectedCandidate?.name === cand.name
-                            ? "bg-white border-[#5048E4] scale-[1.01] shadow-xs"
-                            : "bg-white border-slate-150 hover:border-indigo-200"
+                            ? "bg-white border-[#0B25A1] scale-[1.01] shadow-xs"
+                            : "bg-white border-slate-150 hover:border-blue-200"
                         }`}
                       >
                         <div className="flex items-center gap-2.5">
@@ -309,7 +309,7 @@ export default function Corporates() {
                           </div>
                         </div>
                         <div className="text-right">
-                          <div className="text-[10px] font-bold font-mono text-[#5048E4] bg-[#5048E4]/5 px-1.5 py-0.5 rounded border border-[#5048E4]/10">
+                          <div className="text-[10px] font-bold font-mono text-[#0B25A1] bg-[#0B25A1]/5 px-1.5 py-0.5 rounded border border-[#0B25A1]/10">
                             {cand.score}
                           </div>
                         </div>
@@ -415,7 +415,7 @@ export default function Corporates() {
           
           {/* Section Header */}
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <span className="font-mono text-xs text-[#5048E4] bg-[#5048E4]/5 px-3 py-1 rounded-md font-bold uppercase tracking-wider border border-[#5048E4]/10">
+            <span className="font-mono text-xs text-[#0B25A1] bg-[#0B25A1]/5 px-3 py-1 rounded-md font-bold uppercase tracking-wider border border-[#0B25A1]/10">
               Product Suite
             </span>
             <h2 className="font-display font-bold text-3xl md:text-5xl text-[#0F294A] mt-4 mb-4">
@@ -458,7 +458,7 @@ export default function Corporates() {
                 {/* Product Text details */}
                 <div className="md:col-span-7 flex flex-col justify-between space-y-6">
                   <div className="space-y-4">
-                    <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#5048E4]">
+                    <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#0B25A1]">
                       {activeProduct.icon}
                       <span>{activeProduct.subtitle}</span>
                     </div>
@@ -492,7 +492,7 @@ export default function Corporates() {
                   <div className="pt-6">
                     <a
                       href="#book-demo"
-                      className="w-full py-2.5 bg-[#5048E4] hover:bg-[#4038c4] text-white text-center font-sans font-bold text-xs rounded-lg transition-colors flex items-center justify-center gap-1.5 shadow-sm shadow-[#5048E4]/10"
+                      className="w-full py-2.5 bg-[#0B25A1] hover:bg-[#081E85] text-white text-center font-sans font-bold text-xs rounded-lg transition-colors flex items-center justify-center gap-1.5 shadow-sm shadow-[#0B25A1]/10"
                     >
                       Inquire About {activeProduct.title} <ArrowRight size={12} />
                     </a>
@@ -516,7 +516,7 @@ export default function Corporates() {
               <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 shadow-3xs space-y-4">
                 <div className="flex items-center justify-between border-b border-slate-200 pb-3">
                   <div className="flex items-center gap-2">
-                    <EyeOff size={16} className="text-[#5048E4]" />
+                    <EyeOff size={16} className="text-[#0B25A1]" />
                     <span className="text-xs font-bold text-slate-800">Blind Sourcing Mode Active</span>
                   </div>
                   <span className="text-[10px] bg-slate-900 text-white px-2 py-0.5 rounded-full font-bold">Standard Security</span>
@@ -541,7 +541,7 @@ export default function Corporates() {
                   <div className="grid grid-cols-3 gap-2 border-y border-slate-100 py-2.5 text-center">
                     <div>
                       <span className="text-[8px] text-slate-405 text-slate-400 block font-mono">Workmark Score</span>
-                      <strong className="text-xs font-bold text-[#5048E4]">872</strong>
+                      <strong className="text-xs font-bold text-[#0B25A1]">872</strong>
                     </div>
                     <div>
                       <span className="text-[8px] text-slate-405 text-slate-400 block font-mono">Verified Commits</span>
@@ -582,7 +582,7 @@ export default function Corporates() {
               
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <div className="w-8 h-8 rounded bg-indigo-50 text-[#5048E4] flex items-center justify-center shrink-0 mt-1">
+                  <div className="w-8 h-8 rounded bg-blue-50 text-[#0B25A1] flex items-center justify-center shrink-0 mt-1">
                     <Database size={16} />
                   </div>
                   <div>
@@ -594,7 +594,7 @@ export default function Corporates() {
                 </div>
 
                 <div className="flex gap-3">
-                  <div className="w-8 h-8 rounded bg-indigo-50 text-[#5048E4] flex items-center justify-center shrink-0 mt-1">
+                  <div className="w-8 h-8 rounded bg-blue-50 text-[#0B25A1] flex items-center justify-center shrink-0 mt-1">
                     <EyeOff size={16} />
                   </div>
                   <div>
@@ -606,7 +606,7 @@ export default function Corporates() {
                 </div>
 
                 <div className="flex gap-3">
-                  <div className="w-8 h-8 rounded bg-indigo-50 text-[#5048E4] flex items-center justify-center shrink-0 mt-1">
+                  <div className="w-8 h-8 rounded bg-blue-50 text-[#0B25A1] flex items-center justify-center shrink-0 mt-1">
                     <FileCheck size={16} />
                   </div>
                   <div>
@@ -627,7 +627,7 @@ export default function Corporates() {
       <section id="book-demo" className="py-20 bg-slate-50 border-b border-slate-100">
         <div className="container max-w-4xl mx-auto px-6 text-center">
           <div className="bg-white border border-slate-200 rounded-2xl p-8 md:p-12 shadow-md max-w-3xl mx-auto space-y-8 relative overflow-hidden">
-            <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-indigo-500 to-[#5048E4]"></div>
+            <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-blue-500 to-[#0B25A1]"></div>
 
             <div className="max-w-xl mx-auto space-y-3">
               <h2 className="text-2xl md:text-4xl font-display font-bold text-slate-900">
@@ -659,7 +659,7 @@ export default function Corporates() {
                   <input
                     type="text"
                     required
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:bg-white focus:border-[#5048E4] focus:outline-none transition-colors"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:bg-white focus:border-[#0B25A1] focus:outline-none transition-colors"
                     placeholder="Enter full name"
                   />
                 </div>
@@ -668,7 +668,7 @@ export default function Corporates() {
                   <input
                     type="email"
                     required
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:bg-white focus:border-[#5048E4] focus:outline-none transition-colors"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:bg-white focus:border-[#0B25A1] focus:outline-none transition-colors"
                     placeholder="name@company.com"
                   />
                 </div>
@@ -677,14 +677,14 @@ export default function Corporates() {
                   <input
                     type="text"
                     required
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:bg-white focus:border-[#5048E4] focus:outline-none transition-colors"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:bg-white focus:border-[#0B25A1] focus:outline-none transition-colors"
                     placeholder="Enter company name"
                   />
                 </div>
                 <div className="space-y-1.5">
                   <label className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider block">Sourcing Interest</label>
                   <select
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:bg-white focus:border-[#5048E4] focus:outline-none transition-colors appearance-none"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:bg-white focus:border-[#0B25A1] focus:outline-none transition-colors appearance-none"
                   >
                     <option value="screening">AI Screening Sprints</option>
                     <option value="sprints">Sourced Hiring Sprints</option>
@@ -696,7 +696,7 @@ export default function Corporates() {
                   <label className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider block">Additional Details</label>
                   <textarea
                     rows={3}
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:bg-white focus:border-[#5048E4] focus:outline-none transition-colors resize-none"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:bg-white focus:border-[#0B25A1] focus:outline-none transition-colors resize-none"
                     placeholder="Let us know what roles or technologies you are hiring for..."
                   />
                 </div>
@@ -717,7 +717,7 @@ export default function Corporates() {
                     </a>
                     <button
                       type="submit"
-                      className="px-6 py-2.5 bg-[#5048E4] hover:bg-[#4038c4] text-white text-xs font-bold rounded-lg transition-colors flex items-center justify-center gap-1.5 shadow-sm border-none cursor-pointer"
+                      className="px-6 py-2.5 bg-[#0B25A1] hover:bg-[#081E85] text-white text-xs font-bold rounded-lg transition-colors flex items-center justify-center gap-1.5 shadow-sm border-none cursor-pointer"
                     >
                       Send Request <Send size={12} />
                     </button>

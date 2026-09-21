@@ -144,7 +144,7 @@ export default function Platform() {
             </div>
 
             <div className="p-6 bg-slate-50 border border-slate-200 rounded-md text-center">
-              <div className="w-10 h-10 mx-auto bg-indigo-50 rounded-md flex items-center justify-center text-indigo-600 mb-4">
+              <div className="w-10 h-10 mx-auto bg-blue-50 rounded-md flex items-center justify-center text-[#0B25A1] mb-4">
                 <GitBranch size={20} />
               </div>
               <h4 className="text-base font-bold text-slate-900 mb-2">Code Repository Sync</h4>

@@ -51,7 +51,7 @@ export default function Benefits() {
           {benefits.map((b) => (
             <GlowCard key={b.titleMain} accent={b.accent} className="p-7">
               <h3 className="font-display font-bold text-xl text-foreground mb-3">
-                {b.titlePrefix} <span className="font-serif-display text-[2.00em] text-[#5048E4] italic font-normal leading-none inline-block align-baseline ml-1">{b.titleMain}</span>
+                {b.titlePrefix} <span className="font-serif-display text-[2.00em] text-[#0B25A1] italic font-normal leading-none inline-block align-baseline ml-1">{b.titleMain}</span>
               </h3>
               <p className="font-body text-text-secondary text-[15px] leading-relaxed mb-4">{b.body}</p>
               <span className="inline-block px-3 py-1.5 rounded-full text-xs font-medium bg-white text-black border border-black">{b.chip}</span>

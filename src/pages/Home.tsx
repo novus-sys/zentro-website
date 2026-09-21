@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -18,6 +18,9 @@ import {
 } from "lucide-react";
 
 export default function Home() {
+  // Active product card index for mobile scroll viewport highlighting
+  const [activeCardIndex, setActiveCardIndex] = useState<number | null>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // Scroll to hash on load
   useEffect(() => {
@@ -33,6 +36,46 @@ export default function Home() {
         }
       }, 150);
     }
+  }, []);
+
+  // Monitor scroll position on mobile to highlight the card currently centered in the viewport
+  useEffect(() => {
+    const handleScroll = () => {
+      // On desktop (lg breakpoint >= 1024px), hover is handled natively by CSS mouse events
+      if (window.innerWidth >= 1024) {
+        setActiveCardIndex(null);
+        return;
+      }
+
+      const viewportCenter = window.innerHeight / 2;
+      let closestIndex: number | null = null;
+      let minDistance = Infinity;
+
+      cardRefs.current.forEach((card, idx) => {
+        if (!card) return;
+        const rect = card.getBoundingClientRect();
+        // Only consider the card if it is visible on screen
+        if (rect.bottom > 80 && rect.top < window.innerHeight - 80) {
+          const cardCenter = rect.top + rect.height / 2;
+          const distance = Math.abs(viewportCenter - cardCenter);
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestIndex = idx;
+          }
+        }
+      });
+
+      setActiveCardIndex(closestIndex);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   return (
@@ -131,9 +174,22 @@ export default function Home() {
           {/* 3 Standalone Product Cards (Non-Pipeline Grid) */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
             {/* 1. Workmark Card */}
-            <div className="flex flex-col justify-between bg-slate-50/70 hover:bg-white border border-slate-200 hover:border-[#0B25A1]/40 rounded-2xl p-5 sm:p-7 transition-all duration-200 hover:shadow-xl group relative overflow-hidden">
+            <div
+              ref={(el) => (cardRefs.current[0] = el)}
+              className={`flex flex-col justify-between rounded-2xl p-5 sm:p-7 transition-all duration-300 group relative overflow-hidden ${
+                activeCardIndex === 0
+                  ? "bg-white border border-[#0B25A1] shadow-xl ring-1 ring-[#0B25A1]/20"
+                  : "bg-slate-50/70 hover:bg-white border border-slate-200 hover:border-[#0B25A1]/40 hover:shadow-xl"
+              }`}
+            >
               {/* Watermark numbering */}
-              <span className="absolute top-3 right-4 sm:top-4 sm:right-5 text-5xl sm:text-6xl md:text-7xl font-display font-extrabold text-slate-300/70 group-hover:text-[#0B25A1]/20 transition-colors select-none pointer-events-none leading-none">
+              <span
+                className={`absolute top-3 right-4 sm:top-4 sm:right-5 text-5xl sm:text-6xl md:text-7xl font-display font-extrabold select-none pointer-events-none leading-none transition-colors ${
+                  activeCardIndex === 0
+                    ? "text-[#0B25A1]/20"
+                    : "text-slate-300/70 group-hover:text-[#0B25A1]/20"
+                }`}
+              >
                 01
               </span>
 
@@ -145,7 +201,13 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
-                  <h3 className="text-xl sm:text-2xl font-display font-bold text-slate-900 group-hover:text-[#0B25A1] transition-colors">
+                  <h3
+                    className={`text-xl sm:text-2xl font-display font-bold transition-colors ${
+                      activeCardIndex === 0
+                        ? "text-[#0B25A1]"
+                        : "text-slate-900 group-hover:text-[#0B25A1]"
+                    }`}
+                  >
                     Workmark
                   </h3>
                 </div>
@@ -174,16 +236,33 @@ export default function Home() {
 
               <Link
                 to="/products/workmark"
-                className="w-full py-2.5 sm:py-3 px-4 rounded-xl bg-white group-hover:bg-[#0B25A1] border border-slate-200 group-hover:border-[#0B25A1] text-slate-800 group-hover:text-white font-sans font-bold text-xs transition-all flex items-center justify-center gap-2 shadow-xs relative z-10"
+                className={`w-full py-2.5 sm:py-3 px-4 rounded-xl font-sans font-bold text-xs transition-all flex items-center justify-center gap-2 relative z-10 ${
+                  activeCardIndex === 0
+                    ? "bg-[#0B25A1] border border-[#0B25A1] text-white shadow-md"
+                    : "bg-white group-hover:bg-[#0B25A1] border border-slate-200 group-hover:border-[#0B25A1] text-slate-800 group-hover:text-white shadow-xs"
+                }`}
               >
                 Explore Workmark <ArrowRight size={14} />
               </Link>
             </div>
 
             {/* 2. Vyoma Card */}
-            <div className="flex flex-col justify-between bg-slate-50/70 hover:bg-white border border-slate-200 hover:border-[#0B25A1]/40 rounded-2xl p-5 sm:p-7 transition-all duration-200 hover:shadow-xl group relative overflow-hidden">
+            <div
+              ref={(el) => (cardRefs.current[1] = el)}
+              className={`flex flex-col justify-between rounded-2xl p-5 sm:p-7 transition-all duration-300 group relative overflow-hidden ${
+                activeCardIndex === 1
+                  ? "bg-white border border-[#0B25A1] shadow-xl ring-1 ring-[#0B25A1]/20"
+                  : "bg-slate-50/70 hover:bg-white border border-slate-200 hover:border-[#0B25A1]/40 hover:shadow-xl"
+              }`}
+            >
               {/* Watermark numbering */}
-              <span className="absolute top-3 right-4 sm:top-4 sm:right-5 text-5xl sm:text-6xl md:text-7xl font-display font-extrabold text-slate-300/70 group-hover:text-[#0B25A1]/20 transition-colors select-none pointer-events-none leading-none">
+              <span
+                className={`absolute top-3 right-4 sm:top-4 sm:right-5 text-5xl sm:text-6xl md:text-7xl font-display font-extrabold select-none pointer-events-none leading-none transition-colors ${
+                  activeCardIndex === 1
+                    ? "text-[#0B25A1]/20"
+                    : "text-slate-300/70 group-hover:text-[#0B25A1]/20"
+                }`}
+              >
                 02
               </span>
 
@@ -195,7 +274,13 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
-                  <h3 className="text-xl sm:text-2xl font-display font-bold text-slate-900 group-hover:text-[#0B25A1] transition-colors">
+                  <h3
+                    className={`text-xl sm:text-2xl font-display font-bold transition-colors ${
+                      activeCardIndex === 1
+                        ? "text-[#0B25A1]"
+                        : "text-slate-900 group-hover:text-[#0B25A1]"
+                    }`}
+                  >
                     Vyoma
                   </h3>
                 </div>
@@ -224,16 +309,33 @@ export default function Home() {
 
               <Link
                 to="/products/vyoma"
-                className="w-full py-2.5 sm:py-3 px-4 rounded-xl bg-white group-hover:bg-[#0B25A1] border border-slate-200 group-hover:border-[#0B25A1] text-slate-800 group-hover:text-white font-sans font-bold text-xs transition-all flex items-center justify-center gap-2 shadow-xs relative z-10"
+                className={`w-full py-2.5 sm:py-3 px-4 rounded-xl font-sans font-bold text-xs transition-all flex items-center justify-center gap-2 relative z-10 ${
+                  activeCardIndex === 1
+                    ? "bg-[#0B25A1] border border-[#0B25A1] text-white shadow-md"
+                    : "bg-white group-hover:bg-[#0B25A1] border border-slate-200 group-hover:border-[#0B25A1] text-slate-800 group-hover:text-white shadow-xs"
+                }`}
               >
                 Explore Vyoma <ArrowRight size={14} />
               </Link>
             </div>
 
             {/* 3. Vega Card */}
-            <div className="flex flex-col justify-between bg-slate-50/70 hover:bg-white border border-slate-200 hover:border-[#0B25A1]/40 rounded-2xl p-5 sm:p-7 transition-all duration-200 hover:shadow-xl group relative overflow-hidden">
+            <div
+              ref={(el) => (cardRefs.current[2] = el)}
+              className={`flex flex-col justify-between rounded-2xl p-5 sm:p-7 transition-all duration-300 group relative overflow-hidden ${
+                activeCardIndex === 2
+                  ? "bg-white border border-[#0B25A1] shadow-xl ring-1 ring-[#0B25A1]/20"
+                  : "bg-slate-50/70 hover:bg-white border border-slate-200 hover:border-[#0B25A1]/40 hover:shadow-xl"
+              }`}
+            >
               {/* Watermark numbering */}
-              <span className="absolute top-3 right-4 sm:top-4 sm:right-5 text-5xl sm:text-6xl md:text-7xl font-display font-extrabold text-slate-300/70 group-hover:text-[#0B25A1]/20 transition-colors select-none pointer-events-none leading-none">
+              <span
+                className={`absolute top-3 right-4 sm:top-4 sm:right-5 text-5xl sm:text-6xl md:text-7xl font-display font-extrabold select-none pointer-events-none leading-none transition-colors ${
+                  activeCardIndex === 2
+                    ? "text-[#0B25A1]/20"
+                    : "text-slate-300/70 group-hover:text-[#0B25A1]/20"
+                }`}
+              >
                 03
               </span>
 
@@ -245,7 +347,13 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
-                  <h3 className="text-xl sm:text-2xl font-display font-bold text-slate-900 group-hover:text-[#0B25A1] transition-colors">
+                  <h3
+                    className={`text-xl sm:text-2xl font-display font-bold transition-colors ${
+                      activeCardIndex === 2
+                        ? "text-[#0B25A1]"
+                        : "text-slate-900 group-hover:text-[#0B25A1]"
+                    }`}
+                  >
                     Vega
                   </h3>
                 </div>
@@ -274,7 +382,11 @@ export default function Home() {
 
               <Link
                 to="/products/vega"
-                className="w-full py-2.5 sm:py-3 px-4 rounded-xl bg-white group-hover:bg-[#0B25A1] border border-slate-200 group-hover:border-[#0B25A1] text-slate-800 group-hover:text-white font-sans font-bold text-xs transition-all flex items-center justify-center gap-2 shadow-xs relative z-10"
+                className={`w-full py-2.5 sm:py-3 px-4 rounded-xl font-sans font-bold text-xs transition-all flex items-center justify-center gap-2 relative z-10 ${
+                  activeCardIndex === 2
+                    ? "bg-[#0B25A1] border border-[#0B25A1] text-white shadow-md"
+                    : "bg-white group-hover:bg-[#0B25A1] border border-slate-200 group-hover:border-[#0B25A1] text-slate-800 group-hover:text-white shadow-xs"
+                }`}
               >
                 Explore Vega <ArrowRight size={14} />
               </Link>

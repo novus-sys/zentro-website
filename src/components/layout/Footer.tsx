@@ -38,7 +38,7 @@ export default function Footer() {
               <Shield size={12} className="text-blue-600" /> ISO 27001
             </span>
             <span className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-700 rounded-full text-[11px] font-semibold select-none shadow-2xs">
-              <Shield size={12} className="text-purple-600" /> GDPR Compliant
+              <Shield size={12} className="text-[#0B25A1]" /> GDPR Compliant
             </span>
           </div>
         </div>
