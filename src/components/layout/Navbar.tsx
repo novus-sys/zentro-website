@@ -69,6 +69,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 10);
+    handler();
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
@@ -85,7 +86,13 @@ export default function Navbar() {
 
   return (
     <nav
-      className="fixed top-0 inset-x-0 w-full z-50 bg-white"
+      className={`fixed top-0 inset-x-0 w-full z-50 transition-all duration-300 ${
+        mobileOpen
+          ? "bg-white/95 backdrop-blur-xl shadow-lg border-b border-slate-200/60"
+          : scrolled
+          ? "bg-white/75 backdrop-blur-md shadow-xs border-b border-slate-200/50"
+          : "bg-transparent backdrop-blur-none border-b border-transparent shadow-none"
+      }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
         {/* Left Section: Brand Logo + Nav Links clustered together */}
@@ -199,13 +206,13 @@ export default function Navbar() {
             Log In
           </a>
 
-          {/* Request Demo Button (Sharp corners, no rounded) */}
+          {/* Request Demo Button (Sharp corners, glassmorphism) */}
           <a
             href="https://calendly.com/sambramsm28/30min"
             target="_blank"
             rel="noopener noreferrer"
             onMouseEnter={() => handleMenuEnter(null)}
-            className="px-4 py-2 text-sm font-medium text-slate-800 bg-white hover:bg-slate-50 border border-slate-300 rounded-none transition-colors whitespace-nowrap"
+            className="px-4 py-2 text-sm font-medium text-slate-900 bg-white/30 hover:bg-white/50 backdrop-blur-md border border-slate-300/80 hover:border-slate-400 rounded-none transition-all whitespace-nowrap shadow-2xs"
           >
             Request Demo
           </a>
@@ -828,7 +835,7 @@ export default function Navbar() {
                   href="https://calendly.com/sambramsm28/30min"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full block py-2.5 text-center text-xs font-semibold text-slate-800 bg-white border border-slate-300 hover:bg-slate-50 rounded-none"
+                  className="w-full block py-2.5 text-center text-xs font-semibold text-slate-900 bg-white/40 hover:bg-white/60 backdrop-blur-md border border-slate-300/80 rounded-none transition-all"
                 >
                   Request Demo
                 </a>

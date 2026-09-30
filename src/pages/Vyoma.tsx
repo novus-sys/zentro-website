@@ -6,18 +6,22 @@ import {
   FolderTree,
   Eye
 } from "lucide-react";
+import MeshDriftShader from "@/components/ui/MeshDriftShader";
 
 export default function Vyoma() {
   return (
-    <div className="bg-white text-slate-900 min-h-screen pt-20 pb-20 font-body antialiased selection:bg-blue-100 selection:text-blue-900">
+    <div className="bg-white text-slate-900 min-h-screen pb-20 font-body antialiased selection:bg-blue-100 selection:text-blue-900">
       
-      {/* Background Ambience */}
-      <div className="absolute top-0 inset-x-0 h-[650px] bg-gradient-to-b from-slate-50 via-white to-transparent -z-10 pointer-events-none" />
-
       {/* ============================================================ */}
       {/* HERO SECTION - FULL SINGLE FOLD                             */}
       {/* ============================================================ */}
-      <section className="relative min-h-[calc(100vh-80px)] flex flex-col justify-between py-6 md:py-10 px-4 sm:px-8">
+      <section className="relative min-h-screen flex flex-col justify-between pt-24 md:pt-28 pb-8 md:pb-10 px-4 sm:px-8 overflow-hidden">
+        {/* Animated WebGL "Mesh Drift" Shader Background */}
+        <MeshDriftShader className="absolute inset-0 w-full h-full pointer-events-none z-0" />
+        
+        {/* Soft bottom blend to transition smoothly to page content */}
+        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-white via-white/70 to-transparent pointer-events-none z-0" />
+
         {/* Top spacer to balance vertical center */}
         <div className="h-2 md:h-4" />
 
