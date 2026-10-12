@@ -90,11 +90,11 @@ export default function VyomaAIModes() {
   };
 
   return (
-    <section id="assessment-modes" className="relative py-20 sm:py-28 bg-[#0A0A0B] text-[#F5F5F2] font-jakarta border-b border-[#1C1C1E]">
+    <section id="assessment-modes" className="relative py-16 sm:py-20 md:py-28 bg-[#0A0A0B] text-[#F5F5F2] font-jakarta border-b border-[#1C1C1E]">
       <div className="container max-w-[1280px] mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-14 sm:mb-20">
+        <div className="max-w-3xl mb-10 sm:mb-16 md:mb-20">
           <div className="inline-flex items-center gap-2 mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-[#3D5BFF]" />
             <span className="font-mono text-xs uppercase tracking-[0.18em] text-[#60A5FA]">
@@ -102,11 +102,11 @@ export default function VyomaAIModes() {
             </span>
           </div>
 
-          <h2 className="font-jakarta text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-white mb-5 leading-[1.15]">
+          <h2 className="font-jakarta text-2xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-white mb-4 sm:mb-5 leading-[1.15]">
             A real project, a clear brief and a set time limit.
           </h2>
 
-          <p className="font-jakarta text-sm sm:text-base md:text-lg text-white/50 leading-relaxed max-w-2xl">
+          <p className="font-jakarta text-sm sm:text-base md:text-lg text-white/50 leading-relaxed max-w-2xl px-1 sm:px-0">
             The candidate opens a working repository, reads the brief the way work actually arrives, and ships a change that a reviewer could merge.
           </p>
         </div>

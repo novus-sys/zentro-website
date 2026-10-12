@@ -42,23 +42,23 @@ export default function VyomaDiffGrid() {
   ];
 
   return (
-    <section className="relative py-24 sm:py-32 bg-[#0A0A0B] text-[#F5F5F2] font-jakarta border-b border-[#1C1C1E]">
+    <section className="relative py-16 sm:py-24 md:py-32 bg-[#0A0A0B] text-[#F5F5F2] font-jakarta border-b border-[#1C1C1E]">
       <div className="container max-w-[1240px] mx-auto px-4 sm:px-6">
         
         {/* Section Header (Matching Vorflux "Beyond the model" SS) */}
-        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <div className="inline-flex items-center gap-2 mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20">
+          <div className="inline-flex items-center gap-2 mb-3 sm:mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-[#3D5BFF]" />
             <span className="font-mono text-xs uppercase tracking-[0.18em] text-[#60A5FA]">
               WHAT'S DIFFERENT
             </span>
           </div>
 
-          <h2 className="font-jakarta text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-semibold tracking-tight text-white mb-5 leading-[1.08]">
+          <h2 className="font-jakarta text-2xl sm:text-4xl md:text-5xl lg:text-[54px] font-semibold tracking-tight text-white mb-4 sm:mb-5 leading-[1.12]">
             Beyond toy algorithms
           </h2>
 
-          <p className="font-jakarta text-sm sm:text-base md:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
+          <p className="font-jakarta text-sm sm:text-base md:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed px-1 sm:px-0">
             The candidate writes the prompts; our platform verifies whether the engineered solution actually ships to production.
           </p>
         </div>
@@ -70,14 +70,14 @@ export default function VyomaDiffGrid() {
             return (
               <div
                 key={idx}
-                className="p-8 sm:p-10 border-r border-b border-[#2A2A2D] bg-[#0A0A0B] hover:bg-[#0E0E10] transition-colors flex flex-col justify-between min-h-[260px] group"
+                className="p-5 sm:p-8 md:p-10 border-r border-b border-[#2A2A2D] bg-[#0A0A0B] hover:bg-[#0E0E10] transition-colors flex flex-col justify-between min-h-0 sm:min-h-[250px] group"
               >
                 <div>
-                  <div className="text-white/40 group-hover:text-[#60A5FA] transition-colors mb-6">
-                    <Icon size={24} strokeWidth={1.8} />
+                  <div className="text-white/40 group-hover:text-[#60A5FA] transition-colors mb-4 sm:mb-6">
+                    <Icon size={22} className="sm:w-6 sm:h-6" strokeWidth={1.8} />
                   </div>
 
-                  <h3 className="font-mono text-xs font-semibold text-white tracking-[0.12em] uppercase mb-3">
+                  <h3 className="font-mono text-xs font-semibold text-white tracking-[0.12em] uppercase mb-2.5 sm:mb-3">
                     {item.title}
                   </h3>
 

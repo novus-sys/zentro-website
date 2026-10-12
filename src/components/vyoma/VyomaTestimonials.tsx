@@ -24,11 +24,11 @@ export default function VyomaTestimonials() {
   ];
 
   return (
-    <section className="relative py-24 sm:py-32 bg-[#0A0A0B] text-[#F5F5F2] font-jakarta border-b border-[#1C1C1E]">
+    <section className="relative py-16 sm:py-24 md:py-32 bg-[#0A0A0B] text-[#F5F5F2] font-jakarta border-b border-[#1C1C1E]">
       <div className="container max-w-[1240px] mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20">
           <div className="inline-flex items-center gap-2 mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-[#3D5BFF]" />
             <span className="font-mono text-xs uppercase tracking-[0.18em] text-[#60A5FA]">
@@ -36,23 +36,23 @@ export default function VyomaTestimonials() {
             </span>
           </div>
 
-          <h2 className="font-jakarta text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-white mb-5 leading-[1.12]">
+          <h2 className="font-jakarta text-2xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-white mb-4 sm:mb-5 leading-[1.12]">
             Trusted by teams building production software
           </h2>
 
-          <p className="font-jakarta text-sm sm:text-base md:text-lg text-white/50 leading-relaxed max-w-2xl mx-auto">
+          <p className="font-jakarta text-sm sm:text-base md:text-lg text-white/50 leading-relaxed max-w-2xl mx-auto px-1 sm:px-0">
             See how modern engineering organizations evaluate talent in the age of AI.
           </p>
         </div>
 
         {/* 3-Column Testimonial Cards (Vorflux-style) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
           {testimonials.map((item, idx) => (
             <div
               key={idx}
-              className="rounded-2xl border border-[#2A2A2D] bg-[#121214] p-7 sm:p-8 flex flex-col justify-between hover:bg-[#161619] transition-all hover:-translate-y-1 duration-200"
+              className="rounded-2xl border border-[#2A2A2D] bg-[#121214] p-5 sm:p-7 md:p-8 flex flex-col justify-between hover:bg-[#161619] transition-all hover:-translate-y-1 duration-200"
             >
-              <p className="font-jakarta text-sm sm:text-base text-white/80 leading-relaxed mb-8 font-normal italic">
+              <p className="font-jakarta text-xs sm:text-sm md:text-base text-white/80 leading-relaxed mb-6 sm:mb-8 font-normal italic">
                 {item.quote}
               </p>
 

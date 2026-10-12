@@ -873,15 +873,17 @@ export default function Navbar() {
                     <Link
                       to="/products/vyoma"
                       onClick={() => setMobileOpen(false)}
-                      className="block p-2 rounded-lg hover:bg-slate-50 transition-colors"
+                      className={`block p-2 rounded-lg transition-colors ${
+                        isDark ? "hover:bg-white/5" : "hover:bg-slate-50"
+                      }`}
                     >
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-slate-900">Vyoma</span>
-                        <span className="text-[9px] font-medium text-slate-400 uppercase tracking-wider">
+                        <span className={`text-xs font-bold ${isDark ? "text-white" : "text-slate-900"}`}>Vyoma</span>
+                        <span className={`text-[9px] font-medium uppercase tracking-wider ${isDark ? "text-white/40" : "text-slate-400"}`}>
                           Assessments
                         </span>
                       </div>
-                      <div className="text-[11px] text-slate-500 mt-0.5">
+                      <div className={`text-[11px] mt-0.5 ${isDark ? "text-white/50" : "text-slate-500"}`}>
                         Agentic assessment environment on real codebases.
                       </div>
                     </Link>
@@ -890,15 +892,17 @@ export default function Navbar() {
                     <Link
                       to="/products/workmark"
                       onClick={() => setMobileOpen(false)}
-                      className="block p-2 rounded-lg hover:bg-slate-50 transition-colors"
+                      className={`block p-2 rounded-lg transition-colors ${
+                        isDark ? "hover:bg-white/5" : "hover:bg-slate-50"
+                      }`}
                     >
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-slate-900">Workmark</span>
-                        <span className="text-[9px] font-medium text-slate-400 uppercase tracking-wider">
+                        <span className={`text-xs font-bold ${isDark ? "text-white" : "text-slate-900"}`}>Workmark</span>
+                        <span className={`text-[9px] font-medium uppercase tracking-wider ${isDark ? "text-white/40" : "text-slate-400"}`}>
                           Proof of Work
                         </span>
                       </div>
-                      <div className="text-[11px] text-slate-500 mt-0.5">
+                      <div className={`text-[11px] mt-0.5 ${isDark ? "text-white/50" : "text-slate-500"}`}>
                         Verified Git-backed developer credentials & challenges.
                       </div>
                     </Link>
@@ -907,15 +911,17 @@ export default function Navbar() {
                     <Link
                       to="/products/vega"
                       onClick={() => setMobileOpen(false)}
-                      className="block p-2 rounded-lg hover:bg-slate-50 transition-colors"
+                      className={`block p-2 rounded-lg transition-colors ${
+                        isDark ? "hover:bg-white/5" : "hover:bg-slate-50"
+                      }`}
                     >
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-slate-900">Vega</span>
-                        <span className="text-[9px] font-medium text-slate-400 uppercase tracking-wider">
+                        <span className={`text-xs font-bold ${isDark ? "text-white" : "text-slate-900"}`}>Vega</span>
+                        <span className={`text-[9px] font-medium uppercase tracking-wider ${isDark ? "text-white/40" : "text-slate-400"}`}>
                           AI Interviewer
                         </span>
                       </div>
-                      <div className="text-[11px] text-slate-500 mt-0.5">
+                      <div className={`text-[11px] mt-0.5 ${isDark ? "text-white/50" : "text-slate-500"}`}>
                         Autonomous AI technical interviewer adapting in real time.
                       </div>
                     </Link>
@@ -924,15 +930,17 @@ export default function Navbar() {
                     <Link
                       to="/platform"
                       onClick={() => setMobileOpen(false)}
-                      className="block p-2 rounded-lg hover:bg-slate-50 transition-colors"
+                      className={`block p-2 rounded-lg transition-colors ${
+                        isDark ? "hover:bg-white/5" : "hover:bg-slate-50"
+                      }`}
                     >
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-slate-900">Amogha AI</span>
-                        <span className="text-[9px] font-medium text-slate-400 uppercase tracking-wider">
+                        <span className={`text-xs font-bold ${isDark ? "text-white" : "text-slate-900"}`}>Amogha AI</span>
+                        <span className={`text-[9px] font-medium uppercase tracking-wider ${isDark ? "text-white/40" : "text-slate-400"}`}>
                           Engine Core
                         </span>
                       </div>
-                      <div className="text-[11px] text-slate-500 mt-0.5">
+                      <div className={`text-[11px] mt-0.5 ${isDark ? "text-white/50" : "text-slate-500"}`}>
                         Unified platform intelligence layer powering assessments.
                       </div>
                     </Link>
@@ -941,12 +949,14 @@ export default function Navbar() {
               </div>
 
               {/* Solutions Mobile Accordion */}
-              <div className="border-b border-slate-100 pb-4">
+              <div className={`border-b ${isDark ? "border-white/10" : "border-slate-100"} pb-4`}>
                 <button
                   onClick={() =>
                     setMobileAccordion(mobileAccordion === "solutions" ? null : "solutions")
                   }
-                  className="w-full flex items-center justify-between text-sm font-bold text-slate-900 py-1"
+                  className={`w-full flex items-center justify-between text-sm font-bold py-1 ${
+                    isDark ? "text-white" : "text-slate-900"
+                  }`}
                 >
                   <span>Solutions</span>
                   <ChevronDown
@@ -960,28 +970,28 @@ export default function Navbar() {
                     <Link
                       to="/corporates#ai-screening"
                       onClick={() => setMobileOpen(false)}
-                      className="block py-1 text-slate-700 hover:text-black"
+                      className={`block py-1 ${isDark ? "text-white/70 hover:text-white" : "text-slate-700 hover:text-black"}`}
                     >
                       AI-Fluent Developer Hiring
                     </Link>
                     <Link
                       to="/corporates#campus-sourcing"
                       onClick={() => setMobileOpen(false)}
-                      className="block py-1 text-slate-700 hover:text-black"
+                      className={`block py-1 ${isDark ? "text-white/70 hover:text-white" : "text-slate-700 hover:text-black"}`}
                     >
                       Campus Talent Sourcing
                     </Link>
                     <Link
                       to="/corporates#screening"
                       onClick={() => setMobileOpen(false)}
-                      className="block py-1 text-slate-700 hover:text-black"
+                      className={`block py-1 ${isDark ? "text-white/70 hover:text-white" : "text-slate-700 hover:text-black"}`}
                     >
                       Pre-Employment Screening
                     </Link>
                     <Link
                       to="/universities"
                       onClick={() => setMobileOpen(false)}
-                      className="block py-1 text-indigo-600 font-bold hover:text-indigo-800"
+                      className={`block py-1 font-bold ${isDark ? "text-[#60A5FA] hover:text-white" : "text-indigo-600 hover:text-indigo-800"}`}
                     >
                       For Universities & TPOs
                     </Link>
@@ -990,12 +1000,14 @@ export default function Navbar() {
               </div>
 
               {/* Resources Mobile Accordion */}
-              <div className="border-b border-slate-100 pb-4">
+              <div className={`border-b ${isDark ? "border-white/10" : "border-slate-100"} pb-4`}>
                 <button
                   onClick={() =>
                     setMobileAccordion(mobileAccordion === "resources" ? null : "resources")
                   }
-                  className="w-full flex items-center justify-between text-sm font-bold text-slate-900 py-1"
+                  className={`w-full flex items-center justify-between text-sm font-bold py-1 ${
+                    isDark ? "text-white" : "text-slate-900"
+                  }`}
                 >
                   <span>Resources</span>
                   <ChevronDown
@@ -1006,27 +1018,27 @@ export default function Navbar() {
 
                 {mobileAccordion === "resources" && (
                   <div className="mt-3 pl-2 space-y-2 text-xs">
-                    <div className="p-1.5 rounded-lg hover:bg-slate-50">
-                      <div className="font-bold text-slate-900">AI Developer Skills Report 2026</div>
-                      <div className="text-[11px] text-slate-500 mt-0.5">
+                    <div className={`p-1.5 rounded-lg ${isDark ? "hover:bg-white/5" : "hover:bg-slate-50"}`}>
+                      <div className={`font-bold ${isDark ? "text-white" : "text-slate-900"}`}>AI Developer Skills Report 2026</div>
+                      <div className={`text-[11px] mt-0.5 ${isDark ? "text-white/50" : "text-slate-500"}`}>
                         Annual data on developer AI fluency & code quality.
                       </div>
                     </div>
-                    <div className="p-1.5 rounded-lg hover:bg-slate-50">
-                      <div className="font-bold text-slate-900">ATS & Tool Integrations</div>
-                      <div className="text-[11px] text-slate-500 mt-0.5">
+                    <div className={`p-1.5 rounded-lg ${isDark ? "hover:bg-white/5" : "hover:bg-slate-50"}`}>
+                      <div className={`font-bold ${isDark ? "text-white" : "text-slate-900"}`}>ATS & Tool Integrations</div>
+                      <div className={`text-[11px] mt-0.5 ${isDark ? "text-white/50" : "text-slate-500"}`}>
                         Greenhouse, Lever, and Workday integrations.
                       </div>
                     </div>
-                    <div className="p-1.5 rounded-lg hover:bg-slate-50">
-                      <div className="font-bold text-slate-900">Trust & Security Center</div>
-                      <div className="text-[11px] text-slate-500 mt-0.5">
+                    <div className={`p-1.5 rounded-lg ${isDark ? "hover:bg-white/5" : "hover:bg-slate-50"}`}>
+                      <div className={`font-bold ${isDark ? "text-white" : "text-slate-900"}`}>Trust & Security Center</div>
+                      <div className={`text-[11px] mt-0.5 ${isDark ? "text-white/50" : "text-slate-500"}`}>
                         SOC 2 Type II, ISO 27001, and GDPR compliant.
                       </div>
                     </div>
-                    <div className="p-1.5 rounded-lg hover:bg-slate-50">
-                      <div className="font-bold text-slate-900">Customer Case Studies</div>
-                      <div className="text-[11px] text-slate-500 mt-0.5">
+                    <div className={`p-1.5 rounded-lg ${isDark ? "hover:bg-white/5" : "hover:bg-slate-50"}`}>
+                      <div className={`font-bold ${isDark ? "text-white" : "text-slate-900"}`}>Customer Case Studies</div>
+                      <div className={`text-[11px] mt-0.5 ${isDark ? "text-white/50" : "text-slate-500"}`}>
                         How companies hire pre-vetted engineers with zero bias.
                       </div>
                     </div>
@@ -1039,14 +1051,14 @@ export default function Navbar() {
                 <Link
                   to="/pricing"
                   onClick={() => setMobileOpen(false)}
-                  className="text-slate-800 hover:text-black py-1"
+                  className={`py-1 ${isDark ? "text-white/80 hover:text-white" : "text-slate-800 hover:text-black"}`}
                 >
                   Pricing
                 </Link>
                 <Link
                   to="/products/workmark"
                   onClick={() => setMobileOpen(false)}
-                  className="text-blue-600 hover:text-blue-700 py-1 flex items-center justify-between font-bold"
+                  className={`py-1 flex items-center justify-between font-bold ${isDark ? "text-[#60A5FA] hover:text-white" : "text-blue-600 hover:text-blue-700"}`}
                 >
                   <span>For Candidates</span>
                   <ChevronRight size={16} />
@@ -1054,12 +1066,16 @@ export default function Navbar() {
               </div>
 
               {/* Mobile Actions */}
-              <div className="pt-4 border-t border-slate-100 space-y-2.5">
+              <div className={`pt-4 border-t ${isDark ? "border-white/10" : "border-slate-100"} space-y-2.5`}>
                 <a
                   href="https://auth.zentrosuite.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full block py-2.5 text-center text-xs font-semibold text-slate-800 bg-white border border-slate-300 hover:bg-slate-50 rounded-full"
+                  className={`w-full block py-2.5 text-center text-xs font-semibold rounded-full transition-all ${
+                    isDark
+                      ? "text-white bg-white/10 border border-white/15 hover:bg-white/20"
+                      : "text-slate-800 bg-white border border-slate-300 hover:bg-slate-50"
+                  }`}
                 >
                   Log In
                 </a>
@@ -1068,7 +1084,11 @@ export default function Navbar() {
                   data-cal-link="sambram-k-s/30min"
                   data-cal-namespace="30min"
                   data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
-                  className="w-full block py-2.5 text-center text-xs font-semibold text-slate-900 bg-white/40 hover:bg-white/60 backdrop-blur-md border border-slate-300/80 rounded-full transition-all cursor-pointer"
+                  className={`w-full block py-2.5 text-center text-xs font-semibold rounded-full transition-all cursor-pointer ${
+                    isDark
+                      ? "text-[#0A0A0B] bg-[#F5F5F2] hover:bg-white"
+                      : "text-slate-900 bg-white/40 hover:bg-white/60 backdrop-blur-md border border-slate-300/80"
+                  }`}
                 >
                   Request Demo
                 </button>
@@ -1076,7 +1096,11 @@ export default function Navbar() {
                   href="https://auth.zentrosuite.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full block py-2.5 text-center text-xs font-semibold text-white bg-black hover:bg-neutral-800 rounded-full"
+                  className={`w-full block py-2.5 text-center text-xs font-semibold rounded-full transition-all ${
+                    isDark
+                      ? "text-white bg-[#3D5BFF] hover:bg-[#324CD6]"
+                      : "text-white bg-black hover:bg-neutral-800"
+                  }`}
                 >
                   Create a free account
                 </a>

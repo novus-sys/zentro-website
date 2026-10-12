@@ -3,29 +3,29 @@ import { ArrowRight, ExternalLink, Sparkles } from "lucide-react";
 
 export default function VyomaHero() {
   return (
-    <section className="relative pt-32 sm:pt-36 md:pt-40 pb-20 md:pb-28 overflow-hidden bg-[#000000] text-[#F5F5F2] font-jakarta">
+    <section className="relative pt-24 sm:pt-32 md:pt-40 pb-14 sm:pb-20 md:pb-28 overflow-hidden bg-[#000000] text-[#F5F5F2] font-jakarta">
       {/* Main hero container */}
       <div className="container max-w-[1240px] mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center text-center">
         
         {/* Pill Badge: Vyoma by Zentro logo (pure white, clean, no AI-ish effects) */}
-        <div className="mb-8 md:mb-10 inline-flex items-center">
+        <div className="mb-6 sm:mb-8 md:mb-10 inline-flex items-center">
           <Link
             to="/"
-            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-md hover:bg-white/[0.08] hover:border-white/20 transition-all duration-200 group shadow-lg shadow-black/40"
+            className="inline-flex items-center gap-2.5 px-3.5 sm:px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-md hover:bg-white/[0.08] hover:border-white/20 transition-all duration-200 group shadow-lg shadow-black/40"
           >
-            <span className="text-[13px] md:text-sm font-medium text-white/80 group-hover:text-white tracking-tight transition-colors">
+            <span className="text-[12px] sm:text-[13px] md:text-sm font-medium text-white/80 group-hover:text-white tracking-tight transition-colors">
               Vyoma by
             </span>
             <img
               src={`${import.meta.env.BASE_URL}zentro_black_logo-removebg-preview.png`}
               alt="Zentro"
-              className="h-[17px] md:h-[19px] w-auto object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity"
+              className="h-[15px] sm:h-[17px] md:h-[19px] w-auto object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity"
             />
           </Link>
         </div>
 
         {/* Main Editorial Headline (Hero text keeps the Instrument Serif display font, pure white) */}
-        <h1 className="font-serif-display font-normal text-[46px] leading-[1.08] tracking-tight sm:text-6xl md:text-7xl lg:text-[84px] lg:leading-[92px] mb-7 text-white max-w-5xl mx-auto">
+        <h1 className="font-serif-display font-normal text-[32px] sm:text-5xl md:text-7xl lg:text-[84px] leading-[1.1] sm:leading-[1.08] lg:leading-[92px] tracking-tight mb-5 sm:mb-7 text-white max-w-5xl mx-auto px-1 sm:px-0">
           Hire AI-Fluent Developers for
           <br />
           <span className="text-white italic font-normal">
@@ -34,13 +34,13 @@ export default function VyomaHero() {
         </h1>
 
         {/* Subhead in Plus Jakarta Sans (Balanced 2-line layout) */}
-        <p className="font-jakarta font-normal text-white/60 text-[14px] sm:text-[15px] md:text-base max-w-3xl mx-auto leading-relaxed mb-10">
+        <p className="font-jakarta font-normal text-white/60 text-[13.5px] sm:text-[15px] md:text-base max-w-3xl mx-auto leading-relaxed mb-8 sm:mb-10 px-1 sm:px-0">
           Evaluate developers on realistic repos, not algorithmic puzzles. Banning AI is broken —<br className="hidden sm:inline" />{" "}
           observe how engineers decompose tasks, write prompts, and audit diffs on production codebases.
         </p>
 
         {/* Primary Call to Action buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-16 sm:mb-20 w-full sm:w-auto">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-3.5 mb-12 sm:mb-16 md:mb-20 w-full sm:w-auto">
           <button
             type="button"
             data-cal-link="sambram-k-s/30min"

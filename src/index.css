@@ -583,8 +583,8 @@
 
 /* Custom Scrollbar Styling to match Zentro brand blue (#0B25A1) */
 ::-webkit-scrollbar {
-  width: 12px !important;
-  height: 12px !important;
+  width: 10px !important;
+  height: 10px !important;
 }
 
 ::-webkit-scrollbar-track {
@@ -601,6 +601,22 @@
   background: #081E85 !important;
 }
 
+/* Dark Mode Scrollbars for Vyoma & Dark Views */
+.dark ::-webkit-scrollbar-track,
+body.dark ::-webkit-scrollbar-track {
+  background: #070708 !important;
+}
+
+.dark ::-webkit-scrollbar-thumb,
+body.dark ::-webkit-scrollbar-thumb {
+  background: #2a2a2d !important;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover,
+body.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3d3d42 !important;
+}
+
 /* Hide scrollbar buttons (up/down arrows) */
 ::-webkit-scrollbar-button {
   display: none !important;
@@ -614,4 +630,8 @@
     scrollbar-color: #0B25A1 #f1f5f9 !important;
     scrollbar-width: auto !important;
   }
+  html.dark {
+    scrollbar-color: #2a2a2d #070708 !important;
+  }
 }
+

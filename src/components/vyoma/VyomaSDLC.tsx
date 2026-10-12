@@ -64,11 +64,11 @@ export default function VyomaSDLC() {
   ];
 
   return (
-    <section className="relative py-24 sm:py-32 bg-[#070708] text-[#F5F5F2] font-jakarta border-b border-[#1C1C1E]">
+    <section className="relative py-16 sm:py-24 md:py-32 bg-[#070708] text-[#F5F5F2] font-jakarta border-b border-[#1C1C1E]">
       <div className="container max-w-[1240px] mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16 sm:mb-20">
+        <div className="max-w-3xl mb-12 sm:mb-16 md:mb-20">
           <div className="inline-flex items-center gap-2 mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-[#3D5BFF]" />
             <span className="font-mono text-xs uppercase tracking-[0.18em] text-[#60A5FA]">
@@ -76,30 +76,30 @@ export default function VyomaSDLC() {
             </span>
           </div>
 
-          <h2 className="font-jakarta text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-white mb-5 leading-[1.12]">
+          <h2 className="font-jakarta text-2xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-white mb-4 sm:mb-5 leading-[1.12]">
             Simulate the entire engineering lifecycle.
           </h2>
 
-          <p className="font-jakarta text-sm sm:text-base md:text-lg text-white/50 leading-relaxed max-w-2xl">
+          <p className="font-jakarta text-sm sm:text-base md:text-lg text-white/50 leading-relaxed max-w-2xl px-1 sm:px-0">
             From repo checkout to merged pull request. See how your candidate works across all five phases.
           </p>
         </div>
 
-        {/* Phase Selector Tabs */}
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-10 pb-4 border-b border-[#2A2A2D]">
+        {/* Phase Selector Tabs (Swipeable on mobile, 5-col grid on desktop) */}
+        <div className="flex overflow-x-auto no-scrollbar sm:grid sm:grid-cols-5 gap-2 mb-8 sm:mb-10 pb-3 sm:pb-4 border-b border-[#2A2A2D] -mx-4 px-4 sm:mx-0 sm:px-0">
           {steps.map((s, idx) => {
             const isActive = currentStep === idx;
             return (
               <button
                 key={idx}
                 onClick={() => setCurrentStep(idx)}
-                className={`text-left relative p-3 pl-4 overflow-hidden rounded-none transition-all ${
+                className={`text-left relative p-2.5 sm:p-3 pl-3.5 sm:pl-4 overflow-hidden rounded-xl sm:rounded-none shrink-0 min-w-[125px] sm:min-w-0 transition-all cursor-pointer ${
                   isActive
                     ? "bg-[#121214] text-white"
                     : "text-white/40 hover:text-white/80 hover:bg-white/[0.02]"
                 }`}
               >
-                {/* Blue indicator line: 100% length on the left with no rounded corners */}
+                {/* Blue indicator line */}
                 {isActive && (
                   <motion.div
                     layoutId="activeSdlcStepIndicator"
@@ -107,7 +107,7 @@ export default function VyomaSDLC() {
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
-                <div className="font-mono text-xs font-semibold text-[#60A5FA] mb-1">
+                <div className="font-mono text-xs font-semibold text-[#60A5FA] mb-0.5 sm:mb-1">
                   {s.index}
                 </div>
                 <div className="text-xs font-medium truncate">
@@ -119,45 +119,45 @@ export default function VyomaSDLC() {
         </div>
 
         {/* 2-Column Interactive Stage (Vorflux SDLC style) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-[#0A0A0B] border border-[#2A2A2D] rounded-2xl p-6 sm:p-10 lg:p-12 shadow-2xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center bg-[#0A0A0B] border border-[#2A2A2D] rounded-xl sm:rounded-2xl p-5 sm:p-8 lg:p-12 shadow-2xl">
           
           {/* Left Column: Stage Details */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-5 space-y-5 sm:space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#3D5BFF]/10 border border-[#3D5BFF]/30 text-xs font-mono text-[#60A5FA]">
               <span>{steps[currentStep].tag}</span>
             </div>
 
-            <h3 className="font-jakarta text-2xl sm:text-3xl font-semibold text-white tracking-tight leading-snug">
+            <h3 className="font-jakarta text-xl sm:text-2xl md:text-3xl font-semibold text-white tracking-tight leading-snug">
               {steps[currentStep].title}
             </h3>
 
-            <p className="font-jakarta text-sm sm:text-base text-white/60 leading-relaxed font-normal">
+            <p className="font-jakarta text-xs sm:text-sm md:text-base text-white/60 leading-relaxed font-normal">
               {steps[currentStep].desc}
             </p>
 
-            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-[#1C1C1E]">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 pt-3 sm:pt-4 border-t border-[#1C1C1E]">
               {steps[currentStep].stats.map((stat, i) => (
-                <div key={i} className="space-y-1">
-                  <div className="text-[11px] font-mono text-white/40 uppercase tracking-wider">
+                <div key={i} className="space-y-0.5 sm:space-y-1">
+                  <div className="text-[10px] sm:text-[11px] font-mono text-white/40 uppercase tracking-wider">
                     {stat.label}
                   </div>
-                  <div className="text-sm font-semibold text-white">
+                  <div className="text-xs sm:text-sm font-semibold text-white">
                     {stat.val}
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="pt-2 flex items-center gap-3">
+            <div className="pt-2 flex flex-wrap items-center gap-2.5 sm:gap-3">
               <button
                 onClick={() => setCurrentStep((prev) => (prev > 0 ? prev - 1 : steps.length - 1))}
-                className="px-3.5 py-1.5 rounded-full border border-white/10 hover:border-white/20 text-xs text-white/60 hover:text-white transition-colors"
+                className="px-3.5 py-1.5 rounded-full border border-white/10 hover:border-white/20 text-xs text-white/60 hover:text-white transition-colors cursor-pointer"
               >
                 ← Previous Phase
               </button>
               <button
                 onClick={() => setCurrentStep((prev) => (prev < steps.length - 1 ? prev + 1 : 0))}
-                className="px-4 py-1.5 rounded-full bg-[#3D5BFF] hover:bg-[#324CD6] text-xs font-semibold text-white transition-colors"
+                className="px-4 py-1.5 rounded-full bg-[#3D5BFF] hover:bg-[#324CD6] text-xs font-semibold text-white transition-colors cursor-pointer"
               >
                 Next Phase →
               </button>

@@ -28,11 +28,11 @@ export default function VyomaFAQ() {
   ];
 
   return (
-    <section className="relative py-24 sm:py-32 bg-[#070708] text-[#F5F5F2] font-jakarta border-b border-[#1C1C1E]">
+    <section className="relative py-16 sm:py-24 md:py-32 bg-[#070708] text-[#F5F5F2] font-jakarta border-b border-[#1C1C1E]">
       <div className="container max-w-[960px] mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 md:mb-20">
           <div className="inline-flex items-center gap-2 mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-[#3D5BFF]" />
             <span className="font-mono text-xs uppercase tracking-[0.18em] text-[#60A5FA]">
@@ -40,11 +40,11 @@ export default function VyomaFAQ() {
             </span>
           </div>
 
-          <h2 className="font-jakarta text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-white mb-5 leading-[1.15]">
+          <h2 className="font-jakarta text-2xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-white mb-4 sm:mb-5 leading-[1.15]">
             The ones hiring teams ask first.
           </h2>
 
-          <p className="font-jakarta text-sm sm:text-base text-white/50 leading-relaxed">
+          <p className="font-jakarta text-sm sm:text-base text-white/50 leading-relaxed px-1 sm:px-0">
             Everything about the round, the AI copilot, and what lands on your desk afterwards.
           </p>
         </div>
@@ -54,25 +54,25 @@ export default function VyomaFAQ() {
           {faqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
-              <div key={idx} className="py-6 sm:py-7">
+              <div key={idx} className="py-4 sm:py-6 md:py-7">
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full flex items-center justify-between text-left group"
+                  className="w-full flex items-center justify-between text-left group cursor-pointer"
                 >
-                  <span className="text-base sm:text-lg font-semibold text-white group-hover:text-[#60A5FA] transition-colors pr-4">
+                  <span className="text-sm sm:text-base md:text-lg font-semibold text-white group-hover:text-[#60A5FA] transition-colors pr-4">
                     {faq.q}
                   </span>
                   <div
-                    className={`w-7 h-7 rounded-full border border-white/10 flex items-center justify-center shrink-0 transition-transform duration-200 ${
+                    className={`w-6 sm:w-7 h-6 sm:h-7 rounded-full border border-white/10 flex items-center justify-center shrink-0 transition-transform duration-200 ${
                       isOpen ? "rotate-180 bg-white/10" : "bg-white/[0.02]"
                     }`}
                   >
-                    <ChevronDown size={15} className="text-white/60" />
+                    <ChevronDown size={14} className="text-white/60" />
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div className="mt-4 pr-8 text-sm sm:text-base text-white/60 leading-relaxed font-normal">
+                  <div className="mt-3 sm:mt-4 pr-4 sm:pr-8 text-xs sm:text-sm md:text-base text-white/60 leading-relaxed font-normal">
                     {faq.a}
                   </div>
                 )}

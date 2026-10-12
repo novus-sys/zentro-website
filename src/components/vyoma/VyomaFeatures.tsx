@@ -53,23 +53,23 @@ export default function VyomaFeatures() {
   ];
 
   return (
-    <section className="relative py-24 sm:py-32 bg-[#0A0A0B] text-[#F5F5F2] font-jakarta border-b border-[#1C1C1E]">
+    <section className="relative py-16 sm:py-24 lg:py-32 bg-[#0A0A0B] text-[#F5F5F2] font-jakarta border-b border-[#1C1C1E]">
       <div className="container max-w-[1240px] mx-auto px-4 sm:px-6">
         
         {/* Eyebrow and Section Header (Vorflux .section-head style) */}
-        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <div className="inline-flex items-center gap-2 mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20">
+          <div className="inline-flex items-center gap-2 mb-3 sm:mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-[#3D5BFF]" />
             <span className="font-mono text-xs uppercase tracking-[0.18em] text-[#60A5FA]">
               HOW VYOMA WORKS
             </span>
           </div>
 
-          <h2 className="font-jakarta text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-semibold tracking-tight text-white mb-5 leading-[1.1]">
+          <h2 className="font-jakarta text-2xl sm:text-4xl md:text-5xl lg:text-[52px] font-semibold tracking-tight text-white mb-4 sm:mb-5 leading-[1.15]">
             From ticket to verified pull request
           </h2>
 
-          <p className="font-jakarta text-sm sm:text-base md:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
+          <p className="font-jakarta text-sm sm:text-base md:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed px-1 sm:px-0">
             One continuous engineering session. Watch how candidates decompose problems, query copilots, and verify edge cases.
           </p>
         </div>
@@ -81,7 +81,7 @@ export default function VyomaFeatures() {
             return (
               <div
                 key={idx}
-                className="group rounded-2xl border border-[#2A2A2D] bg-[#121214] p-5 sm:p-6 flex flex-col justify-between hover:bg-[#151518] hover:border-white/20 transition-all duration-300 shadow-lg shadow-black/40 hover:-translate-y-1"
+                className="group rounded-2xl border border-[#2A2A2D] bg-[#121214] p-4 sm:p-5 md:p-6 flex flex-col justify-between hover:bg-[#151518] hover:border-white/20 transition-all duration-300 shadow-lg shadow-black/40 hover:-translate-y-1"
               >
                 <div>
                   {/* Top Mockup Thumbnail Card */}
