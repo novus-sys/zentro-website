@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -243,6 +243,14 @@
 }
 
 @layer utilities {
+  .font-jakarta {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+  }
+
+  .font-geist {
+    font-family: 'Geist Mono', monospace !important;
+  }
+
   .font-display {
     font-family: 'Plus Jakarta Sans', sans-serif;
   }
@@ -256,7 +264,7 @@
   }
 
   .font-mono {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Geist Mono', 'Inter', monospace;
   }
 
   .text-gradient-blue {

@@ -27,6 +27,7 @@ import NotFound from "./pages/NotFound";
 import CorporateNavbar from "@/components/layout/Navbar";
 import CorporateFooter from "@/components/layout/Footer";
 import LoadingScreen from "@/components/layout/LoadingScreen";
+import { ThemeProvider, useAppTheme } from "./context/ThemeContext";
 
 const queryClient = new QueryClient();
 
@@ -41,8 +42,9 @@ function ScrollToTop() {
 
 // Global corporate layout (Navbar + Footer)
 function CorporateLayout() {
+  const { isDark } = useAppTheme();
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className={`flex flex-col min-h-screen transition-colors duration-300 ${isDark ? "bg-[#060911] text-white" : "bg-white text-slate-900"}`}>
       <CorporateNavbar />
       <main className="flex-1">
         <Outlet />
@@ -65,10 +67,11 @@ const App = () => {
         <Sonner />
         {isLoading && <LoadingScreen onFinished={() => setIsLoading(false)} />}
         <BrowserRouter>
-          <ScrollToTop />
-          <Routes>
-            {/* Corporate Platform - Unified Single-Page Landing */}
-            <Route element={<CorporateLayout />}>
+          <ThemeProvider>
+            <ScrollToTop />
+            <Routes>
+              {/* Corporate Platform - Unified Single-Page Landing */}
+              <Route element={<CorporateLayout />}>
               <Route path="/" element={<Home />} />
               <Route path="/products/vyoma" element={<Vyoma />} />
               <Route path="/vyoma" element={<Vyoma />} />
@@ -94,10 +97,11 @@ const App = () => {
             {/* Catch-all 404 Route */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
-  );
+        </ThemeProvider>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
 };
 
 export default App;

@@ -297,7 +297,7 @@ void main() {
 
 // Uniform data per specification:
 // Colours (low -> high): #3DAFDB, #6ED3DE, #F8D8C9, #FBF0D0
-const U_COLORS = new Float32Array([
+const LIGHT_COLORS = new Float32Array([
   0.239, 0.686, 0.859,
   0.431, 0.827, 0.871,
   0.973, 0.847, 0.788,
@@ -308,12 +308,25 @@ const U_COLORS = new Float32Array([
   0.0, 0.0, 0.0,
 ]);
 
+// Dark cosmic nebula palette: deep midnight blue, glowing electric cyan, twilight violet, deep oceanic sapphire
+const DARK_COLORS = new Float32Array([
+  0.02, 0.06, 0.16,
+  0.04, 0.28, 0.52,
+  0.12, 0.06, 0.32,
+  0.03, 0.18, 0.32,
+  0.0, 0.0, 0.0,
+  0.0, 0.0, 0.0,
+  0.0, 0.0, 0.0,
+  0.0, 0.0, 0.0,
+]);
+
 interface MeshDriftShaderProps {
   className?: string;
   style?: React.CSSProperties;
+  theme?: "light" | "dark";
 }
 
-export default function MeshDriftShader({ className, style }: MeshDriftShaderProps) {
+export default function MeshDriftShader({ className, style, theme = "light" }: MeshDriftShaderProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -395,16 +408,17 @@ export default function MeshDriftShader({ className, style }: MeshDriftShaderPro
     const uCursorLoc = gl.getUniformLocation(program, "u_cursor");
 
     // Upload static uniforms
-    if (uColorsLoc) gl.uniform3fv(uColorsLoc, U_COLORS);
-    // u_shape = vec4(1.16, 0.34, 0.50, 0.00) (zoom: 1.16, intensity: 0.34, warp: 0.00)
-    if (uShapeLoc) gl.uniform4f(uShapeLoc, 1.16, 0.34, 0.50, 0.00);
-    // u_surface = vec4(2.40, 1.16, 0.00, 1.00) (detail: 2.40, contrast: 1.16, brightness: 0.00, saturation: 1.00)
-    if (uSurfaceLoc) gl.uniform4f(uSurfaceLoc, 2.40, 1.16, 0.00, 1.00);
-    // u_finish = vec4(0.00, 0.00, 0.000, 0.09) (hue: 0.00, vignette: 0.00, blur: 0.000, grain: 0.09)
-    if (uFinishLoc) gl.uniform4f(uFinishLoc, 0.00, 0.00, 0.000, 0.09);
-    // u_transform = vec4(1453.0, 0.00, 0.00, 0.0) (seed: 1453.0, rotate: 0.00, drift: 0.00, oklab: 0.0)
+    const isDark = theme === "dark";
+    if (uColorsLoc) gl.uniform3fv(uColorsLoc, isDark ? DARK_COLORS : LIGHT_COLORS);
+    // u_shape = vec4(scale, intensity, paramA, warp)
+    if (uShapeLoc) gl.uniform4f(uShapeLoc, 1.16, isDark ? 0.38 : 0.34, 0.50, 0.00);
+    // u_surface = vec4(detail, contrast, brightness, saturation)
+    if (uSurfaceLoc) gl.uniform4f(uSurfaceLoc, 2.40, isDark ? 1.25 : 1.16, isDark ? -0.05 : 0.00, isDark ? 1.15 : 1.00);
+    // u_finish = vec4(hue, vignette, blur, grain)
+    if (uFinishLoc) gl.uniform4f(uFinishLoc, 0.00, isDark ? 0.22 : 0.00, 0.000, isDark ? 0.08 : 0.09);
+    // u_transform = vec4(seed, rotation, drift, oklab)
     if (uTransformLoc) gl.uniform4f(uTransformLoc, 1453.0, 0.00, 0.00, 0.0);
-    // u_space = vec4(0.00, 0.00, pointer x, pointer y)
+    // u_space = vec4(offset.xy, pointer.xy)
     if (uSpaceLoc) gl.uniform4f(uSpaceLoc, 0.00, 0.00, 0.00, 0.00);
     // u_cursor = vec4(presence, 2.0, 0.65, 0.46) -> Cursor off: presence = 0.0
     if (uCursorLoc) gl.uniform4f(uCursorLoc, 0.0, 2.0, 0.65, 0.46);
@@ -521,7 +535,7 @@ export default function MeshDriftShader({ className, style }: MeshDriftShaderPro
         gl.deleteProgram(program);
       }
     };
-  }, []);
+  }, [theme]);
 
   return (
     <canvas

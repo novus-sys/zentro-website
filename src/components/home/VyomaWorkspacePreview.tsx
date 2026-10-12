@@ -10,7 +10,12 @@ import {
   CheckCircle2
 } from "lucide-react";
 
-export default function VyomaWorkspacePreview() {
+interface VyomaWorkspacePreviewProps {
+  isFullPage?: boolean;
+  isDark?: boolean;
+}
+
+export default function VyomaWorkspacePreview({ isFullPage = false, isDark = false }: VyomaWorkspacePreviewProps) {
   const [activeMode, setActiveMode] = useState<"plan" | "ask" | "agent">("plan");
 
   return (
@@ -18,27 +23,34 @@ export default function VyomaWorkspacePreview() {
       {/* Top Description Bar */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
         <div>
-          <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#0B25A1] uppercase tracking-wider mb-1">
-            <span className="w-2 h-2 rounded-full bg-[#0B25A1] animate-pulse" />
+          <div className={`inline-flex items-center gap-1.5 text-xs font-mono font-bold ${isDark ? "text-cyan-400" : "text-[#0B25A1]"} uppercase tracking-wider mb-1`}>
+            <span className={`w-2 h-2 rounded-full ${isDark ? "bg-cyan-400" : "bg-[#0B25A1]"} animate-pulse`} />
             Vyoma Agentic IDE Sandbox
           </div>
-          <h3 className="text-xl font-bold text-slate-900">
+          <h3 className={`text-xl sm:text-2xl font-bold ${isDark ? "text-white" : "text-slate-900"}`}>
             Real-World Repository Assessment with AI Telemetry
           </h3>
-          <p className="text-xs text-slate-500 mt-1">
+          <p className={`text-xs sm:text-sm ${isDark ? "text-slate-400" : "text-slate-500"} mt-1 max-w-2xl`}>
             Evaluate how engineers plan, prompt, debug, and review code alongside an AI assistant in a live cloud workspace.
           </p>
         </div>
-        <Link
-          to="/products/vyoma"
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0B25A1] hover:text-[#081E85] shrink-0"
-        >
-          Explore Vyoma Platform <ArrowRight size={14} />
-        </Link>
+        {!isFullPage ? (
+          <Link
+            to="/products/vyoma"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0B25A1] hover:text-[#081E85] shrink-0"
+          >
+            Explore Vyoma Platform <ArrowRight size={14} />
+          </Link>
+        ) : (
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono self-start md:self-auto">
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+            Interactive Live Sandbox
+          </div>
+        )}
       </div>
 
       {/* Main IDE Container */}
-      <div className="bg-slate-950 rounded-2xl border border-slate-800 shadow-2xl overflow-hidden text-slate-200">
+      <div className={`bg-slate-950 rounded-2xl border ${isDark ? "border-cyan-500/20 shadow-[0_0_50px_-10px_rgba(6,182,212,0.15)]" : "border-slate-800 shadow-2xl"} overflow-hidden text-slate-200`}>
         {/* Top Window Bar */}
         <div className="px-5 py-3.5 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
           <div className="flex items-center gap-3">

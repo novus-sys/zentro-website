@@ -21,10 +21,12 @@ import {
   ChevronRight
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useAppTheme } from "@/context/ThemeContext";
 
 type MenuType = "products" | "solutions" | "resources" | null;
 
 export default function Navbar() {
+  const { isDark } = useAppTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<MenuType>(null);
@@ -34,6 +36,8 @@ export default function Navbar() {
 
   const location = useLocation();
   const navigate = useNavigate();
+
+  const isVyomaPage = location.pathname.includes("/vyoma");
 
   const handleMenuEnter = (menu: MenuType) => {
     if (closeTimeoutRef.current) {
@@ -86,51 +90,63 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 inset-x-0 w-full z-50 transition-all duration-300 ${
-        mobileOpen
+      className={`fixed top-0 inset-x-0 w-full z-50 transition-all duration-300 font-jakarta ${
+        isDark
+          ? mobileOpen
+            ? "bg-[#0A0A0B]/95 backdrop-blur-xl shadow-2xl border-b border-[#1C1C1E]"
+            : scrolled
+            ? "bg-[#0A0A0B]/85 backdrop-blur-md shadow-lg shadow-black/40 border-b border-[#1C1C1E]"
+            : "bg-transparent backdrop-blur-none border-b border-transparent shadow-none"
+          : mobileOpen
           ? "bg-white/95 backdrop-blur-xl shadow-lg border-b border-slate-200/60"
           : scrolled
           ? "bg-white/75 backdrop-blur-md shadow-xs border-b border-slate-200/50"
           : "bg-transparent backdrop-blur-none border-b border-transparent shadow-none"
       }`}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
-        {/* Left Section: Brand Logo + Nav Links clustered together */}
-        <div className="flex items-center gap-6 xl:gap-8">
-          {/* Brand Logo */}
+      <div className="max-w-[1240px] mx-auto relative flex items-center justify-between h-[68px] px-4 sm:px-6 lg:px-8">
+        {/* Left Section: Brand Logo */}
+        <div className="flex items-center shrink-0">
           <Link
-            to="/"
+            to={isVyomaPage ? "/products/vyoma" : "/"}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             onMouseEnter={() => handleMenuEnter(null)}
             className="flex items-center shrink-0"
           >
             <img
-              src={`${import.meta.env.BASE_URL}zentro_black_logo-removebg-preview.png`}
-              alt="Zentro Suite Logo"
-              className="h-7 md:h-8 w-auto object-contain"
+              src={`${import.meta.env.BASE_URL}${isVyomaPage ? "vyoma-logo.png" : "zentro_black_logo-removebg-preview.png"}`}
+              alt={isVyomaPage ? "Vyoma Logo" : "Zentro Suite Logo"}
+              className={`${
+                isVyomaPage ? "h-[22px] md:h-[24px]" : "h-6 md:h-7"
+              } ${isDark ? "brightness-0 invert" : ""} w-auto object-contain transition-all duration-200`}
             />
           </Link>
+        </div>
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center gap-1 xl:gap-2">
+        {/* Center Section: Desktop Navigation Links */}
+        <div className="hidden lg:flex items-center gap-1 xl:gap-2 absolute left-1/2 -translate-x-1/2">
             {/* Products Mega-Menu Trigger */}
             <div
-              className="relative h-16 flex items-center group"
+              className="relative h-[68px] flex items-center group"
               onMouseEnter={() => handleMenuEnter("products")}
               onMouseLeave={handleMenuLeave}
             >
               <button
-                className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors outline-none ${
-                  activeMenu === "products"
+                className={`flex items-center gap-1.5 px-3 py-2 text-[13px] leading-[20px] font-medium font-jakarta transition-colors outline-none ${
+                  isDark
+                    ? activeMenu === "products"
+                      ? "text-white"
+                      : "text-[#F5F5F2]/80 hover:text-[#F5F5F2]"
+                    : activeMenu === "products"
                     ? "text-black font-semibold"
                     : "text-slate-700 hover:text-black"
                 }`}
               >
-                <span>Products</span>
+                <span>Product</span>
                 <ChevronDown
-                  size={13}
-                  className={`transition-transform duration-200 ${
-                    activeMenu === "products" ? "rotate-180 text-black" : "text-slate-400 group-hover:text-slate-700"
+                  size={12}
+                  className={`${isDark ? "text-[#F5F5F2]/60" : "text-black"} transition-transform duration-200 ${
+                    activeMenu === "products" ? "rotate-180" : ""
                   }`}
                 />
               </button>
@@ -138,22 +154,26 @@ export default function Navbar() {
 
             {/* Solutions Mega-Menu Trigger */}
             <div
-              className="relative h-16 flex items-center group"
+              className="relative h-[68px] flex items-center group"
               onMouseEnter={() => handleMenuEnter("solutions")}
               onMouseLeave={handleMenuLeave}
             >
               <button
-                className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors outline-none ${
-                  activeMenu === "solutions"
+                className={`flex items-center gap-1.5 px-3 py-2 text-[13px] leading-[20px] font-medium font-jakarta transition-colors outline-none ${
+                  isDark
+                    ? activeMenu === "solutions"
+                      ? "text-white"
+                      : "text-[#F5F5F2]/80 hover:text-[#F5F5F2]"
+                    : activeMenu === "solutions"
                     ? "text-black font-semibold"
                     : "text-slate-700 hover:text-black"
                 }`}
               >
                 <span>Solutions</span>
                 <ChevronDown
-                  size={13}
-                  className={`transition-transform duration-200 ${
-                    activeMenu === "solutions" ? "rotate-180 text-black" : "text-slate-400 group-hover:text-slate-700"
+                  size={12}
+                  className={`${isDark ? "text-[#F5F5F2]/60" : "text-black"} transition-transform duration-200 ${
+                    activeMenu === "solutions" ? "rotate-180" : ""
                   }`}
                 />
               </button>
@@ -161,22 +181,26 @@ export default function Navbar() {
 
             {/* Resources Dropdown Trigger */}
             <div
-              className="relative h-16 flex items-center group"
+              className="relative h-[68px] flex items-center group"
               onMouseEnter={() => handleMenuEnter("resources")}
               onMouseLeave={handleMenuLeave}
             >
               <button
-                className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors outline-none ${
-                  activeMenu === "resources"
+                className={`flex items-center gap-1.5 px-3 py-2 text-[13px] leading-[20px] font-medium font-jakarta transition-colors outline-none ${
+                  isDark
+                    ? activeMenu === "resources"
+                      ? "text-white"
+                      : "text-[#F5F5F2]/80 hover:text-[#F5F5F2]"
+                    : activeMenu === "resources"
                     ? "text-black font-semibold"
                     : "text-slate-700 hover:text-black"
                 }`}
               >
                 <span>Resources</span>
                 <ChevronDown
-                  size={13}
-                  className={`transition-transform duration-200 ${
-                    activeMenu === "resources" ? "rotate-180 text-black" : "text-slate-400 group-hover:text-slate-700"
+                  size={12}
+                  className={`${isDark ? "text-[#F5F5F2]/60" : "text-black"} transition-transform duration-200 ${
+                    activeMenu === "resources" ? "rotate-180" : ""
                   }`}
                 />
               </button>
@@ -186,57 +210,60 @@ export default function Navbar() {
             <Link
               to="/pricing"
               onMouseEnter={() => handleMenuEnter(null)}
-              className="px-3 py-2 text-sm font-medium text-slate-700 hover:text-black transition-colors"
+              className={`px-3 py-2 text-[13px] leading-[20px] font-medium font-jakarta transition-colors ${
+                isDark ? "text-[#F5F5F2]/80 hover:text-[#F5F5F2]" : "text-slate-700 hover:text-black"
+              }`}
             >
               Pricing
             </Link>
-          </div>
         </div>
 
-        {/* Right Section: Log In, Request Demo, Create a free account */}
-        <div className="hidden lg:flex items-center gap-3 xl:gap-4">
-          {/* Log In Link (Direct to auth.zentrosuite.com, no dropdown) */}
-          <a
-            href="https://auth.zentrosuite.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            onMouseEnter={() => handleMenuEnter(null)}
-            className="text-sm font-medium text-slate-700 hover:text-black px-2 py-2 transition-colors"
-          >
-            Log In
-          </a>
-
-          {/* Request Demo Button (Sharp corners, glassmorphism) */}
+        {/* Right Section: Talk to us (Ghost) & Sign up now → (White Pill) */}
+        <div className="hidden lg:flex items-center gap-3">
+          {/* Talk to us Button (Ghost Pill) */}
           <a
             href="https://calendly.com/sambramsm28/30min"
             target="_blank"
             rel="noopener noreferrer"
             onMouseEnter={() => handleMenuEnter(null)}
-            className="px-4 py-2 text-sm font-medium text-slate-900 bg-white/30 hover:bg-white/50 backdrop-blur-md border border-slate-300/80 hover:border-slate-400 rounded-none transition-all whitespace-nowrap shadow-2xs"
+            className={`h-[38px] px-5 inline-flex items-center justify-center rounded-full text-[13px] leading-[20px] font-medium font-jakarta transition-all whitespace-nowrap ${
+              isDark
+                ? "text-[#F5F5F2] bg-transparent hover:bg-white/[0.04] border border-[#2A2A2D] hover:border-white/30"
+                : "text-slate-900 bg-white/30 hover:bg-white/50 border border-slate-300"
+            }`}
           >
-            Request Demo
+            Talk to us
           </a>
 
-          {/* Create a free account Button (Direct to auth.zentrosuite.com, sharp corners) */}
+          {/* Sign up now Button (Solid White Pill with Arrow) */}
           <a
             href="https://auth.zentrosuite.com"
             target="_blank"
             rel="noopener noreferrer"
             onMouseEnter={() => handleMenuEnter(null)}
-            className="px-4 py-2 text-sm font-medium text-white bg-black hover:bg-neutral-800 rounded-none transition-colors whitespace-nowrap"
+            className={`h-[38px] px-5 inline-flex items-center justify-center gap-1.5 rounded-full text-[13px] leading-[20px] font-medium font-jakarta transition-all whitespace-nowrap group hover:-translate-y-0.5 ${
+              isDark
+                ? "text-[#0A0A0B] bg-[#F5F5F2] hover:bg-white shadow-sm"
+                : "text-white bg-black hover:bg-neutral-800"
+            }`}
           >
-            Create a free account
+            <span>Sign up now</span>
+            <ArrowRight size={13} className="transition-transform group-hover:translate-x-0.5" />
           </a>
         </div>
 
-        {/* Mobile Toggle Button */}
-        <button
-          className="lg:hidden p-2 text-slate-700 hover:text-slate-950 transition-colors"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle navigation menu"
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile Actions: Menu Button */}
+        <div className="lg:hidden flex items-center gap-2">
+          <button
+            className={`p-2 transition-colors ${
+              isDark ? "text-slate-200 hover:text-white" : "text-slate-700 hover:text-slate-950"
+            }`}
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle navigation menu"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* ============================================================ */}
@@ -249,150 +276,250 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 6 }}
             transition={{ duration: 0.15, ease: "easeOut" }}
-            className="absolute top-full left-0 w-full pt-2 z-40 hidden lg:block pointer-events-none"
+            className="absolute top-full left-0 w-full pt-2 z-50 hidden lg:block pointer-events-none"
           >
-            <div className="container max-w-7xl mx-auto px-4 sm:px-8 pointer-events-none">
+            <div className="max-w-[1040px] mx-auto px-4 sm:px-6 pointer-events-none">
               <div
-                className="bg-white border border-slate-200/90 rounded-2xl shadow-2xl overflow-hidden p-6 md:p-8 pointer-events-auto"
+                className={`${
+                  isDark
+                    ? "bg-[#0A0A0B] border-[#222225] text-[#F5F5F2] shadow-[0_28px_80px_rgba(0,0,0,0.95)]"
+                    : "bg-white border-slate-200 text-slate-900 shadow-2xl"
+                } border rounded-2xl overflow-hidden p-6 md:p-7 pointer-events-auto transition-all duration-200`}
                 onMouseEnter={handleDropdownEnter}
                 onMouseLeave={handleDropdownLeave}
               >
                 
                 {/* 1. PRODUCTS MEGA-MENU */}
                 {activeMenu === "products" && (
-                  <div className="grid grid-cols-12 gap-8">
+                  <div className="grid grid-cols-12 gap-7">
                     {/* Left: 4 Core Platform Products & Architecture */}
-                    <div className="col-span-8 space-y-4">
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono">
-                        Core Platform Products
-                      </span>
+                    <div className="col-span-8 flex flex-col justify-between">
+                      <div>
+                        <span className={`text-[10px] font-semibold uppercase tracking-[0.18em] font-mono ${
+                          isDark ? "text-white/40" : "text-slate-400"
+                        }`}>
+                          Core Platform Products
+                        </span>
 
-                      <div className="grid grid-cols-2 gap-4">
-                        {/* Product 1: Vyoma */}
-                        <Link
-                          to="/products/vyoma"
-                          className="p-4 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50 transition-all group block"
-                        >
-                          <div className="flex items-center gap-2 mb-1.5">
-                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                              Vyoma
-                            </h4>
-                            <span className="text-[9px] font-medium text-slate-400 uppercase tracking-wider">
-                              Assessments
-                            </span>
-                          </div>
-                          <p className="text-[11px] text-slate-500 leading-relaxed">
-                            Agentic assessment environment where candidates plan, prompt, and review with an AI assistant on real codebases.
-                          </p>
-                        </Link>
+                        <div className="grid grid-cols-2 gap-3 pt-3">
+                          {/* Product 1: Vyoma */}
+                          <Link
+                            to="/products/vyoma"
+                            className={`p-3.5 rounded-xl transition-all group block ${
+                              isDark
+                                ? "bg-transparent hover:bg-white/[0.04] border border-transparent hover:border-white/10"
+                                : "bg-transparent hover:bg-slate-50 border border-transparent hover:border-slate-200"
+                            }`}
+                          >
+                            <div className="flex items-center gap-2 mb-1.5">
+                              <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
+                                isDark ? "bg-[#3D5BFF]/15 text-[#60A5FA]" : "bg-blue-50 text-blue-600"
+                              }`}>
+                                <Terminal size={14} />
+                              </div>
+                              <div className="flex items-center gap-1.5">
+                                <h4 className={`text-[13px] font-semibold transition-colors ${
+                                  isDark ? "text-white group-hover:text-[#60A5FA]" : "text-slate-900 group-hover:text-blue-600"
+                                }`}>
+                                  Vyoma
+                                </h4>
+                                <span className={`text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded ${
+                                  isDark ? "bg-[#3D5BFF]/10 text-[#60A5FA]" : "bg-blue-50 text-blue-600"
+                                }`}>
+                                  Assessments
+                                </span>
+                              </div>
+                            </div>
+                            <p className={`text-xs leading-relaxed ${
+                              isDark ? "text-white/50 group-hover:text-white/70" : "text-slate-500 group-hover:text-slate-700"
+                            }`}>
+                              Agentic assessment environment with IDE copilot, task briefs, and telemetry on real repos.
+                            </p>
+                          </Link>
 
-                        {/* Product 2: Workmark */}
-                        <Link
-                          to="/products/workmark"
-                          className="p-4 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50 transition-all group block"
-                        >
-                          <div className="flex items-center gap-2 mb-1.5">
-                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
-                              Workmark
-                            </h4>
-                            <span className="text-[9px] font-medium text-slate-400 uppercase tracking-wider">
-                              Proof of Work
-                            </span>
-                          </div>
-                          <p className="text-[11px] text-slate-500 leading-relaxed">
-                            Verified Git-backed developer credentials, branded campus hackathons, custom challenges, and talent discovery.
-                          </p>
-                        </Link>
+                          {/* Product 2: Workmark */}
+                          <Link
+                            to="/products/workmark"
+                            className={`p-3.5 rounded-xl transition-all group block ${
+                              isDark
+                                ? "bg-transparent hover:bg-white/[0.04] border border-transparent hover:border-white/10"
+                                : "bg-transparent hover:bg-slate-50 border border-transparent hover:border-slate-200"
+                            }`}
+                          >
+                            <div className="flex items-center gap-2 mb-1.5">
+                              <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
+                                isDark ? "bg-emerald-500/15 text-emerald-400" : "bg-emerald-50 text-emerald-600"
+                              }`}>
+                                <Award size={14} />
+                              </div>
+                              <div className="flex items-center gap-1.5">
+                                <h4 className={`text-[13px] font-semibold transition-colors ${
+                                  isDark ? "text-white group-hover:text-emerald-400" : "text-slate-900 group-hover:text-emerald-600"
+                                }`}>
+                                  Workmark
+                                </h4>
+                                <span className={`text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded ${
+                                  isDark ? "bg-emerald-500/10 text-emerald-400" : "bg-emerald-50 text-emerald-600"
+                                }`}>
+                                  Proof of Work
+                                </span>
+                              </div>
+                            </div>
+                            <p className={`text-xs leading-relaxed ${
+                              isDark ? "text-white/50 group-hover:text-white/70" : "text-slate-500 group-hover:text-slate-700"
+                            }`}>
+                              Verified Git-backed developer credentials, campus hackathons, and talent discovery.
+                            </p>
+                          </Link>
 
-                        {/* Product 3: Vega */}
-                        <Link
-                          to="/products/vega"
-                          className="p-4 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50 transition-all group block"
-                        >
-                          <div className="flex items-center gap-2 mb-1.5">
-                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
-                              Vega
-                            </h4>
-                            <span className="text-[9px] font-medium text-slate-400 uppercase tracking-wider">
-                              AI Interviewer
-                            </span>
-                          </div>
-                          <p className="text-[11px] text-slate-500 leading-relaxed">
-                            Autonomous technical interviewer that adapts in real time, probes for depth, and delivers transcript-backed reports.
-                          </p>
-                        </Link>
+                          {/* Product 3: Vega */}
+                          <Link
+                            to="/products/vega"
+                            className={`p-3.5 rounded-xl transition-all group block ${
+                              isDark
+                                ? "bg-transparent hover:bg-white/[0.04] border border-transparent hover:border-white/10"
+                                : "bg-transparent hover:bg-slate-50 border border-transparent hover:border-slate-200"
+                            }`}
+                          >
+                            <div className="flex items-center gap-2 mb-1.5">
+                              <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
+                                isDark ? "bg-indigo-500/15 text-indigo-400" : "bg-indigo-50 text-indigo-600"
+                              }`}>
+                                <Bot size={14} />
+                              </div>
+                              <div className="flex items-center gap-1.5">
+                                <h4 className={`text-[13px] font-semibold transition-colors ${
+                                  isDark ? "text-white group-hover:text-indigo-400" : "text-slate-900 group-hover:text-indigo-600"
+                                }`}>
+                                  Vega
+                                </h4>
+                                <span className={`text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded ${
+                                  isDark ? "bg-indigo-500/10 text-indigo-400" : "bg-indigo-50 text-indigo-600"
+                                }`}>
+                                  AI Interviewer
+                                </span>
+                              </div>
+                            </div>
+                            <p className={`text-xs leading-relaxed ${
+                              isDark ? "text-white/50 group-hover:text-white/70" : "text-slate-500 group-hover:text-slate-700"
+                            }`}>
+                              Autonomous technical interviewer that adapts in real time with transcript-backed reports.
+                            </p>
+                          </Link>
 
-                        {/* Product 4: Amogha AI */}
-                        <Link
-                          to="/platform"
-                          className="p-4 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50 transition-all group block"
-                        >
-                          <div className="flex items-center gap-2 mb-1.5">
-                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-[#0B25A1] transition-colors">
-                              Amogha AI
-                            </h4>
-                            <span className="text-[9px] font-medium text-slate-400 uppercase tracking-wider">
-                              Engine Core
-                            </span>
-                          </div>
-                          <p className="text-[11px] text-slate-500 leading-relaxed">
-                            The unified intelligence layer powering Socratic assessments in Vyoma, live interviews in Vega, and verified scoring in Workmark.
-                          </p>
-                        </Link>
+                          {/* Product 4: Amogha AI */}
+                          <Link
+                            to="/platform"
+                            className={`p-3.5 rounded-xl transition-all group block ${
+                              isDark
+                                ? "bg-transparent hover:bg-white/[0.04] border border-transparent hover:border-white/10"
+                                : "bg-transparent hover:bg-slate-50 border border-transparent hover:border-slate-200"
+                            }`}
+                          >
+                            <div className="flex items-center gap-2 mb-1.5">
+                              <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
+                                isDark ? "bg-sky-500/15 text-sky-400" : "bg-sky-50 text-sky-600"
+                              }`}>
+                                <Cpu size={14} />
+                              </div>
+                              <div className="flex items-center gap-1.5">
+                                <h4 className={`text-[13px] font-semibold transition-colors ${
+                                  isDark ? "text-white group-hover:text-sky-400" : "text-slate-900 group-hover:text-sky-600"
+                                }`}>
+                                  Amogha AI
+                                </h4>
+                                <span className={`text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded ${
+                                  isDark ? "bg-sky-500/10 text-sky-400" : "bg-sky-50 text-sky-600"
+                                }`}>
+                                  Engine Core
+                                </span>
+                              </div>
+                            </div>
+                            <p className={`text-xs leading-relaxed ${
+                              isDark ? "text-white/50 group-hover:text-white/70" : "text-slate-500 group-hover:text-slate-700"
+                            }`}>
+                              The unified intelligence layer powering Socratic assessments, interviews, and scoring.
+                            </p>
+                          </Link>
+                        </div>
                       </div>
 
                       {/* Bottom Architecture / Platform Row */}
-                      <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <Sparkles size={18} className="text-blue-600" />
+                      <div className={`p-3 rounded-xl border flex items-center justify-between mt-4 ${
+                        isDark
+                          ? "bg-[#121214] border-[#222225]"
+                          : "bg-slate-50 border-slate-200"
+                      }`}>
+                        <div className="flex items-center gap-2.5">
+                          <Sparkles size={15} className={isDark ? "text-[#60A5FA]" : "text-blue-600"} />
                           <div>
-                            <span className="text-xs font-bold text-slate-900">Unified Architecture:</span>
-                            <span className="text-xs text-slate-500 ml-1.5">
+                            <span className={`text-xs font-semibold ${isDark ? "text-white" : "text-slate-900"}`}>
+                              Unified Architecture:
+                            </span>
+                            <span className={`text-xs ml-1.5 ${isDark ? "text-white/50" : "text-slate-500"}`}>
                               How Vyoma, Vega, and Workmark share real-time candidate proof-of-work.
                             </span>
                           </div>
                         </div>
                         <Link
                           to="/platform"
-                          className="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1 shrink-0"
+                          className={`text-xs font-semibold flex items-center gap-1 shrink-0 ${
+                            isDark ? "text-[#60A5FA] hover:text-white" : "text-blue-600 hover:text-blue-800"
+                          }`}
                         >
-                          Platform Overview <ArrowRight size={13} />
+                          Platform Overview <ArrowRight size={12} />
                         </Link>
                       </div>
                     </div>
 
                     {/* Right: Clean Editorial Highlight Panel */}
-                    <div className="col-span-4 bg-slate-50/80 border border-slate-200/80 rounded-xl p-5 flex flex-col justify-between">
+                    <div className={`col-span-4 rounded-xl p-5 flex flex-col justify-between border ${
+                      isDark
+                        ? "bg-[#121214] border-[#222225]"
+                        : "bg-slate-50 border-slate-200/80"
+                    }`}>
                       <div className="space-y-3">
-                        <span className="text-[10px] font-bold text-blue-600 uppercase tracking-wider font-mono">
-                          Platform Architecture
+                        <span className={`text-[10px] font-semibold uppercase tracking-[0.15em] font-mono ${
+                          isDark ? "text-[#60A5FA]" : "text-blue-600"
+                        }`}>
+                          PLATFORM ARCHITECTURE
                         </span>
-                        <h4 className="text-sm font-bold text-slate-900 leading-snug">
+                        <h4 className={`text-sm font-semibold leading-snug ${
+                          isDark ? "text-white" : "text-slate-900"
+                        }`}>
                           Built for the Agentic Era
                         </h4>
-                        <p className="text-xs text-slate-600 leading-relaxed">
+                        <p className={`text-xs leading-relaxed ${
+                          isDark ? "text-white/60" : "text-slate-600"
+                        }`}>
                           Evaluate candidates on how they plan, write, and review code in real environments—not memorized algorithmic puzzles.
                         </p>
-                        <ul className="space-y-2 pt-1 text-xs text-slate-600">
+                        <ul className={`space-y-2 pt-1 text-xs ${
+                          isDark ? "text-white/70" : "text-slate-600"
+                        }`}>
                           <li className="flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#3D5BFF] shrink-0" />
                             Role-specific rubrics for AI & Systems
                           </li>
                           <li className="flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 shrink-0" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#3D5BFF] shrink-0" />
                             Transcript-backed evidence reports
                           </li>
                           <li className="flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#3D5BFF] shrink-0" />
                             Direct Greenhouse & Lever integration
                           </li>
                         </ul>
                       </div>
 
-                      <div className="pt-4 mt-4 border-t border-slate-200/60 flex items-center justify-between">
+                      <div className={`pt-4 mt-4 border-t flex items-center justify-between ${
+                        isDark ? "border-[#222225]" : "border-slate-200/60"
+                      }`}>
                         <Link
                           to="/pricing"
-                          className="text-xs font-semibold text-slate-700 hover:text-slate-950 transition-colors"
+                          className={`text-xs font-medium transition-colors ${
+                            isDark ? "text-white/50 hover:text-white" : "text-slate-700 hover:text-slate-950"
+                          }`}
                         >
                           View Pricing
                         </Link>
@@ -400,7 +527,9 @@ export default function Navbar() {
                           href="https://calendly.com/sambramsm28/30min"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-xs font-bold text-blue-600 hover:text-blue-800 inline-flex items-center gap-1"
+                          className={`text-xs font-semibold inline-flex items-center gap-1 transition-colors ${
+                            isDark ? "text-[#60A5FA] hover:text-white" : "text-blue-600 hover:text-blue-800"
+                          }`}
                         >
                           Book a Demo <ArrowRight size={12} />
                         </a>
@@ -411,113 +540,175 @@ export default function Navbar() {
 
                 {/* 2. SOLUTIONS MEGA-MENU */}
                 {activeMenu === "solutions" && (
-                  <div className="grid grid-cols-12 gap-8">
+                  <div className="grid grid-cols-12 gap-7">
                     {/* Left: Strategic Hiring Objectives */}
-                    <div className="col-span-8 space-y-4">
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono">
-                        Hiring & Assessment Solutions
-                      </span>
+                    <div className="col-span-8 flex flex-col justify-between">
+                      <div>
+                        <span className={`text-[10px] font-semibold uppercase tracking-[0.18em] font-mono ${
+                          isDark ? "text-white/40" : "text-slate-400"
+                        }`}>
+                          Hiring & Assessment Solutions
+                        </span>
 
-                      <div className="grid grid-cols-2 gap-4">
-                        <Link
-                          to="/corporates#ai-screening"
-                          className="p-3.5 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50 transition-all group"
-                        >
-                          <div className="flex items-center gap-2.5 mb-1.5">
-                            <div className="p-1.5 bg-blue-50 text-blue-600 rounded-md">
-                              <Cpu size={16} />
+                        <div className="grid grid-cols-2 gap-3 pt-3">
+                          <Link
+                            to="/corporates#ai-screening"
+                            className={`p-3.5 rounded-xl transition-all group block ${
+                              isDark
+                                ? "bg-transparent hover:bg-white/[0.04] border border-transparent hover:border-white/10"
+                                : "bg-transparent hover:bg-slate-50 border border-transparent hover:border-slate-200"
+                            }`}
+                          >
+                            <div className="flex items-center gap-2 mb-1.5">
+                              <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
+                                isDark ? "bg-[#3D5BFF]/15 text-[#60A5FA]" : "bg-blue-50 text-blue-600"
+                              }`}>
+                                <Cpu size={14} />
+                              </div>
+                              <h4 className={`text-[13px] font-semibold transition-colors ${
+                                isDark ? "text-white group-hover:text-[#60A5FA]" : "text-slate-900 group-hover:text-blue-600"
+                              }`}>
+                                AI-Fluent Developer Hiring
+                              </h4>
                             </div>
-                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                              AI-Fluent Developer Hiring
-                            </h4>
-                          </div>
-                          <p className="text-[11px] text-slate-500 leading-relaxed">
-                            Evaluate how engineers prompt, critically reason, and build with AI assistants in real repos.
-                          </p>
-                        </Link>
+                            <p className={`text-xs leading-relaxed ${
+                              isDark ? "text-white/50 group-hover:text-white/70" : "text-slate-500 group-hover:text-slate-700"
+                            }`}>
+                              Evaluate how engineers prompt, critically reason, and build with AI assistants in real repos.
+                            </p>
+                          </Link>
 
-                        <Link
-                          to="/corporates#campus-sourcing"
-                          className="p-3.5 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50 transition-all group"
-                        >
-                          <div className="flex items-center gap-2.5 mb-1.5">
-                            <div className="p-1.5 bg-indigo-50 text-indigo-600 rounded-md">
-                              <GraduationCap size={16} />
+                          <Link
+                            to="/corporates#campus-sourcing"
+                            className={`p-3.5 rounded-xl transition-all group block ${
+                              isDark
+                                ? "bg-transparent hover:bg-white/[0.04] border border-transparent hover:border-white/10"
+                                : "bg-transparent hover:bg-slate-50 border border-transparent hover:border-slate-200"
+                            }`}
+                          >
+                            <div className="flex items-center gap-2 mb-1.5">
+                              <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
+                                isDark ? "bg-indigo-500/15 text-indigo-400" : "bg-indigo-50 text-indigo-600"
+                              }`}>
+                                <GraduationCap size={14} />
+                              </div>
+                              <h4 className={`text-[13px] font-semibold transition-colors ${
+                                isDark ? "text-white group-hover:text-indigo-400" : "text-slate-900 group-hover:text-indigo-600"
+                              }`}>
+                                Campus Talent Sourcing
+                              </h4>
                             </div>
-                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
-                              Campus Talent Sourcing
-                            </h4>
-                          </div>
-                          <p className="text-[11px] text-slate-500 leading-relaxed">
-                            Discover pre-vetted college talent ranked by actual challenge performance across university cohorts.
-                          </p>
-                        </Link>
+                            <p className={`text-xs leading-relaxed ${
+                              isDark ? "text-white/50 group-hover:text-white/70" : "text-slate-500 group-hover:text-slate-700"
+                            }`}>
+                              Discover pre-vetted college talent ranked by actual challenge performance across cohorts.
+                            </p>
+                          </Link>
 
-                        <Link
-                          to="/corporates#screening"
-                          className="p-3.5 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50 transition-all group"
-                        >
-                          <div className="flex items-center gap-2.5 mb-1.5">
-                            <div className="p-1.5 bg-emerald-50 text-emerald-600 rounded-md">
-                              <ShieldCheck size={16} />
+                          <Link
+                            to="/corporates#screening"
+                            className={`p-3.5 rounded-xl transition-all group block ${
+                              isDark
+                                ? "bg-transparent hover:bg-white/[0.04] border border-transparent hover:border-white/10"
+                                : "bg-transparent hover:bg-slate-50 border border-transparent hover:border-slate-200"
+                            }`}
+                          >
+                            <div className="flex items-center gap-2 mb-1.5">
+                              <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
+                                isDark ? "bg-emerald-500/15 text-emerald-400" : "bg-emerald-50 text-emerald-600"
+                              }`}>
+                                <ShieldCheck size={14} />
+                              </div>
+                              <h4 className={`text-[13px] font-semibold transition-colors ${
+                                isDark ? "text-white group-hover:text-emerald-400" : "text-slate-900 group-hover:text-emerald-600"
+                              }`}>
+                                Pre-Employment Screening
+                              </h4>
                             </div>
-                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
-                              Pre-Employment Screening
-                            </h4>
-                          </div>
-                          <p className="text-[11px] text-slate-500 leading-relaxed">
-                            Replace LeetCode trivia with ground-truth proof-of-work histories and real multi-file system tasks.
-                          </p>
-                        </Link>
+                            <p className={`text-xs leading-relaxed ${
+                              isDark ? "text-white/50 group-hover:text-white/70" : "text-slate-500 group-hover:text-slate-700"
+                            }`}>
+                              Replace LeetCode trivia with ground-truth proof-of-work histories and multi-file system tasks.
+                            </p>
+                          </Link>
 
-                        <Link
-                          to="/corporates#vega-interviews"
-                          className="p-3.5 rounded-xl border border-slate-100 hover:border-slate-200 hover:bg-slate-50 transition-all group"
-                        >
-                          <div className="flex items-center gap-2.5 mb-1.5">
-                            <div className="p-1.5 bg-blue-50 text-[#0B25A1] rounded-md">
-                              <Workflow size={16} />
+                          <Link
+                            to="/corporates#vega-interviews"
+                            className={`p-3.5 rounded-xl transition-all group block ${
+                              isDark
+                                ? "bg-transparent hover:bg-white/[0.04] border border-transparent hover:border-white/10"
+                                : "bg-transparent hover:bg-slate-50 border border-transparent hover:border-slate-200"
+                            }`}
+                          >
+                            <div className="flex items-center gap-2 mb-1.5">
+                              <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
+                                isDark ? "bg-sky-500/15 text-sky-400" : "bg-sky-50 text-sky-600"
+                              }`}>
+                                <Workflow size={14} />
+                              </div>
+                              <h4 className={`text-[13px] font-semibold transition-colors ${
+                                isDark ? "text-white group-hover:text-sky-400" : "text-slate-900 group-hover:text-sky-600"
+                              }`}>
+                                Automated First-Round Loops
+                              </h4>
                             </div>
-                            <h4 className="text-xs font-bold text-slate-900 group-hover:text-[#0B25A1] transition-colors">
-                              Automated First-Round Loops
-                            </h4>
-                          </div>
-                          <p className="text-[11px] text-slate-500 leading-relaxed">
-                            Let Vega AI conduct consistent, deep first-round technical interviews without consuming engineering team hours.
-                          </p>
-                        </Link>
+                            <p className={`text-xs leading-relaxed ${
+                              isDark ? "text-white/50 group-hover:text-white/70" : "text-slate-500 group-hover:text-slate-700"
+                            }`}>
+                              Let Vega AI conduct consistent first-round technical interviews without consuming dev hours.
+                            </p>
+                          </Link>
+                        </div>
                       </div>
 
                       {/* University / Institutional Partner row */}
-                      <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <Building2 size={18} className="text-indigo-600" />
+                      <div className={`p-3 rounded-xl border flex items-center justify-between mt-4 ${
+                        isDark
+                          ? "bg-[#121214] border-[#222225]"
+                          : "bg-slate-50 border-slate-200"
+                      }`}>
+                        <div className="flex items-center gap-2.5">
+                          <Building2 size={15} className={isDark ? "text-indigo-400" : "text-indigo-600"} />
                           <div>
-                            <span className="text-xs font-bold text-slate-900">For Universities & TPOs:</span>
-                            <span className="text-xs text-slate-500 ml-1.5">
+                            <span className={`text-xs font-semibold ${isDark ? "text-white" : "text-slate-900"}`}>
+                              For Universities & TPOs:
+                            </span>
+                            <span className={`text-xs ml-1.5 ${isDark ? "text-white/50" : "text-slate-500"}`}>
                               Empower your student cohorts with verified career scorecards and direct corporate visibility.
                             </span>
                           </div>
                         </div>
                         <Link
                           to="/universities"
-                          className="text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1 shrink-0"
+                          className={`text-xs font-semibold flex items-center gap-1 shrink-0 ${
+                            isDark ? "text-indigo-400 hover:text-white" : "text-indigo-600 hover:text-indigo-800"
+                          }`}
                         >
-                          TPO Network <ArrowRight size={13} />
+                          TPO Network <ArrowRight size={12} />
                         </Link>
                       </div>
                     </div>
 
                     {/* Right: Featured Proof / Case Study */}
-                    <div className="col-span-4 bg-slate-50/80 border border-slate-200/80 rounded-xl p-5 flex flex-col justify-between">
+                    <div className={`col-span-4 rounded-xl p-5 flex flex-col justify-between border ${
+                      isDark
+                        ? "bg-[#121214] border-[#222225]"
+                        : "bg-slate-50 border-slate-200/80"
+                    }`}>
                       <div className="space-y-3">
-                        <span className="text-[10px] font-bold text-blue-600 uppercase tracking-wider font-mono">
-                          Hiring Velocity Benchmark
+                        <span className={`text-[10px] font-semibold uppercase tracking-[0.15em] font-mono ${
+                          isDark ? "text-[#60A5FA]" : "text-blue-600"
+                        }`}>
+                          HIRING VELOCITY BENCHMARK
                         </span>
-                        <div className="text-2xl font-black text-slate-900 font-mono">
+                        <div className={`text-2xl font-bold font-mono ${
+                          isDark ? "text-white" : "text-slate-900"
+                        }`}>
                           40% Less Time
                         </div>
-                        <p className="text-xs text-slate-600 leading-relaxed">
+                        <p className={`text-xs leading-relaxed ${
+                          isDark ? "text-white/60" : "text-slate-600"
+                        }`}>
                           Enterprise engineering teams eliminate candidate resume spam and bypass repetitive phone screens by assessing verified Workmark credentials and Vega interview transcripts.
                         </p>
                       </div>
@@ -526,9 +717,13 @@ export default function Navbar() {
                         href="https://calendly.com/sambramsm28/30min"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-6 inline-flex items-center gap-2 text-xs font-bold text-slate-900 hover:text-blue-600"
+                        className={`pt-4 mt-4 border-t text-xs font-semibold inline-flex items-center gap-1.5 transition-colors ${
+                          isDark
+                            ? "border-[#222225] text-[#60A5FA] hover:text-white"
+                            : "border-slate-200/60 text-slate-900 hover:text-blue-600"
+                        }`}
                       >
-                        Schedule an Enterprise Consultation <ArrowRight size={13} />
+                        Schedule an Enterprise Consultation <ArrowRight size={12} />
                       </a>
                     </div>
                   </div>
@@ -536,66 +731,96 @@ export default function Navbar() {
 
                 {/* 3. RESOURCES DROPDOWN */}
                 {activeMenu === "resources" && (
-                  <div className="grid grid-cols-12 gap-6">
-                    <div className="col-span-8 grid grid-cols-2 gap-4">
-                      <div className="p-4 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors">
-                        <div className="flex items-center gap-2 text-xs font-bold text-slate-900 mb-1">
-                          <FileText size={15} className="text-blue-600" />
+                  <div className="grid grid-cols-12 gap-7">
+                    <div className="col-span-8 grid grid-cols-2 gap-3">
+                      <div className={`p-3.5 rounded-xl transition-all cursor-pointer ${
+                        isDark ? "hover:bg-white/[0.04] text-white" : "hover:bg-slate-50 text-slate-900"
+                      }`}>
+                        <div className="flex items-center gap-2 text-xs font-semibold mb-1">
+                          <FileText size={15} className={isDark ? "text-[#60A5FA]" : "text-blue-600"} />
                           AI Developer Skills Report 2026
                         </div>
-                        <p className="text-[11px] text-slate-500 leading-relaxed">
+                        <p className={`text-xs leading-relaxed ${
+                          isDark ? "text-white/50" : "text-slate-500"
+                        }`}>
                           Annual data on developer AI fluency, prompt patterns, and code quality in the agentic era.
                         </p>
                       </div>
 
-                      <div className="p-4 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors">
-                        <div className="flex items-center gap-2 text-xs font-bold text-slate-900 mb-1">
-                          <Workflow size={15} className="text-indigo-600" />
+                      <div className={`p-3.5 rounded-xl transition-all cursor-pointer ${
+                        isDark ? "hover:bg-white/[0.04] text-white" : "hover:bg-slate-50 text-slate-900"
+                      }`}>
+                        <div className="flex items-center gap-2 text-xs font-semibold mb-1">
+                          <Workflow size={15} className="text-indigo-400" />
                           ATS & Tool Integrations
                         </div>
-                        <p className="text-[11px] text-slate-500 leading-relaxed">
+                        <p className={`text-xs leading-relaxed ${
+                          isDark ? "text-white/50" : "text-slate-500"
+                        }`}>
                           Export candidate scores and transcripts directly into Greenhouse, Lever, and Workday.
                         </p>
                       </div>
 
-                      <div className="p-4 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors">
-                        <div className="flex items-center gap-2 text-xs font-bold text-slate-900 mb-1">
-                          <Lock size={15} className="text-emerald-600" />
+                      <div className={`p-3.5 rounded-xl transition-all cursor-pointer ${
+                        isDark ? "hover:bg-white/[0.04] text-white" : "hover:bg-slate-50 text-slate-900"
+                      }`}>
+                        <div className="flex items-center gap-2 text-xs font-semibold mb-1">
+                          <Lock size={15} className="text-emerald-400" />
                           Trust & Security Center
                         </div>
-                        <p className="text-[11px] text-slate-500 leading-relaxed">
+                        <p className={`text-xs leading-relaxed ${
+                          isDark ? "text-white/50" : "text-slate-500"
+                        }`}>
                           SOC 2 Type II certified, ISO 27001 accredited, GDPR compliant with blind evaluation modes.
                         </p>
                       </div>
 
-                      <div className="p-4 rounded-xl border border-slate-100 hover:bg-slate-50 transition-colors">
-                        <div className="flex items-center gap-2 text-xs font-bold text-slate-900 mb-1">
-                          <Trophy size={15} className="text-amber-600" />
+                      <div className={`p-3.5 rounded-xl transition-all cursor-pointer ${
+                        isDark ? "hover:bg-white/[0.04] text-white" : "hover:bg-slate-50 text-slate-900"
+                      }`}>
+                        <div className="flex items-center gap-2 text-xs font-semibold mb-1">
+                          <Trophy size={15} className="text-amber-400" />
                           Customer Case Studies
                         </div>
-                        <p className="text-[11px] text-slate-500 leading-relaxed">
+                        <p className={`text-xs leading-relaxed ${
+                          isDark ? "text-white/50" : "text-slate-500"
+                        }`}>
                           See how high-growth startups and enterprises hire pre-vetted engineers with zero LeetCode bias.
                         </p>
                       </div>
                     </div>
 
-                    <div className="col-span-4 bg-slate-50 border border-slate-200/80 rounded-xl p-5 flex flex-col justify-between">
+                    <div className={`col-span-4 rounded-xl p-5 flex flex-col justify-between border ${
+                      isDark
+                        ? "bg-[#121214] border-[#222225]"
+                        : "bg-slate-50 border-slate-200/80"
+                    }`}>
                       <div>
-                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono">
-                          Need Help?
+                        <span className={`text-[10px] font-semibold uppercase tracking-[0.15em] font-mono ${
+                          isDark ? "text-white/40" : "text-slate-400"
+                        }`}>
+                          NEED HELP?
                         </span>
-                        <h4 className="text-sm font-bold text-slate-900 mt-2">
+                        <h4 className={`text-sm font-semibold mt-2 ${
+                          isDark ? "text-white" : "text-slate-900"
+                        }`}>
                           Explore Documentation & APIs
                         </h4>
-                        <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">
+                        <p className={`text-xs mt-1.5 leading-relaxed ${
+                          isDark ? "text-white/60" : "text-slate-500"
+                        }`}>
                           Learn how to set up custom rubrics, integrate ATS webhooks, or launch branded university hackathons.
                         </p>
                       </div>
                       <a
                         href="mailto:info@zentrosuite.com"
-                        className="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1.5 mt-4"
+                        className={`pt-4 mt-4 border-t text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+                          isDark
+                            ? "border-[#222225] text-[#60A5FA] hover:text-white"
+                            : "border-slate-200/60 text-blue-600 hover:text-blue-800"
+                        }`}
                       >
-                        Contact Technical Support <ArrowRight size={13} />
+                        Contact Technical Support <ArrowRight size={12} />
                       </a>
                     </div>
                   </div>
@@ -616,17 +841,21 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden w-full overflow-hidden bg-white shadow-xl"
+            className={`lg:hidden w-full overflow-hidden shadow-xl ${
+              isDark ? "bg-[#060911] text-white border-b border-white/10" : "bg-white text-slate-900"
+            }`}
           >
             <div className="container px-5 py-6 space-y-6">
               
               {/* Products Mobile Accordion */}
-              <div className="border-b border-slate-100 pb-4">
+              <div className={`border-b ${isDark ? "border-white/10" : "border-slate-100"} pb-4`}>
                 <button
                   onClick={() =>
                     setMobileAccordion(mobileAccordion === "products" ? null : "products")
                   }
-                  className="w-full flex items-center justify-between text-sm font-bold text-slate-900 py-1"
+                  className={`w-full flex items-center justify-between text-sm font-bold py-1 ${
+                    isDark ? "text-white" : "text-slate-900"
+                  }`}
                 >
                   <span>Products</span>
                   <ChevronDown
@@ -827,7 +1056,7 @@ export default function Navbar() {
                   href="https://auth.zentrosuite.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full block py-2.5 text-center text-xs font-semibold text-slate-800 bg-white border border-slate-300 hover:bg-slate-50 rounded-none"
+                  className="w-full block py-2.5 text-center text-xs font-semibold text-slate-800 bg-white border border-slate-300 hover:bg-slate-50 rounded-full"
                 >
                   Log In
                 </a>
@@ -835,7 +1064,7 @@ export default function Navbar() {
                   href="https://calendly.com/sambramsm28/30min"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full block py-2.5 text-center text-xs font-semibold text-slate-900 bg-white/40 hover:bg-white/60 backdrop-blur-md border border-slate-300/80 rounded-none transition-all"
+                  className="w-full block py-2.5 text-center text-xs font-semibold text-slate-900 bg-white/40 hover:bg-white/60 backdrop-blur-md border border-slate-300/80 rounded-full transition-all"
                 >
                   Request Demo
                 </a>
@@ -843,7 +1072,7 @@ export default function Navbar() {
                   href="https://auth.zentrosuite.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full block py-2.5 text-center text-xs font-semibold text-white bg-black hover:bg-neutral-800 rounded-none"
+                  className="w-full block py-2.5 text-center text-xs font-semibold text-white bg-black hover:bg-neutral-800 rounded-full"
                 >
                   Create a free account
                 </a>

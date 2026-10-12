@@ -34,7 +34,7 @@ export default function Hero() {
         {/* Sub-headline */}
         <motion.p
           variants={fadeUp}
-          className="text-slate-500 text-base md:text-lg max-w-[620px] leading-relaxed mb-8">
+          className="text-slate-500 text-sm md:text-[15px] max-w-[700px] leading-relaxed mb-8">
           Zentro Workmark is the innovation ecosystem for students — connecting
           you to real challenges, expert feedback, and a verified proof-of-work
           that recruiters and industry leaders actually value.
