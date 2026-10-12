@@ -160,15 +160,16 @@ export default function VyomaAIModes() {
 
             {/* Quick action button under sidebar */}
             <div className="pt-6 border-t border-[#1C1C1E] mt-4">
-              <a
-                href="https://calendly.com/sambramsm28/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs font-semibold text-[#60A5FA] hover:text-white transition-colors"
+              <button
+                type="button"
+                data-cal-link="sambram-k-s/30min"
+                data-cal-namespace="30min"
+                data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
+                className="inline-flex items-center gap-2 text-xs font-semibold text-[#60A5FA] hover:text-white transition-colors cursor-pointer"
               >
                 <span>Walk through a live assessment demo</span>
                 <span>→</span>
-              </a>
+              </button>
             </div>
           </div>
 

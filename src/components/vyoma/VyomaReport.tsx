@@ -125,15 +125,16 @@ export default function VyomaReport() {
             </div>
           </div>
 
-          <a
-            href="https://calendly.com/sambramsm28/30min"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-5 py-2.5 rounded-full bg-white text-[#0A0A0B] text-xs font-semibold hover:bg-white/90 transition-all shrink-0 flex items-center gap-1.5"
+          <button
+            type="button"
+            data-cal-link="sambram-k-s/30min"
+            data-cal-namespace="30min"
+            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
+            className="px-5 py-2.5 rounded-full bg-white text-[#0A0A0B] text-xs font-semibold hover:bg-white/90 transition-all shrink-0 flex items-center gap-1.5 cursor-pointer"
           >
             <span>Request Sample Report (PDF)</span>
             <ArrowUpRight size={14} />
-          </a>
+          </button>
         </div>
 
       </div>

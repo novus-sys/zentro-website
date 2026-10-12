@@ -221,19 +221,20 @@ export default function Navbar() {
         {/* Right Section: Talk to us (Ghost) & Sign up now → (White Pill) */}
         <div className="hidden lg:flex items-center gap-3">
           {/* Talk to us Button (Ghost Pill) */}
-          <a
-            href="https://calendly.com/sambramsm28/30min"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
+            data-cal-link="sambram-k-s/30min"
+            data-cal-namespace="30min"
+            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
             onMouseEnter={() => handleMenuEnter(null)}
-            className={`h-[38px] px-5 inline-flex items-center justify-center rounded-full text-[13px] leading-[20px] font-medium font-jakarta transition-all whitespace-nowrap ${
+            className={`h-[38px] px-5 inline-flex items-center justify-center rounded-full text-[13px] leading-[20px] font-medium font-jakarta transition-all whitespace-nowrap cursor-pointer ${
               isDark
                 ? "text-[#F5F5F2] bg-transparent hover:bg-white/[0.04] border border-[#2A2A2D] hover:border-white/30"
                 : "text-slate-900 bg-white/30 hover:bg-white/50 border border-slate-300"
             }`}
           >
             Talk to us
-          </a>
+          </button>
 
           {/* Sign up now Button (Solid White Pill with Arrow) */}
           <a
@@ -523,16 +524,17 @@ export default function Navbar() {
                         >
                           View Pricing
                         </Link>
-                        <a
-                          href="https://calendly.com/sambramsm28/30min"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`text-xs font-semibold inline-flex items-center gap-1 transition-colors ${
+                        <button
+                          type="button"
+                          data-cal-link="sambram-k-s/30min"
+                          data-cal-namespace="30min"
+                          data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
+                          className={`text-xs font-semibold inline-flex items-center gap-1 transition-colors cursor-pointer ${
                             isDark ? "text-[#60A5FA] hover:text-white" : "text-blue-600 hover:text-blue-800"
                           }`}
                         >
                           Book a Demo <ArrowRight size={12} />
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -713,18 +715,19 @@ export default function Navbar() {
                         </p>
                       </div>
 
-                      <a
-                        href="https://calendly.com/sambramsm28/30min"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`pt-4 mt-4 border-t text-xs font-semibold inline-flex items-center gap-1.5 transition-colors ${
+                      <button
+                        type="button"
+                        data-cal-link="sambram-k-s/30min"
+                        data-cal-namespace="30min"
+                        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
+                        className={`pt-4 mt-4 border-t text-xs font-semibold inline-flex items-center gap-1.5 transition-colors cursor-pointer ${
                           isDark
                             ? "border-[#222225] text-[#60A5FA] hover:text-white"
                             : "border-slate-200/60 text-slate-900 hover:text-blue-600"
                         }`}
                       >
                         Schedule an Enterprise Consultation <ArrowRight size={12} />
-                      </a>
+                      </button>
                     </div>
                   </div>
                 )}
@@ -1060,14 +1063,15 @@ export default function Navbar() {
                 >
                   Log In
                 </a>
-                <a
-                  href="https://calendly.com/sambramsm28/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full block py-2.5 text-center text-xs font-semibold text-slate-900 bg-white/40 hover:bg-white/60 backdrop-blur-md border border-slate-300/80 rounded-full transition-all"
+                <button
+                  type="button"
+                  data-cal-link="sambram-k-s/30min"
+                  data-cal-namespace="30min"
+                  data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
+                  className="w-full block py-2.5 text-center text-xs font-semibold text-slate-900 bg-white/40 hover:bg-white/60 backdrop-blur-md border border-slate-300/80 rounded-full transition-all cursor-pointer"
                 >
                   Request Demo
-                </a>
+                </button>
                 <a
                   href="https://auth.zentrosuite.com"
                   target="_blank"

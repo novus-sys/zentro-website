@@ -219,14 +219,15 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a
-                  href="https://calendly.com/sambramsm28/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-slate-900 font-medium transition-colors"
+                <button
+                  type="button"
+                  data-cal-link="sambram-k-s/30min"
+                  data-cal-namespace="30min"
+                  data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
+                  className="hover:text-slate-900 font-medium transition-colors cursor-pointer text-left"
                 >
                   Schedule a Demo
-                </a>
+                </button>
               </li>
               <li>
                 <Link to="/privacy" className="hover:text-slate-900 font-medium transition-colors">

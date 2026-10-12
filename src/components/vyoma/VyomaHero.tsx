@@ -41,15 +41,16 @@ export default function VyomaHero() {
 
         {/* Primary Call to Action buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-16 sm:mb-20 w-full sm:w-auto">
-          <a
-            href="https://calendly.com/sambramsm28/30min"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto px-7 py-3.5 bg-[#F5F5F2] hover:bg-white text-[#0A0A0B] text-sm font-semibold rounded-full transition-all duration-200 shadow-xl shadow-white/5 hover:-translate-y-0.5 flex items-center justify-center gap-2 group"
+          <button
+            type="button"
+            data-cal-link="sambram-k-s/30min"
+            data-cal-namespace="30min"
+            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
+            className="w-full sm:w-auto px-7 py-3.5 bg-[#F5F5F2] hover:bg-white text-[#0A0A0B] text-sm font-semibold rounded-full transition-all duration-200 shadow-xl shadow-white/5 hover:-translate-y-0.5 flex items-center justify-center gap-2 group cursor-pointer"
           >
             <span>Schedule a Demo</span>
             <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
-          </a>
+          </button>
 
           <a
             href="#assessment-modes"

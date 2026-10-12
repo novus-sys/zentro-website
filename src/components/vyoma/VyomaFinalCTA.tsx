@@ -32,15 +32,16 @@ export default function VyomaFinalCTA() {
 
         {/* Dual CTA buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-          <a
-            href="https://calendly.com/sambramsm28/30min"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto px-8 py-4 bg-[#F5F5F2] hover:bg-white text-[#0A0A0B] text-sm font-bold rounded-full transition-all duration-200 shadow-2xl shadow-white/10 hover:-translate-y-0.5 flex items-center justify-center gap-2 group"
+          <button
+            type="button"
+            data-cal-link="sambram-k-s/30min"
+            data-cal-namespace="30min"
+            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"}'
+            className="w-full sm:w-auto px-8 py-4 bg-[#F5F5F2] hover:bg-white text-[#0A0A0B] text-sm font-bold rounded-full transition-all duration-200 shadow-2xl shadow-white/10 hover:-translate-y-0.5 flex items-center justify-center gap-2 group cursor-pointer"
           >
             <span>Book a 30-Min Demo</span>
             <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
-          </a>
+          </button>
 
           <a
             href="mailto:info@zentrosuite.com"
